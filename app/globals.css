@@ -1,26 +1,96 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import 'tailwindcss/preflight';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@config "../tailwind.config.js";
+@import '../styles/theme.css';
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Base */
+@layer base {
+  body {
+    @apply bg-bg text-text font-body;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Typography classes to match your system */
+@layer components {
+  .t-h1 {
+    @apply font-heading font-bold;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-size: 2rem; /* mobile */
+  }
+  @media (min-width: 768px) {
+    .t-h1 {
+      font-size: 2.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .t-h1 {
+      font-size: 4rem;
+    }
+  }
+
+  .t-h2 {
+    @apply font-heading font-bold;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-size: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .t-h2 {
+      font-size: 2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .t-h2 {
+      font-size: 2.5rem;
+    }
+  }
+
+  .t-h3 {
+    @apply font-heading font-semibold;
+    line-height: 1.3;
+    font-size: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .t-h3 {
+      font-size: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .t-h3 {
+      font-size: 1.75rem;
+    }
+  }
+
+  .t-body-lg {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  .t-body {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .t-body-sm {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .t-label {
+    @apply font-body font-medium uppercase tracking-[0.05em] text-text-muted;
+    font-size: 0.75rem;
+  }
+
+  .t-code-inline {
+    @apply font-mono text-[0.875rem] bg-surface-hover px-2 py-1 rounded-md;
+  }
+
+  .t-code-block {
+    @apply font-mono text-[0.875rem] bg-surface-hover p-6 rounded-md;
+    line-height: 1.7;
+  }
 }

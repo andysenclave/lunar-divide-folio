@@ -1,0 +1,28 @@
+:root {
+  --bg: #0a0e27;
+  --bg-secondary: #1a1f3a;
+  --surface-hover: #252b45;
+  --border: #2a2f4a;
+
+  --cyan: #00d9ff;
+  --cyan-hover: #00f0ff;
+  --cyan-dark: #0099cc;
+  --cyan-glow: rgba(0, 217, 255, 0.2);
+
+  --orange: #ff6b35;
+  --orange-hover: #ff8c50;
+  --orange-dark: #e55100;
+  --orange-glow: rgba(255, 107, 53, 0.2);
+
+  --text: rgba(255, 255, 255, 0.85);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --text-dim: rgba(255, 255, 255, 0.3);
+
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --error: #ef4444;
+
+  --font-heading: 'Sora', 'Inter', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
