@@ -18,7 +18,7 @@ const useActiveSide = () => {
 
   // Mouse position tracking with spring physics
   const mouseX = useMotionValue(0.5);
-  // const _smoothMouseX = useSpring(mouseX, { stiffness: 300, damping: 30 });
+  const smoothMouseX = useSpring(mouseX, { stiffness: 300, damping: 30 });
 
   const updateActiveSidesOnMouseMove = (e: MouseEvent) => {
     if (!heroContentRef.current) return;
@@ -46,6 +46,7 @@ const useActiveSide = () => {
     activeSide,
     lastActiveSide,
     scrollYProgress,
+    smoothMouseX,
     updateActiveSidesOnMouseMove,
     updateActiveSidesOnMouseLeave,
   };
