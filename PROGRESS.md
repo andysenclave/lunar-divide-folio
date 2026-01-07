@@ -291,7 +291,9 @@ These items should be addressed once the initial hero foundation is solid and al
 ### Waiting fixes
 
 ⚠️ Need to separate and place sectional styles in a unified place in all files
+
 ⚠️ Reduce inline styles
+
 ‼️ Need to replace styles from Global Background to a canvas or less resourceful medium
 
 ### What's Working
