@@ -10,16 +10,19 @@ const config = {
       colors: {
         bg: 'var(--bg)',
         'bg-secondary': 'var(--bg-secondary)',
+        surface: 'var(--surface)',
         'surface-hover': 'var(--surface-hover)',
         border: 'var(--border)',
 
         cyan: 'var(--cyan)',
         'cyan-hover': 'var(--cyan-hover)',
         'cyan-dark': 'var(--cyan-dark)',
+        accent: 'var(--cyan)', // Alias for cyan
 
         orange: 'var(--orange)',
         'orange-hover': 'var(--orange-hover)',
         'orange-dark': 'var(--orange-dark)',
+        warm: 'var(--orange)', // Alias for orange
 
         text: 'var(--text)',
         'text-muted': 'var(--text-muted)',
