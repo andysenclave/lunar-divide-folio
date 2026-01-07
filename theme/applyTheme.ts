@@ -5,10 +5,12 @@ export function applyTheme(mode: ThemeMode) {
   const root = document.documentElement;
 
   root.classList.toggle('dark', mode === 'dark');
+  root.classList.toggle('light', mode === 'light');
 
   // colors
   root.style.setProperty('--bg', t.colors.bg);
   root.style.setProperty('--bg-secondary', t.colors.bgSecondary);
+  root.style.setProperty('--surface', t.colors.bgSecondary); // Add surface
   root.style.setProperty('--surface-hover', t.colors.surfaceHover);
   root.style.setProperty('--border', t.colors.border);
 

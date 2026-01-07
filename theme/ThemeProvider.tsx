@@ -1,16 +1,30 @@
 'use client';
 
-import React, { createContext, useEffect, useMemo, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { applyTheme } from './applyTheme';
-import type { ThemeMode } from './theme';
+import { THEME, ThemeColors, type ThemeMode } from './theme';
 
 type ThemeCtx = {
   mode: ThemeMode;
   setMode: (m: ThemeMode) => void;
   toggle: () => void;
+  colors: ThemeColors;
 };
 
-export const ThemeContext = createContext<ThemeCtx | null>(null);
+const initialContext: ThemeCtx = {
+  mode: 'dark',
+  setMode: () => {},
+  toggle: () => {},
+  colors: THEME.dark.colors,
+};
+
+export const ThemeContext = createContext<ThemeCtx>(initialContext);
 
 const STORAGE_KEY = 'theme-mode';
 
@@ -43,6 +57,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       mode,
       setMode,
       toggle: () => setMode((m) => (m === 'dark' ? 'light' : 'dark')),
+      colors: THEME[mode].colors,
     }),
     [mode],
   );
@@ -54,3 +69,5 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 }
+
+export const useTheme = () => useContext(ThemeContext);
