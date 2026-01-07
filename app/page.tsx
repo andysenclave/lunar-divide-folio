@@ -1,6 +1,7 @@
 'use client';
 import { GlobalBackground, Header } from '@/components/layout';
 import FloatingMoon from '@/components/layout/FloatingMoon';
+import { HeroSection } from '@/components/sections';
 import { useActiveSide } from '@/hooks';
 
 export default function Page() {
@@ -11,6 +12,8 @@ export default function Page() {
     lastActiveSide,
     scrollYProgress,
     smoothMouseX,
+    updateActiveSidesOnMouseMove,
+    updateActiveSidesOnMouseLeave,
   } = useActiveSide();
 
   return (
@@ -24,11 +27,15 @@ export default function Page() {
         scrollYProgress={scrollYProgress}
         smoothMouseX={smoothMouseX}
       />
-      <section ref={heroRef}>
-        <div ref={heroContentRef}>
-          <p>Welcome to the main page!</p>
-        </div>
-      </section>
+      <HeroSection
+        heroRef={heroRef}
+        containerRef={heroContentRef}
+        handleMouseMove={updateActiveSidesOnMouseMove}
+        handleMouseLeave={updateActiveSidesOnMouseLeave}
+        scrollYProgress={scrollYProgress}
+        activeSide={activeSide}
+        smoothMouseX={smoothMouseX}
+      />
     </GlobalBackground>
   );
 }

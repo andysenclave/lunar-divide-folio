@@ -48,8 +48,7 @@ export default function Header({ activeSide, scrollYProgress }: HeaderProps) {
           cursor: 'pointer',
         }}
       >
-        <span style={{ fontSize: '20px', opacity: 0.7 }}>☽</span>
-        ANINDYA
+        ANDYSENCLAVE
       </MotionDiv>
 
       <nav

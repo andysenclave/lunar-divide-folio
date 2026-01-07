@@ -8,7 +8,7 @@ const useActiveSide = () => {
   const [activeSide, setActiveSide] = useState<ActiveSide>('neutral');
   const [lastActiveSide, setLastActiveSide] = useState<ActiveSide>('neutral');
 
-  const heroRef = useRef(null);
+  const heroRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
