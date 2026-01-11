@@ -5,6 +5,7 @@ const EngineeringPortrait = () => {
 
   return (
     <section
+      className="engineering-portrait"
       style={{
         width: '100%',
         height: '100%',
@@ -19,6 +20,7 @@ const EngineeringPortrait = () => {
       }}
     >
       <section
+        className="engineering-portrait__code"
         style={{
           position: 'absolute',
           inset: 0,
@@ -46,6 +48,7 @@ async function build() {
       </section>
 
       <section
+        className="engineering-portrait__body"
         style={{
           width: 140,
           height: 160,
@@ -55,6 +58,7 @@ async function build() {
         }}
       >
         <section
+          className="engineering-portrait__screen"
           style={{
             position: 'absolute',
             bottom: '15%',
@@ -67,6 +71,7 @@ async function build() {
           }}
         >
           <section
+            className="engineering-portrait__screen-glow"
             style={{
               position: 'absolute',
               inset: 4,
@@ -78,6 +83,7 @@ async function build() {
       </section>
 
       <section
+        className="engineering-portrait__glow-overlay"
         style={{
           position: 'absolute',
           inset: 0,
@@ -87,6 +93,7 @@ async function build() {
       />
 
       <section
+        className="engineering-portrait__shadow-overlay"
         style={{
           position: 'absolute',
           inset: 0,
