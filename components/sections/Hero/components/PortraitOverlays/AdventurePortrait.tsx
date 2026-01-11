@@ -5,6 +5,7 @@ const AdventurePortrait = () => {
 
   return (
     <section
+      className="adventure-portrait"
       style={{
         width: '100%',
         height: '100%',
@@ -19,6 +20,7 @@ const AdventurePortrait = () => {
       }}
     >
       <section
+        className="adventure-portrait__background"
         style={{
           position: 'absolute',
           bottom: 0,
@@ -32,6 +34,7 @@ const AdventurePortrait = () => {
       />
 
       <section
+        className="adventure-portrait__body"
         style={{
           width: 140,
           height: 160,
@@ -42,6 +45,7 @@ const AdventurePortrait = () => {
         }}
       >
         <section
+          className="adventure-portrait__eye-container"
           style={{
             position: 'absolute',
             bottom: '25%',
@@ -54,6 +58,7 @@ const AdventurePortrait = () => {
           }}
         >
           <section
+            className="adventure-portrait__eye"
             style={{
               position: 'absolute',
               top: '50%',
@@ -69,6 +74,7 @@ const AdventurePortrait = () => {
       </section>
 
       <section
+        className="adventure-portrait__glow-overlay"
         style={{
           position: 'absolute',
           inset: 0,
@@ -78,6 +84,7 @@ const AdventurePortrait = () => {
       />
 
       <section
+        className="adventure-portrait__shadow-overlay"
         style={{
           position: 'absolute',
           inset: 0,

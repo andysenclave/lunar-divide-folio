@@ -30,6 +30,7 @@ export default function Page() {
       <HeroSection
         heroRef={heroRef}
         containerRef={heroContentRef}
+        lastActiveSide={lastActiveSide}
         handleMouseMove={updateActiveSidesOnMouseMove}
         handleMouseLeave={updateActiveSidesOnMouseLeave}
         scrollYProgress={scrollYProgress}
