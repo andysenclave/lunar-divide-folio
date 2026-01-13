@@ -1,96 +1,52 @@
+'use client';
+
 import { MotionSection } from '@/components/motion';
-import { MotionValue, useTransform } from 'framer-motion';
+import { useAnimation } from '@/context';
+import { useTransform } from 'framer-motion';
 import Title from './components/Title';
 import OrbitalRings from './components/OrbitalRings';
 import SideLabel from './components/SideLabel';
-import { ActiveSide } from '@/hooks';
 import PortraitOverlays from './components/PortraitOverlays';
 import Tagline from './components/Tagline';
 import ScrollIndicator from './components/ScrollIndicator';
 
-interface HeroSectionProps {
-  activeSide: ActiveSide;
-  lastActiveSide: ActiveSide;
-  heroRef: React.RefObject<HTMLElement | null>;
-  containerRef: React.RefObject<HTMLDivElement | null>;
-  // @ts-expect-error types
-  handleMouseMove: (event: MouseEvent<Element, MouseEvent>) => void;
-  handleMouseLeave: () => void;
-  scrollYProgress: MotionValue<number>;
-  smoothMouseX: MotionValue<number>;
-}
+const HeroSection = () => {
+  const {
+    activeSide,
+    lastActiveSide,
+    heroRef,
+    heroContentRef,
+    handleMouseMove,
+    handleMouseLeave,
+    scrollYProgress,
+    smoothMouseX,
+  } = useAnimation();
 
-const HeroSection = ({
-  activeSide,
-  lastActiveSide,
-  containerRef,
-  handleMouseMove,
-  handleMouseLeave,
-  heroRef,
-  scrollYProgress,
-  smoothMouseX,
-}: HeroSectionProps) => {
   const heroContentOpacity = useTransform(scrollYProgress, [0, 0.33], [1, 0]);
 
   return (
-    <section
+    <main
+      id="main-content"
       ref={heroRef}
-      style={{
-        minHeight: '100vh',
-        position: 'relative',
-        zIndex: 10,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
+      className="min-h-screen relative z-10 flex items-center justify-center"
     >
-      <section
-        ref={containerRef}
+      <div
+        ref={heroContentRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        style={{
-          width: '100%',
-          maxWidth: '1400px',
-          minHeight: '100vh',
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '120px 24px 80px',
-          margin: '0 auto',
-          cursor: 'crosshair',
-        }}
+        className="w-full max-w-350 min-h-screen relative flex flex-col items-center justify-center py-20 px-6 pt-30 mx-auto cursor-crosshair"
       >
         <MotionSection
-          style={{
-            opacity: heroContentOpacity,
-            position: 'absolute',
-            top: '12vh',
-            left: '50%',
-            x: '-50%',
-            textAlign: 'center',
-            zIndex: 60,
-            width: '100%',
-            padding: '0 24px',
-          }}
+          className="absolute top-[12vh] left-1/2 text-center z-60 w-full px-6"
+          style={{ opacity: heroContentOpacity, x: '-50%' }}
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Title />
         </MotionSection>
-        <section
-          style={{
-            position: 'relative',
-            width: '100%',
-            maxWidth: '900px',
-            height: '400px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
+
+        <div className="relative w-full max-w-225 h-100 flex items-center justify-center">
           <OrbitalRings opacity={heroContentOpacity} />
 
           <SideLabel
@@ -110,14 +66,15 @@ const HeroSection = ({
             mouseX={smoothMouseX}
             scrollYProgress={scrollYProgress}
           />
-        </section>
+        </div>
+
         <Tagline activeSide={activeSide} opacity={heroContentOpacity} />
         <ScrollIndicator
           lastActiveSide={lastActiveSide}
           opacity={heroContentOpacity}
         />
-      </section>
-    </section>
+      </div>
+    </main>
   );
 };
 

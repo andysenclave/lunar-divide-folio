@@ -23,11 +23,6 @@
   --success: #4ade80;
   --warning: #fbbf24;
   --error: #ef4444;
-
-  /* Font Families */
-  --font-heading: 'Sora', 'Inter', -apple-system, sans-serif;
-  --font-body: 'Inter', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 /* Light Mode */

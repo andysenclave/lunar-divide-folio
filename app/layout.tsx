@@ -1,7 +1,6 @@
-'use client';
-
 import './globals.css';
 import { ThemeProvider } from '@/theme/ThemeProvider';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Sora, Inter, JetBrains_Mono } from 'next/font/google';
 
 const sora = Sora({
@@ -32,7 +31,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sora.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ErrorBoundary>
+          {/* Skip link for keyboard navigation */}
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
+          <ThemeProvider>{children}</ThemeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );

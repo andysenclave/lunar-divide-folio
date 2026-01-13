@@ -1,5 +1,7 @@
+'use client';
+
 import { MotionSection } from '@/components/motion';
-import { ActiveSide } from '@/hooks';
+import { ActiveSide } from '@/context';
 import { useTheme } from '@/theme/ThemeProvider';
 import { MotionValue, useTransform } from 'framer-motion';
 
@@ -24,41 +26,34 @@ const SideLabel = ({ side, opacity, activeSide, mouseX }: SideLabelProps) => {
     }
   });
 
+  const combinedOpacity = useTransform([labelOpacity, opacity], (latest) => {
+    const [l, o] = latest as [number, number];
+    return l * o;
+  });
+
   return (
     <MotionSection
+      className="absolute top-1/2 -translate-y-1/2 flex items-center gap-3 z-45 pointer-events-none"
       style={{
-        position: 'absolute',
         left: isEngineering ? 'clamp(10px, 5%, 50px)' : 'auto',
         right: isEngineering ? 'auto' : 'clamp(10px, 5%, 50px)',
-        top: '50%',
-        transform: 'translateY(-50%)',
-        display: 'flex',
-        alignItems: 'center',
-        gap: 12,
         flexDirection: isEngineering ? 'row' : 'row-reverse',
-        // @ts-expect-error types
-        opacity: useTransform(
-          [labelOpacity, opacity],
-          ([l, o]: [number, number]) => l * o,
-        ),
-        zIndex: 45,
-        pointerEvents: 'none',
+        opacity: combinedOpacity,
       }}
     >
       <span
+        className="font-semibold tracking-[0.2em]"
         style={{
           color,
           fontSize: 'clamp(9px, 1.2vw, 11px)',
-          fontWeight: 600,
-          letterSpacing: '0.2em',
         }}
       >
         {side.toUpperCase()}
       </span>
       <MotionSection
+        className="h-px"
         style={{
           width: 'clamp(20px, 3vw, 30px)',
-          height: 1,
           background: `linear-gradient(${isEngineering ? '90deg' : '270deg'}, ${color}40 0%, ${color}10 100%)`,
         }}
         animate={{
