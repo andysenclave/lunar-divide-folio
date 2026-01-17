@@ -1,22 +1,15 @@
 'use client';
 
-import {
-  MotionButton,
-  MotionDiv,
-  MotionHeader,
-  MotionLink,
-} from '@/components/motion';
-import { ActiveSide } from '@/hooks';
+import { MotionButton, MotionHeader, MotionLink } from '@/components/motion';
+import { NAV_ITEMS } from '@/constants/navigation';
+import { useAnimation } from '@/context';
 import { useTheme } from '@/theme/ThemeProvider';
-import { MotionValue, useTransform } from 'framer-motion';
+import { useTransform } from 'framer-motion';
+import Image from 'next/image';
 
-interface HeaderProps {
-  activeSide: ActiveSide;
-  scrollYProgress: MotionValue<number>;
-}
-
-export default function Header({ activeSide, scrollYProgress }: HeaderProps) {
+export default function Header() {
   const { colors, mode, toggle } = useTheme();
+  const { scrollYProgress } = useAnimation();
   const navOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
 
   return (
@@ -32,11 +25,14 @@ export default function Header({ activeSide, scrollYProgress }: HeaderProps) {
         justifyContent: 'space-between',
         alignItems: 'center',
         zIndex: 100,
+        fontFamily: 'var(--font-heading), var(--font-body), sans-serif',
       }}
     >
-      <MotionDiv
+      <MotionButton
+        type="button"
         whileHover={{ scale: 1.02 }}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Scroll to top"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -46,10 +42,26 @@ export default function Header({ activeSide, scrollYProgress }: HeaderProps) {
           fontWeight: 600,
           letterSpacing: '0.1em',
           cursor: 'pointer',
+          background: 'none',
+          border: 'none',
+          padding: 0,
         }}
       >
+        <Image
+          src="/images/avatar.jpg"
+          alt=""
+          width={28}
+          height={28}
+          style={{
+            borderRadius: '50%',
+            objectFit: 'cover',
+            objectPosition: '-5px',
+            width: '28px',
+            height: '28px',
+          }}
+        />
         ANDYSENCLAVE
-      </MotionDiv>
+      </MotionButton>
 
       <nav
         style={{
@@ -62,23 +74,18 @@ export default function Header({ activeSide, scrollYProgress }: HeaderProps) {
         }}
         className="hide-mobile"
       >
-        {['Engineering', 'Adventure', 'Journal'].map((item) => (
+        {NAV_ITEMS.map((item) => (
           <MotionLink
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            whileHover={{ y: -2 }}
+            key={item.label}
+            href={item.href}
+            whileHover={{ y: -2, color: colors.text }}
             style={{
-              color:
-                activeSide === item.toLowerCase()
-                  ? item === 'Engineering'
-                    ? colors.cyan
-                    : colors.orange
-                  : colors.text,
+              color: colors.textSecondary,
               textDecoration: 'none',
               transition: 'color 0.3s ease',
             }}
           >
-            {item}
+            {item.label}
           </MotionLink>
         ))}
       </nav>

@@ -7,9 +7,10 @@ const Title = () => {
 
   return (
     <h1
-      className="font-heading font-bold uppercase tracking-[0.15em] leading-tight m-0"
+      className="font-heading uppercase tracking-[0.15em] leading-[1.1] m-0"
       style={{
         fontSize: 'clamp(32px, 6vw, 72px)',
+        fontWeight: 700,
         color: colors.text,
       }}
     >

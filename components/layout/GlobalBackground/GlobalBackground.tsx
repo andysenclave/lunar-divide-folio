@@ -16,7 +16,7 @@ const GlobalBackground = ({ children }: GlobalBackgroundProps) => {
 
   return (
     <div
-      className="min-h-[300vh] relative font-body transition-[background] duration-400"
+      className="min-h-screen relative font-body transition-[background] duration-400"
       style={{ background: colors.bg }}
     >
       <div className="fixed inset-0 z-0 transition-all duration-400">

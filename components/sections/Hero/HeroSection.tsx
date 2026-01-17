@@ -37,7 +37,7 @@ const HeroSection = () => {
         className="w-full max-w-350 min-h-screen relative flex flex-col items-center justify-center py-20 px-6 pt-30 mx-auto cursor-crosshair"
       >
         <MotionSection
-          className="absolute top-[12vh] left-1/2 text-center z-60 w-full px-6"
+          className="absolute top-[max(15vh,120px)] left-1/2 text-center z-60 w-full px-6"
           style={{ opacity: heroContentOpacity, x: '-50%' }}
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}

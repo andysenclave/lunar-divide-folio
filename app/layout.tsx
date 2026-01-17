@@ -5,7 +5,7 @@ import { Sora, Inter, JetBrains_Mono } from 'next/font/google';
 
 const sora = Sora({
   subsets: ['latin'],
-  weight: ['600', '700'],
+  weight: ['500', '600', '700'],
   variable: '--font-heading',
   display: 'swap',
 });
