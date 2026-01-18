@@ -1,14 +1,16 @@
+'use client';
+
 import { MotionSection } from '@/components/motion';
-import { ActiveSide } from '@/hooks';
+import { ActiveSide } from '@/context';
 import { useTheme } from '@/theme/ThemeProvider';
 import { AnimatePresence, MotionValue } from 'framer-motion';
 
-interface OrbitalRingsProps {
+interface TaglineProps {
   activeSide: ActiveSide;
   opacity?: MotionValue<number>;
 }
 
-const Tagline = ({ activeSide, opacity }: OrbitalRingsProps) => {
+const Tagline = ({ activeSide, opacity }: TaglineProps) => {
   const { colors } = useTheme();
 
   const variants = {
@@ -30,22 +32,10 @@ const Tagline = ({ activeSide, opacity }: OrbitalRingsProps) => {
 
   return (
     <MotionSection
+      className="absolute left-1/2 -translate-x-1/2 text-center min-h-20 flex flex-col items-center justify-center z-45 pointer-events-none w-full px-6"
       style={{
-        position: 'absolute',
         bottom: 'clamp(100px, 15vh, 160px)',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        textAlign: 'center',
-        minHeight: 80,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
         opacity,
-        zIndex: 45,
-        pointerEvents: 'none',
-        width: '100%',
-        padding: '0 24px',
       }}
     >
       <AnimatePresence mode="wait">
@@ -57,11 +47,11 @@ const Tagline = ({ activeSide, opacity }: OrbitalRingsProps) => {
           transition={{ duration: 0.3 }}
         >
           <p
+            className="tracking-[0.03em]"
             style={{
               fontSize: 'clamp(16px, 2vw, 20px)',
               color,
               fontWeight: activeSide === 'neutral' ? 400 : 500,
-              letterSpacing: '0.03em',
               marginBottom: current.sub ? 6 : 0,
             }}
           >
@@ -69,10 +59,10 @@ const Tagline = ({ activeSide, opacity }: OrbitalRingsProps) => {
           </p>
           {current.sub && (
             <p
+              className="font-normal"
               style={{
                 fontSize: 'clamp(12px, 1.5vw, 14px)',
                 color: colors.text,
-                fontWeight: 400,
               }}
             >
               {current.sub}

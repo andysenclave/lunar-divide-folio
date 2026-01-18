@@ -1,3 +1,5 @@
+'use client';
+
 import MotionSection from '@/components/motion/MotionSection/MotionSection';
 import { MotionValue, useTransform } from 'framer-motion';
 import EngineeringPortrait from './EngineeringPortrait';
@@ -18,28 +20,23 @@ const PortraitOverlays = ({
 
   return (
     <MotionSection
+      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden z-51 pointer-events-none"
       style={{
-        position: 'absolute',
-        left: '50%',
-        top: '50%',
-        transform: 'translate(-50%, -50%)',
         width: 'clamp(200px, 30vw, 300px)',
         height: 'clamp(200px, 30vw, 300px)',
-        borderRadius: '50%',
-        overflow: 'hidden',
-        zIndex: 51,
-        pointerEvents: 'none',
         opacity: containerOpacity,
       }}
     >
       <MotionSection
-        style={{ position: 'absolute', inset: 0, opacity: leftReveal }}
+        className="absolute inset-0"
+        style={{ opacity: leftReveal }}
       >
         <EngineeringPortrait />
       </MotionSection>
 
       <MotionSection
-        style={{ position: 'absolute', inset: 0, opacity: rightReveal }}
+        className="absolute inset-0"
+        style={{ opacity: rightReveal }}
       >
         <AdventurePortrait />
       </MotionSection>

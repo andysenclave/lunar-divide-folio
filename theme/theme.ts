@@ -18,6 +18,7 @@ export const THEME = {
 
       white: '#FFFFFF',
       text: 'rgba(255,255,255,0.85)',
+      textSecondary: '#B0B9C6',
       textMuted: 'rgba(255,255,255,0.5)',
       textDim: 'rgba(255,255,255,0.3)',
 
@@ -50,6 +51,7 @@ export const THEME = {
 
       white: '#FFFFFF',
       text: 'rgba(10,14,39,0.92)',
+      textSecondary: '#5A6373',
       textMuted: 'rgba(10,14,39,0.62)',
       textDim: 'rgba(10,14,39,0.42)',
 

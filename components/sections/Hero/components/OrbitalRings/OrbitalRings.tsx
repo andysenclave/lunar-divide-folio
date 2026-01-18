@@ -1,3 +1,5 @@
+'use client';
+
 import { MotionSection } from '@/components/motion';
 import { useTheme } from '@/theme/ThemeProvider';
 import { MotionValue } from 'framer-motion';
@@ -11,35 +13,20 @@ const OrbitalRings = ({ opacity }: OrbitalRingsProps) => {
 
   return (
     <MotionSection
+      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-45"
       style={{
-        position: 'absolute',
-        left: '50%',
-        top: '50%',
-        transform: 'translate(-50%, -50%)',
         width: 'clamp(280px, 40vw, 400px)',
         height: 'clamp(280px, 40vw, 400px)',
-        pointerEvents: 'none',
         opacity,
-        zIndex: 45,
       }}
     >
       <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          border: `1px solid ${colors.border}`,
-          borderRadius: '50%',
-          opacity: 0.3,
-        }}
+        className="absolute inset-0 rounded-full opacity-30"
+        style={{ border: `1px solid ${colors.border}` }}
       />
       <MotionSection
-        style={{
-          position: 'absolute',
-          inset: 25,
-          border: `1px dashed ${colors.border}`,
-          borderRadius: '50%',
-          opacity: 0.2,
-        }}
+        className="absolute inset-6 rounded-full opacity-20"
+        style={{ border: `1px dashed ${colors.border}` }}
         animate={{ rotate: 360 }}
         transition={{ duration: 90, repeat: Infinity, ease: 'linear' }}
       />

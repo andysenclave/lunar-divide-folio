@@ -1,5 +1,15 @@
-import DesignMockupV9 from '@/resources/backups/two-sides-hero-v9';
+import HeroSection from '@/resources/mockups/HeroSection';
+import JourneySection from '@/resources/mockups/JourneySection';
+
+const Mockup = () => {
+  return (
+    <>
+      <HeroSection />
+      <JourneySection />
+    </>
+  );
+};
 
 export default function Page() {
-  return <DesignMockupV9 />;
+  return <Mockup />;
 }

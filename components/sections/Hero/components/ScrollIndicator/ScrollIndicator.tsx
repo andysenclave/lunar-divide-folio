@@ -1,11 +1,12 @@
+'use client';
+
 import { MotionSection, MotionSpan } from '@/components/motion';
-import { ActiveSide } from '@/hooks';
+import { ActiveSide } from '@/context';
 import { useTheme } from '@/theme/ThemeProvider';
 import { MotionValue } from 'framer-motion';
 
 interface ScrollIndicatorProps {
   lastActiveSide: ActiveSide;
-
   opacity?: MotionValue<number>;
 }
 
@@ -27,24 +28,17 @@ const ScrollIndicator = ({ lastActiveSide, opacity }: ScrollIndicatorProps) => {
 
   return (
     <MotionSection
+      className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       style={{
-        position: 'absolute',
         bottom: 'clamp(20px, 5vh, 40px)',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: 8,
         opacity,
       }}
     >
       <MotionSpan
+        className="uppercase tracking-[0.15em]"
         style={{
           fontSize: 'clamp(9px, 1vw, 10px)',
           color: `${color}99`,
-          letterSpacing: '0.15em',
-          textTransform: 'uppercase',
         }}
         animate={{ color: `${color}99` }}
         transition={{ duration: 0.4 }}
@@ -52,8 +46,8 @@ const ScrollIndicator = ({ lastActiveSide, opacity }: ScrollIndicatorProps) => {
         {text}
       </MotionSpan>
       <MotionSection
+        className="w-px"
         style={{
-          width: 1,
           height: 'clamp(30px, 4vh, 40px)',
           background: `linear-gradient(180deg, ${color}80 0%, transparent 100%)`,
         }}
