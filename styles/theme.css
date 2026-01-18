@@ -1,0 +1,49 @@
+:root {
+  /* Dark Mode Colors (default) */
+  --bg: #0a0e27;
+  --bg-secondary: #1a1f3a;
+  --surface: #1a1f3a;
+  --surface-hover: #252b45;
+  --border: #2a2f4a;
+
+  --cyan: #00d9ff;
+  --cyan-hover: #00f0ff;
+  --cyan-dark: #0099cc;
+  --cyan-glow: rgba(0, 217, 255, 0.2);
+
+  --orange: #ff6b35;
+  --orange-hover: #ff8c50;
+  --orange-dark: #e55100;
+  --orange-glow: rgba(255, 107, 53, 0.2);
+
+  --text: rgba(255, 255, 255, 0.95);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-dim: rgba(255, 255, 255, 0.35);
+
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --error: #ef4444;
+}
+
+/* Light Mode */
+.light {
+  --bg: #fafbff;
+  --bg-secondary: #ffffff;
+  --surface: #ffffff;
+  --surface-hover: #f3f4f8;
+  --border: #e8ebf0;
+
+  --cyan: #0066ff;
+  --cyan-hover: #1a7fff;
+  --cyan-dark: #0052cc;
+  --cyan-glow: rgba(0, 102, 255, 0.15);
+
+  --orange: #ff4500;
+  --orange-hover: #ff6633;
+  --orange-dark: #e63900;
+  --orange-glow: rgba(255, 69, 0, 0.15);
+
+  --text: rgba(10, 14, 39, 0.95);
+  --text-muted: rgba(10, 14, 39, 0.6);
+  --text-dim: rgba(10, 14, 39, 0.35);
+}
