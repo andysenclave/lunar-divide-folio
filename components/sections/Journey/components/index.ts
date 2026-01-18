@@ -7,3 +7,4 @@ export { default as ExperienceModal } from './ExperienceModal';
 export { default as CardsContainer } from './CardsContainer';
 export { default as ScrollIndicator } from './ScrollIndicator';
 export { default as ProgressBar } from './ProgressBar';
+export { default as StarField } from './StarField';

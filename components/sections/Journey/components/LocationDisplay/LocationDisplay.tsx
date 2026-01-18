@@ -10,7 +10,10 @@ interface LocationDisplayProps {
   flightData: FlightData | null;
 }
 
-const LocationDisplay = ({ currentLocation, flightData }: LocationDisplayProps) => {
+const LocationDisplay = ({
+  currentLocation,
+  flightData,
+}: LocationDisplayProps) => {
   const { colors } = useTheme();
 
   return (
@@ -19,7 +22,7 @@ const LocationDisplay = ({ currentLocation, flightData }: LocationDisplayProps) 
       <AnimatePresence>
         {currentLocation && (
           <MotionDiv
-            className="absolute bottom-[10%] left-1/2 -translate-x-1/2 text-center z-[25]"
+            className="absolute bottom-[10%] left-1/2 -translate-x-1/2 text-center z-50"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -64,7 +67,7 @@ const LocationDisplay = ({ currentLocation, flightData }: LocationDisplayProps) 
       <AnimatePresence>
         {flightData && !currentLocation && (
           <MotionDiv
-            className="absolute bottom-[12%] left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-[25]"
+            className="absolute bottom-[12%] left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

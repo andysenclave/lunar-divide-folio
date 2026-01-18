@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import 'tailwindcss/preflight';
 
 @config "../tailwind.config.js";
 @import '../styles/theme.css';
@@ -56,7 +55,7 @@
 @layer base {
   a:focus-visible,
   button:focus-visible,
-  [role="button"]:focus-visible,
+  [role='button']:focus-visible,
   input:focus-visible,
   select:focus-visible,
   textarea:focus-visible {

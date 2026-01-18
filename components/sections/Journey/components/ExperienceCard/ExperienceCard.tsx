@@ -24,10 +24,9 @@ const ExperienceCard = ({
 
   return (
     <MotionDiv
-      className="rounded-2xl overflow-hidden cursor-pointer shrink-0 p-10"
+      className="rounded-2xl overflow-hidden cursor-pointer shrink-0"
       style={{
         width: 300,
-        padding: 16,
         margin: '0 8px',
         background: 'rgba(26, 31, 58, 0.95)',
         border: `1px solid ${exp.featured ? gold : colors.border}`,
@@ -52,7 +51,7 @@ const ExperienceCard = ({
       onClick={onClick}
     >
       {/* Header */}
-      <div className="flex items-start justify-between gap-3 px-6 pt-5 pb-3">
+      <header className="flex items-start justify-between gap-3 px-6 pt-5 pb-3">
         <span
           className="px-3 py-1.5 rounded-xl text-[9px] font-semibold uppercase tracking-[0.1em] shrink-0 border"
           style={{
@@ -72,13 +71,13 @@ const ExperienceCard = ({
           {exp.featured ? '⭐ ' : ''}
           {exp.type}
         </span>
-        <span className="text-xl opacity-60">
+        <span className="text-xl opacity-60" aria-hidden="true">
           {exp.icon || (isEng ? '💻' : '🌍')}
         </span>
-      </div>
+      </header>
 
       {/* Body */}
-      <div className="px-6 pb-6">
+      <article className="px-6 pb-6">
         <h3
           className="font-semibold mb-2 leading-snug"
           style={{
@@ -114,9 +113,12 @@ const ExperienceCard = ({
 
         {/* Places */}
         {exp.places && (
-          <div className="flex flex-wrap gap-2 mt-4">
+          <ul
+            className="flex flex-wrap gap-2 mt-4 list-none p-0"
+            aria-label="Places visited"
+          >
             {exp.places.slice(0, 3).map((place, i) => (
-              <span
+              <li
                 key={i}
                 className="px-2.5 py-1.5 rounded-lg"
                 style={{
@@ -126,24 +128,24 @@ const ExperienceCard = ({
                 }}
               >
                 {place}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
 
         {/* Meta */}
-        <div
+        <footer
           className="flex items-center justify-between mt-5 pt-4"
           style={{ borderTop: `1px solid ${colors.border}` }}
         >
-          <span
+          <time
             style={{
               fontSize: '11px',
               color: colors.textDim,
             }}
           >
             {exp.date}
-          </span>
+          </time>
           <span
             className="font-semibold tracking-[0.1em]"
             style={{
@@ -153,8 +155,8 @@ const ExperienceCard = ({
           >
             View details →
           </span>
-        </div>
-      </div>
+        </footer>
+      </article>
     </MotionDiv>
   );
 };

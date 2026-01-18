@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import type { Location, FlightData, JourneyState, TimelineKeyframe } from '../types';
+import type { FlightData, JourneyState, TimelineKeyframe } from '../types';
 import { LOCATIONS } from '../data';
 import { useScrollTimeline } from './useScrollTimeline';
 
@@ -9,14 +9,15 @@ import { useScrollTimeline } from './useScrollTimeline';
 // UTILITY FUNCTIONS
 // ============================================
 
-export const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
+export const lerp = (a: number, b: number, t: number): number =>
+  a + (b - a) * t;
 
 export const easeOutQuart = (t: number): number => 1 - Math.pow(1 - t, 4);
 
 export const generateArcPoints = (
   start: [number, number],
   end: [number, number],
-  numPoints: number = 60
+  numPoints: number = 60,
 ): [number, number][] => {
   const points: [number, number][] = [];
   for (let i = 0; i <= numPoints; i++) {
@@ -45,14 +46,17 @@ interface InterpolatedState {
 
 function interpolateTimeline(
   timeline: TimelineKeyframe[],
-  progress: number
+  progress: number,
 ): InterpolatedState {
   let curr = timeline[0];
   let next = timeline[1];
   let t = 0;
 
   for (let i = 0; i < timeline.length - 1; i++) {
-    if (progress >= timeline[i].progress && progress <= timeline[i + 1].progress) {
+    if (
+      progress >= timeline[i].progress &&
+      progress <= timeline[i + 1].progress
+    ) {
       curr = timeline[i];
       next = timeline[i + 1];
       t = (progress - curr.progress) / (next.progress - curr.progress);
@@ -103,21 +107,26 @@ export interface UseJourneyScrollReturn extends JourneyState {
   updateGlobeCallback: (
     scale: number,
     rotation: [number, number],
-    flightData: FlightData | null
+    flightData: FlightData | null,
   ) => void;
   setUpdateGlobeCallback: (
     callback: (
       scale: number,
       rotation: [number, number],
-      flightData: FlightData | null
-    ) => void
+      flightData: FlightData | null,
+    ) => void,
   ) => void;
 }
 
 export function useJourneyScroll(): UseJourneyScrollReturn {
   const sectionRef = useRef<HTMLElement | null>(null);
   const updateGlobeRef = useRef<
-    ((scale: number, rotation: [number, number], flightData: FlightData | null) => void) | null
+    | ((
+        scale: number,
+        rotation: [number, number],
+        flightData: FlightData | null,
+      ) => void)
+    | null
   >(null);
 
   const timeline = useScrollTimeline();
@@ -133,19 +142,29 @@ export function useJourneyScroll(): UseJourneyScrollReturn {
   });
 
   const setUpdateGlobeCallback = useCallback(
-    (callback: (scale: number, rotation: [number, number], flightData: FlightData | null) => void) => {
+    (
+      callback: (
+        scale: number,
+        rotation: [number, number],
+        flightData: FlightData | null,
+      ) => void,
+    ) => {
       updateGlobeRef.current = callback;
     },
-    []
+    [],
   );
 
   const updateGlobeCallback = useCallback(
-    (scale: number, rotation: [number, number], flightData: FlightData | null) => {
+    (
+      scale: number,
+      rotation: [number, number],
+      flightData: FlightData | null,
+    ) => {
       if (updateGlobeRef.current) {
         updateGlobeRef.current(scale, rotation, flightData);
       }
     },
-    []
+    [],
   );
 
   useEffect(() => {
@@ -162,7 +181,10 @@ export function useJourneyScroll(): UseJourneyScrollReturn {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight - window.innerHeight;
         const relativeScroll = window.scrollY - sectionTop + window.innerHeight;
-        const progress = Math.max(0, Math.min(1, relativeScroll / sectionHeight));
+        const progress = Math.max(
+          0,
+          Math.min(1, relativeScroll / sectionHeight),
+        );
 
         const interpolated = interpolateTimeline(timeline, progress);
 
@@ -173,7 +195,8 @@ export function useJourneyScroll(): UseJourneyScrollReturn {
 
         // Determine adventure mode
         const isAdventureMode =
-          currentLocation?.experiences.some((e) => e.type === 'adventure') || false;
+          currentLocation?.experiences.some((e) => e.type === 'adventure') ||
+          false;
 
         setState({
           scrollProgress: progress,
@@ -190,7 +213,7 @@ export function useJourneyScroll(): UseJourneyScrollReturn {
           updateGlobeRef.current(
             interpolated.scale,
             interpolated.rotation,
-            interpolated.flightData
+            interpolated.flightData,
           );
         }
 
