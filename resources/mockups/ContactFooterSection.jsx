@@ -1,7 +1,12 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from 'framer-motion';
 
 // ============================================
 // THEME COLORS
@@ -30,42 +35,42 @@ const COLORS = {
 // TARGET LOCATIONS
 // ============================================
 const TARGET_LOCATIONS = [
-  { 
-    id: 'sydney', 
-    name: 'Sydney', 
-    country: 'Australia', 
+  {
+    id: 'sydney',
+    name: 'Sydney',
+    country: 'Australia',
     flag: '🇦🇺',
     coords: { x: 85, y: 72 },
     timezone: 'GMT+11',
   },
-  { 
-    id: 'singapore', 
-    name: 'Singapore', 
-    country: 'Singapore', 
+  {
+    id: 'singapore',
+    name: 'Singapore',
+    country: 'Singapore',
     flag: '🇸🇬',
     coords: { x: 68, y: 52 },
     timezone: 'GMT+8',
   },
-  { 
-    id: 'tokyo', 
-    name: 'Tokyo', 
-    country: 'Japan', 
+  {
+    id: 'tokyo',
+    name: 'Tokyo',
+    country: 'Japan',
     flag: '🇯🇵',
     coords: { x: 82, y: 38 },
     timezone: 'GMT+9',
   },
-  { 
-    id: 'dubai', 
-    name: 'Dubai', 
-    country: 'UAE', 
+  {
+    id: 'dubai',
+    name: 'Dubai',
+    country: 'UAE',
     flag: '🇦🇪',
     coords: { x: 52, y: 45 },
     timezone: 'GMT+4',
   },
-  { 
-    id: 'hongkong', 
-    name: 'Hong Kong', 
-    country: 'China', 
+  {
+    id: 'hongkong',
+    name: 'Hong Kong',
+    country: 'China',
     flag: '🇭🇰',
     coords: { x: 75, y: 43 },
     timezone: 'GMT+8',
@@ -77,12 +82,12 @@ const TARGET_LOCATIONS = [
 // ============================================
 function CosmicBackground({ scrollProgress }) {
   const auroraOpacity = useTransform(scrollProgress, [0, 0.5], [0, 1]);
-  
+
   return (
     <div style={styles.cosmicBg}>
       {/* Deep space gradient */}
       <div style={styles.spaceGradient} />
-      
+
       {/* Aurora waves */}
       <motion.div style={{ ...styles.auroraLayer, opacity: auroraOpacity }}>
         <motion.div
@@ -110,7 +115,7 @@ function CosmicBackground({ scrollProgress }) {
           transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
         />
       </motion.div>
-      
+
       {/* Stars */}
       <div style={styles.starsLayer}>
         {Array.from({ length: 80 }).map((_, i) => (
@@ -123,7 +128,12 @@ function CosmicBackground({ scrollProgress }) {
               width: Math.random() * 2.5 + 0.5,
               height: Math.random() * 2.5 + 0.5,
               borderRadius: '50%',
-              background: i % 5 === 0 ? COLORS.cyan : i % 7 === 0 ? COLORS.orange : '#fff',
+              background:
+                i % 5 === 0
+                  ? COLORS.cyan
+                  : i % 7 === 0
+                    ? COLORS.orange
+                    : '#fff',
             }}
             animate={{
               opacity: [0.2, 0.8, 0.2],
@@ -138,7 +148,7 @@ function CosmicBackground({ scrollProgress }) {
           />
         ))}
       </div>
-      
+
       {/* Horizon glow */}
       <div style={styles.horizonGlow} />
     </div>
@@ -152,7 +162,11 @@ function DestinationMap({ activeLocation, setActiveLocation }) {
   return (
     <div style={styles.mapContainer}>
       {/* Connection lines from center (Kolkata) to targets */}
-      <svg style={styles.connectionSvg} viewBox="0 0 100 100" preserveAspectRatio="none">
+      <svg
+        style={styles.connectionSvg}
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
         {TARGET_LOCATIONS.map((loc, idx) => (
           <motion.path
             key={loc.id}
@@ -162,15 +176,15 @@ function DestinationMap({ activeLocation, setActiveLocation }) {
             strokeWidth="0.3"
             strokeDasharray="2 2"
             initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ 
-              pathLength: 1, 
+            animate={{
+              pathLength: 1,
               opacity: activeLocation === loc.id ? 0.8 : 0.3,
             }}
             transition={{ duration: 1.5, delay: idx * 0.2 }}
           />
         ))}
       </svg>
-      
+
       {/* Current location - Kolkata */}
       <motion.div
         style={{ ...styles.locationDot, ...styles.currentLocation }}
@@ -189,7 +203,7 @@ function DestinationMap({ activeLocation, setActiveLocation }) {
           <span style={styles.currentStatus}>Current Base</span>
         </div>
       </motion.div>
-      
+
       {/* Target locations */}
       {TARGET_LOCATIONS.map((loc, idx) => (
         <motion.div
@@ -215,7 +229,7 @@ function DestinationMap({ activeLocation, setActiveLocation }) {
             transition={{ duration: 2, repeat: Infinity, delay: idx * 0.3 }}
           />
           <span style={styles.targetFlag}>{loc.flag}</span>
-          
+
           {/* Tooltip */}
           <AnimatePresence>
             {activeLocation === loc.id && (
@@ -257,8 +271,9 @@ function AvailabilityBadge() {
         transition={{ duration: 1.5, repeat: Infinity }}
       />
       <span style={styles.availabilityText}>
-        Open to opportunities in <span style={{ color: COLORS.gold }}>Australia</span>, 
-        <span style={{ color: COLORS.cyan }}> APAC</span> & 
+        Open to opportunities in{' '}
+        <span style={{ color: COLORS.gold }}>Australia</span>,
+        <span style={{ color: COLORS.cyan }}> APAC</span> &
         <span style={{ color: COLORS.orange }}> UAE</span>
       </span>
     </motion.div>
@@ -281,7 +296,7 @@ function CTAButtons() {
       <motion.a
         href="mailto:hello@anindya.dev?subject=Let's Connect"
         style={styles.primaryCta}
-        whileHover={{ 
+        whileHover={{
           scale: 1.03,
           boxShadow: `0 20px 60px ${COLORS.cyanGlow}`,
         }}
@@ -297,7 +312,7 @@ function CTAButtons() {
           →
         </motion.span>
       </motion.a>
-      
+
       {/* Secondary CTAs */}
       <div style={styles.secondaryCtaRow}>
         <motion.a
@@ -310,7 +325,7 @@ function CTAButtons() {
           <LinkedInIcon />
           LinkedIn
         </motion.a>
-        
+
         <motion.a
           href="/resume.pdf"
           download
@@ -320,7 +335,7 @@ function CTAButtons() {
           <DownloadIcon />
           Resume
         </motion.a>
-        
+
         <motion.a
           href="https://github.com/anindya"
           target="_blank"
@@ -349,16 +364,16 @@ function TwoSidesSignature() {
       transition={{ delay: 0.5 }}
     >
       <div style={styles.signatureInner}>
-        <motion.span 
+        <motion.span
           style={{ ...styles.signatureSide, color: COLORS.cyan }}
           whileHover={{ textShadow: `0 0 20px ${COLORS.cyanGlow}` }}
         >
           Engineering
         </motion.span>
-        
+
         <motion.span
           style={styles.signatureMoon}
-          animate={{ 
+          animate={{
             rotate: [0, 5, -5, 0],
             textShadow: [
               `0 0 20px ${COLORS.cyanGlow}`,
@@ -370,8 +385,8 @@ function TwoSidesSignature() {
         >
           ☽
         </motion.span>
-        
-        <motion.span 
+
+        <motion.span
           style={{ ...styles.signatureSide, color: COLORS.orange }}
           whileHover={{ textShadow: `0 0 20px ${COLORS.orangeGlow}` }}
         >
@@ -388,20 +403,40 @@ function TwoSidesSignature() {
 // ============================================
 function FooterBottom() {
   const currentYear = new Date().getFullYear();
-  
+
   const footerLinks = [
     { name: 'Home', href: '#' },
     { name: 'Expertise', href: '#expertise' },
     { name: 'Journey', href: '#journey' },
     { name: 'Projects', href: '#projects' },
   ];
-  
+
   const socialLinks = [
-    { icon: <GitHubIcon />, href: 'https://github.com/anindya', label: 'GitHub' },
-    { icon: <LinkedInIcon />, href: 'https://linkedin.com/in/anindya', label: 'LinkedIn' },
-    { icon: <TwitterIcon />, href: 'https://twitter.com/anindya', label: 'Twitter' },
-    { icon: <YouTubeIcon />, href: 'https://youtube.com/@andysenclave', label: 'YouTube' },
-    { icon: <InstagramIcon />, href: 'https://instagram.com/andysenclave', label: 'Instagram' },
+    {
+      icon: <GitHubIcon />,
+      href: 'https://github.com/anindya',
+      label: 'GitHub',
+    },
+    {
+      icon: <LinkedInIcon />,
+      href: 'https://linkedin.com/in/anindya',
+      label: 'LinkedIn',
+    },
+    {
+      icon: <TwitterIcon />,
+      href: 'https://twitter.com/anindya',
+      label: 'Twitter',
+    },
+    {
+      icon: <YouTubeIcon />,
+      href: 'https://youtube.com/@andysenclave',
+      label: 'YouTube',
+    },
+    {
+      icon: <InstagramIcon />,
+      href: 'https://instagram.com/andysenclave',
+      label: 'Instagram',
+    },
   ];
 
   return (
@@ -423,10 +458,10 @@ function FooterBottom() {
           </motion.a>
         ))}
       </nav>
-      
+
       {/* Divider */}
       <div style={styles.footerDivider} />
-      
+
       {/* Bottom row */}
       <div style={styles.footerBottomRow}>
         {/* Copyright */}
@@ -434,14 +469,18 @@ function FooterBottom() {
           <span>© {currentYear} Anindya Mukherjee</span>
           <span style={styles.copyrightDot}>•</span>
           <span style={styles.madeWith}>
-            Crafted with <motion.span
+            Crafted with{' '}
+            <motion.span
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
               style={{ display: 'inline-block' }}
-            >☕</motion.span> in Kolkata
+            >
+              ☕
+            </motion.span>{' '}
+            in Kolkata
           </span>
         </div>
-        
+
         {/* Social links */}
         <div style={styles.socialLinks}>
           {socialLinks.map((social) => (
@@ -451,7 +490,7 @@ function FooterBottom() {
               target="_blank"
               rel="noopener noreferrer"
               style={styles.socialLink}
-              whileHover={{ 
+              whileHover={{
                 color: COLORS.cyan,
                 borderColor: COLORS.cyan,
                 y: -3,
@@ -463,7 +502,7 @@ function FooterBottom() {
           ))}
         </div>
       </div>
-      
+
       {/* Tech stack */}
       <motion.p
         style={styles.techStack}
@@ -496,7 +535,7 @@ function BackToTop() {
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          whileHover={{ 
+          whileHover={{
             scale: 1.1,
             boxShadow: `0 0 30px ${COLORS.cyanGlow}`,
           }}
@@ -520,37 +559,44 @@ function BackToTop() {
 // ============================================
 const GitHubIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
   </svg>
 );
 
 const LinkedInIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
   </svg>
 );
 
 const TwitterIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
   </svg>
 );
 
 const YouTubeIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
   </svg>
 );
 
 const InstagramIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
   </svg>
 );
 
 const DownloadIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
   </svg>
 );
 
@@ -560,7 +606,7 @@ const DownloadIcon = () => (
 export default function ContactFooter() {
   const [activeLocation, setActiveLocation] = useState(null);
   const sectionRef = useRef(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end end'],
@@ -570,10 +616,9 @@ export default function ContactFooter() {
     <footer ref={sectionRef} style={styles.section} id="contact">
       {/* Cosmic Background */}
       <CosmicBackground scrollProgress={scrollYProgress} />
-      
+
       {/* Content */}
       <div style={styles.container}>
-        
         {/* Hero Text */}
         <motion.div
           style={styles.heroContent}
@@ -591,51 +636,33 @@ export default function ContactFooter() {
           >
             THE NEXT HORIZON
           </motion.span>
-          
+
           <h2 style={styles.heroTitle}>
-            <span style={styles.titleLine}>Ready to build</span>
             <span style={styles.titleLine}>
-              <span style={styles.titleHighlight}>something extraordinary</span>
+              Let's <span style={styles.titleHighlight}>innovate</span>
             </span>
-            <span style={styles.titleLine}>together?</span>
+            <span style={styles.titleLine}>together.</span>
           </h2>
-          
+
           <p style={styles.heroSubtitle}>
-            Senior Technical Lead with 12+ years of experience, 
-            seeking the next chapter across the globe.
+            Senior Technical Lead with 12+ years of experience, seeking the next
+            chapter across the globe.
           </p>
         </motion.div>
-        
+
         {/* Availability Badge */}
         <AvailabilityBadge />
-        
-        {/* Destination Map */}
-        <motion.div
-          style={styles.mapSection}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-        >
-          <DestinationMap 
-            activeLocation={activeLocation} 
-            setActiveLocation={setActiveLocation} 
-          />
-        </motion.div>
-        
+
         {/* CTA Buttons */}
         <CTAButtons />
-        
-        {/* Two Sides Signature */}
-        <TwoSidesSignature />
-        
+
         {/* Footer Bottom */}
         <FooterBottom />
       </div>
-      
+
       {/* Back to Top */}
       <BackToTop />
-      
+
       {/* Styles */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap');
@@ -924,7 +951,6 @@ const styles = {
   signature: {
     textAlign: 'center',
     marginBottom: '64px',
-    paddingTop: '48px',
     borderTop: `1px solid ${COLORS.divider}30`,
   },
   signatureInner: {

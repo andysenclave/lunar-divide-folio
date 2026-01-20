@@ -1,6 +1,7 @@
 import HeroSection from '@/resources/mockups/HeroSection';
 import JourneySection from '@/resources/mockups/JourneySection';
 import ExperienceSection from '@/resources/mockups/ExperienceSection';
+import ContactSection from '@/resources/mockups/ContactFooterSection';
 
 const Mockup = () => {
   return (
@@ -8,6 +9,7 @@ const Mockup = () => {
       <HeroSection />
       <JourneySection />
       <ExperienceSection />
+      <ContactSection />
     </>
   );
 };
