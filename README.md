@@ -4,7 +4,7 @@
 
 **Live Demo**: [andysenclave.com](https://andysenclave.com)  
 **Repository**: [GitHub](https://github.com/andysenclave/lunar-divide-folio)  
-**Status**: Active Development (v2.0 - Claude Edition)
+**Status**: Active Development (v0.2.0 - Experience Section Release)
 
 ---
 
@@ -219,7 +219,19 @@ useJourneyScroll Hook
 - Click to open full modal view
 - Rich content with HTML support
 
-### 5. Accessibility First
+### 5. Professional Experience Section
+
+- **Skills Dashboard** - Categorized skills with proficiency indicators
+- **Work Timeline** - Interactive chronological career display
+  - Expandable role details with highlights
+  - Technology stack tags per role
+  - Visual current position indicator
+- **Tools Overview** - Comprehensive tooling across the stack
+- **Tab Navigation** - Switch between Expertise, Experience, and Tools views
+- **Side Toggle** - Engineering vs Adventure perspective filter
+- Full keyboard navigation and ARIA accessibility
+
+### 6. Accessibility First
 
 - Skip links for keyboard navigation
 - Focus-visible indicators on all interactive elements
@@ -228,14 +240,14 @@ useJourneyScroll Hook
 - Semantic HTML throughout
 - WCAG 2.1 AA target compliance
 
-### 6. Dark/Light Theme Support
+### 7. Dark/Light Theme Support
 
 - CSS custom properties for theming
 - Framer Motion-powered theme transitions
 - Persistent theme selection
 - Automatic detection of system preference
 
-### 7. Performance Optimized
+### 8. Performance Optimized
 
 - Lazy-loaded D3 assets (from CDN)
 - Scroll timeline pre-computed
@@ -294,8 +306,12 @@ lunar-divide-folio/
 │   ├── layout/                  # Layout components
 │   ├── motion/                  # Animation wrappers
 │   └── sections/                # Page sections
-│       ├── Hero/
-│       └── Journey/
+│       ├── Hero/                # Dual-perspective hero
+│       ├── Journey/             # Scroll-driven globe timeline
+│       └── Experience/          # Skills, tools, work history
+│           ├── context/         # Provider pattern state
+│           ├── components/      # Modular UI components
+│           └── data/            # Skills, tools data
 ├── context/                     # React Context
 │   └── AnimationContext.tsx
 ├── theme/                       # Theme system
@@ -373,5 +389,6 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 ---
 
-**Last Updated**: January 18, 2026  
+**Last Updated**: January 20, 2026
+**Version**: 0.2.0
 **Status**: Active Development

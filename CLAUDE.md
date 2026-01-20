@@ -23,7 +23,15 @@ components/
 ├── ErrorBoundary/      # Error boundary component
 ├── layout/             # Header, GlobalBackground, FloatingMoon, ThemeToggle
 ├── motion/             # Enhanced Framer Motion wrappers with presets
-└── sections/           # Page sections (HeroSection with nested components)
+└── sections/           # Page sections
+    ├── Hero/           # Hero section with dual-perspective narrative
+    ├── Journey/        # Scroll-driven timeline with D3 globe
+    │   ├── context/    # JourneyProvider (modal state, section structure)
+    │   └── components/ # CardsContainer, GlobeView, Timeline, Modal
+    └── Experience/     # Professional experience showcase
+        ├── context/    # ExperienceProvider (tab/side state, section structure)
+        ├── components/ # SectionHeader, ContentArea, Tabs, Timeline
+        └── data/       # Skills, tools, stats data
 
 context/                # React Context providers
 └── AnimationContext.tsx # Scroll, mouse, and animation state management
@@ -63,6 +71,29 @@ import { MotionDiv } from '@/components/motion';
 <MotionDiv preset="fadeIn">Content</MotionDiv>
 
 // Available presets: fadeIn, slideUp, slideDown, slideLeft, slideRight, scaleIn, scaleUp
+```
+
+### Section Provider Pattern
+Sections use a Provider pattern for encapsulated state and structure:
+```tsx
+// JourneyProvider/ExperienceProvider handle:
+// - Internal state (modal, tabs, expanded items)
+// - Section structure (wrapper, sticky viewport)
+// - Child components receive state via context
+
+<JourneyProvider scrollProgress={progress} sectionRef={ref}>
+  <CardsContainer />  {/* Accesses context internally */}
+</JourneyProvider>
+```
+
+### ExperienceTimeline Pattern
+Self-contained component with co-located types and data:
+```
+ExperienceTimeline/
+├── context/         # TimelineProvider (expandedId state)
+├── components/      # TimelineItem, TimelineContent, TechTags
+├── types.ts         # WorkExperience interface (scoped)
+└── data.ts          # EXPERIENCE_DATA (scoped)
 ```
 
 ### Theme System (Three Layers)
@@ -110,11 +141,12 @@ npm run lint     # Run ESLint
 - Use Tailwind classes + style prop for MotionValue-driven values
 - ErrorBoundary wraps the entire app
 
-## Navigation Sections (Planned)
-- Engineering (left side) - Technical work
-- Adventure (right side) - Travel/exploration
-- Journal - Blog/writing
-- Contact - CTA
+## Sections
+- **Hero** - Dual-perspective intro with Engineering/Adventure personas
+- **Journey** - Scroll-driven timeline with D3 globe (2013-2026)
+- **Experience** - Skills, tools, and work history with interactive timeline
+- Journal - Blog/writing (planned)
+- Contact - CTA (planned)
 
 ## Git Workflow
 - Main branch: `master`
