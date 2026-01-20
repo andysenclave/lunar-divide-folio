@@ -17,7 +17,6 @@ const CardsContainer = () => {
       <SideLabel side="engineering" />
       <SideLabel side="adventure" />
 
-      {/* Cards wrapper */}
       <nav
         className="absolute top-1/2 left-0 right-0 -translate-y-1/2 flex justify-between z-30 pointer-events-none"
         aria-label="Experience cards"
