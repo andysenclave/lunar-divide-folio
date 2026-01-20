@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useTheme } from '@/theme/ThemeProvider';
 import type { FlightData } from '../../types';
 import { useGlobe, GLOBE_COLORS } from '../../hooks';
 
@@ -11,22 +10,23 @@ interface GlobeViewProps {
     callback: (
       scale: number,
       rotation: [number, number],
-      flightData: FlightData | null
-    ) => void
+      flightData: FlightData | null,
+    ) => void,
   ) => void;
 }
 
-const GlobeView = ({ isAdventureMode, setUpdateGlobeCallback }: GlobeViewProps) => {
-  const { colors } = useTheme();
+const GlobeView = ({
+  isAdventureMode,
+  setUpdateGlobeCallback,
+}: GlobeViewProps) => {
   const { svgRef, updateGlobe } = useGlobe();
 
-  // Register the updateGlobe callback with the parent
   useEffect(() => {
     setUpdateGlobeCallback(updateGlobe);
   }, [setUpdateGlobeCallback, updateGlobe]);
 
   return (
-    <div className="absolute inset-0 z-[5]">
+    <div className="absolute inset-0 z-5">
       {/* Glow effect */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[40%] rounded-full pointer-events-none transition-all duration-800"

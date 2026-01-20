@@ -1,7 +1,14 @@
 'use client';
 
-import { createContext, useContext, ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  RefObject,
+} from 'react';
 import type { Location, Experience } from '../types';
+import { ProgressBar, ExperienceModal } from '../components';
 
 interface JourneyContextValue {
   isAdventureMode: boolean;
@@ -25,7 +32,8 @@ interface JourneyProviderProps {
   isAdventureMode: boolean;
   currentLocation: Location | null;
   visibleCards: number[];
-  onCardClick: (exp: Experience) => void;
+  scrollProgress: number;
+  sectionRef: RefObject<HTMLElement | null>;
 }
 
 export const JourneyProvider = ({
@@ -33,13 +41,51 @@ export const JourneyProvider = ({
   isAdventureMode,
   currentLocation,
   visibleCards,
-  onCardClick,
+  scrollProgress,
+  sectionRef,
 }: JourneyProviderProps) => {
+  const [modalExp, setModalExp] = useState<Experience | null>(null);
+
   return (
     <JourneyContext.Provider
-      value={{ isAdventureMode, currentLocation, visibleCards, onCardClick }}
+      value={{
+        isAdventureMode,
+        currentLocation,
+        visibleCards,
+        onCardClick: setModalExp,
+      }}
     >
-      {children}
+      <ProgressBar scrollProgress={scrollProgress} />
+
+      {/* Global keyframe styles */}
+      <style>{`
+        @keyframes pulse-line {
+          0%, 100% { opacity: 0.4; }
+          50% { opacity: 1; }
+        }
+        @keyframes bounce {
+          0%, 100% { transform: rotate(45deg) translate(0, 0); }
+          50% { transform: rotate(45deg) translate(3px, 3px); }
+        }
+        @keyframes plane-bob {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-3px); }
+        }
+      `}</style>
+
+      {/* Main journey section */}
+      <section
+        ref={sectionRef}
+        className="relative"
+        style={{ height: '2800vh' }}
+      >
+        {/* Sticky viewport */}
+        <div className="sticky top-0 w-screen h-screen overflow-hidden">
+          {children}
+        </div>
+      </section>
+
+      <ExperienceModal exp={modalExp} onClose={() => setModalExp(null)} />
     </JourneyContext.Provider>
   );
 };
