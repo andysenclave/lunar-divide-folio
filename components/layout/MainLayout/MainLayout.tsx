@@ -6,6 +6,7 @@ import {
   HeroSection,
   JourneySection,
   ExperienceSection,
+  ContactSection,
 } from '@/components/sections';
 
 export default function MainLayout() {
@@ -18,6 +19,7 @@ export default function MainLayout() {
       </GlobalBackground>
       <JourneySection />
       <ExperienceSection />
+      <ContactSection />
     </>
   );
 }

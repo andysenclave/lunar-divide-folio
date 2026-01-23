@@ -12,7 +12,7 @@ interface Tab {
 }
 
 const TABS: Tab[] = [
-  { id: 'experience', label: 'Experience', icon: '\u25C9' },
+  { id: 'profession', label: 'Profession', icon: '\u25C9' },
   { id: 'expertise', label: 'Skills', icon: '\u25C8' },
   { id: 'tools', label: 'Tools', icon: '\u25C6' },
 ];
@@ -28,7 +28,8 @@ const SectionTabs = () => {
           key={tab.id}
           className="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium tracking-wide cursor-pointer transition-all duration-300"
           style={{
-            background: activeTab === tab.id ? colors.bgSecondary : 'transparent',
+            background:
+              activeTab === tab.id ? colors.bgSecondary : 'transparent',
             borderWidth: 1,
             borderStyle: 'solid',
             borderColor: activeTab === tab.id ? colors.cyan : colors.border,

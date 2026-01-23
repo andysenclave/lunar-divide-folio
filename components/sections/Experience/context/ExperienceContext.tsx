@@ -41,7 +41,7 @@ export const ExperienceProvider = ({
   backgroundY,
 }: ExperienceProviderProps) => {
   const { colors } = useTheme();
-  const [activeTab, setActiveTab] = useState<TabType>('experience');
+  const [activeTab, setActiveTab] = useState<TabType>('profession');
   const [activeSide, setActiveSide] = useState<SideType>('engineering');
 
   return (

@@ -24,7 +24,7 @@ const SectionHeader = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        Expertise
+        Experience
       </MotionH2>
       <MotionP
         className="max-w-125 mx-auto leading-relaxed mb-6"
