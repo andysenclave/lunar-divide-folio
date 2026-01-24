@@ -1,7 +1,7 @@
 # Portfolio Refinement Backlog
 
 > Phase: Mockup → Production Ready
-> Last Updated: 2026-01-23
+> Last Updated: 2026-01-24
 
 ## Legend
 
@@ -49,6 +49,12 @@
 
 ## Journey Section
 
+### Content
+
+| ID | Type | Priority | Title | Description | Status |
+|----|------|----------|-------|-------------|--------|
+| J-005 | 📖 | P1 | Complete milestone information | Add complete information for all professional/adventure milestones | Todo |
+
 ### Globe & Timeline
 
 | ID | Type | Priority | Title | Description | Status |
@@ -57,6 +63,13 @@
 | J-002 | 📖 | P2 | Implement video viewing | Journey data has `hasVideo` flags but no video player implementation | Todo |
 | J-003 | 📖 | P2 | Implement photo gallery | Journey data has `hasPhotos` flags but no gallery implementation | Todo |
 | J-004 | 🔧 | P3 | Display places visited | Experience data includes `places` array - not shown in UI | Todo |
+| J-006 | 📖 | P1 | Tune scroll timeline pacing | Wait on 2026 until section fully visible, faster transition 2026→2021, slower 2021→2016 | Todo |
+
+### Cards Display
+
+| ID | Type | Priority | Title | Description | Status |
+|----|------|----------|-------|-------------|--------|
+| J-007 | 🔧 | P1 | Limit visible cards per side | Ensure no more than 3 cards showing at a time on left or right side | Todo |
 
 ---
 
@@ -70,6 +83,13 @@
 | E-002 | 📖 | P1 | Verify skills data accuracy | Review and update skill categories/proficiency levels | Todo |
 | E-003 | 📖 | P2 | Verify tools data accuracy | Review and update technology tools list | Todo |
 
+### Features
+
+| ID | Type | Priority | Title | Description | Status |
+|----|------|----------|-------|-------------|--------|
+| E-004 | 📖 | P1 | Add portfolio display options | Display professional certificates, blogs, GitHub projects, and Figma designs | Todo |
+| E-005 | 📖 | P2 | Group skills and tools | Consolidate skills and tools into a unified view/grouping | Todo |
+
 ---
 
 ## Contact Section
@@ -81,6 +101,12 @@
 | C-001 | 📖 | P1 | Verify contact information | Ensure email, social links are correct | Todo |
 | C-002 | 📖 | P2 | Add resume download | Implement resume/CV download functionality | Todo |
 | C-003 | 🔧 | P2 | Update availability regions | Verify target locations (Australia, APAC, UAE) are accurate | Todo |
+
+### Footer
+
+| ID | Type | Priority | Title | Description | Status |
+|----|------|----------|-------|-------------|--------|
+| C-006 | 🐛 | P1 | Fix footer navigation links | Navigation links in footer are broken | Todo |
 
 ### Performance
 
@@ -128,25 +154,31 @@
 ### P0 - Critical (1 item)
 - [ ] HF-001: Fix footer moon deformation
 
-### P1 - High Priority (9 items)
+### P1 - High Priority (15 items)
 - [ ] H-001: Fix navigation links
 - [ ] H-002: Implement light mode theme
 - [ ] HM-001: Finalize header text and font
 - [ ] HM-004: Fix hover image positions
 - [ ] J-001: Replace modal hero placeholder
+- [ ] J-005: Complete milestone information
+- [ ] J-006: Tune scroll timeline pacing
+- [ ] J-007: Limit visible cards per side
 - [ ] E-001: Verify profession data accuracy
 - [ ] E-002: Verify skills data accuracy
+- [ ] E-004: Add portfolio display options
 - [ ] C-001: Verify contact information
+- [ ] C-006: Fix footer navigation links
 - [ ] G-001: Light mode support
 - [ ] G-007: Final copy review
 
-### P2 - Medium Priority (13 items)
+### P2 - Medium Priority (14 items)
 - [ ] H-003: Update contact button to download resume
 - [ ] HM-002: Enhance the Moon
 - [ ] HM-003: Replace hover images
 - [ ] J-002: Implement video viewing
 - [ ] J-003: Implement photo gallery
 - [ ] E-003: Verify tools data accuracy
+- [ ] E-005: Group skills and tools
 - [ ] C-002: Add resume download
 - [ ] C-003: Update availability regions
 - [ ] C-004: Profile CosmicBackground performance
@@ -165,25 +197,38 @@
 
 ## Sprint Planning Suggestion
 
-### Sprint 1: Critical Fixes & Core Polish
-Focus: P0 + P1 bugs and core functionality
-- HF-001, HM-004, J-001 (bugs)
-- H-001, H-002, G-001 (navigation & theme)
+### Sprint 1: Critical Fixes & Navigation
+Focus: P0 + navigation bugs
+- HF-001 (footer moon deformation)
+- H-001, C-006 (navigation links - header & footer)
+- HM-004 (hover image positions)
+
+### Sprint 2: Journey Section Polish
+Focus: Timeline UX and content
+- J-005 (complete milestone information)
+- J-006 (tune scroll timeline pacing)
+- J-007 (limit cards per side)
+- J-001 (modal hero placeholder)
+
+### Sprint 3: Experience & Content
+Focus: Data accuracy and new features
+- E-001, E-002, E-003 (experience data verification)
+- E-004 (portfolio display - certificates, blogs, projects)
+- E-005 (group skills and tools)
+
+### Sprint 4: Theme & Visual Polish
+Focus: Light mode and visual refinements
+- H-002, G-001 (light mode theme)
 - HM-001, G-007 (content finalization)
-
-### Sprint 2: Content & Data Accuracy
-Focus: Verify all content is production-ready
-- E-001, E-002, E-003 (experience data)
-- C-001, C-003 (contact info)
-- G-008 (images)
-
-### Sprint 3: Enhancement & Polish
-Focus: P2 features and UX improvements
 - HM-002, HM-003 (moon enhancements)
-- J-002, J-003 (media features)
-- C-002, H-003 (resume download)
 
-### Sprint 4: Performance & Accessibility
+### Sprint 5: Media & Downloads
+Focus: Rich content features
+- J-002, J-003 (video/photo viewing)
+- C-002, H-003 (resume download)
+- C-001, C-003 (contact info)
+
+### Sprint 6: Performance & Accessibility
 Focus: Production readiness
 - C-004, G-005 (performance)
 - G-003, G-004 (accessibility)
