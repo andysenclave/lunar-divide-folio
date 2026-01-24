@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { MotionDiv, MotionLink } from '@/components/motion';
 import { useTheme } from '@/theme/ThemeProvider';
 import { GitHubIcon } from '../icons';
 
@@ -8,7 +8,7 @@ const CTASection = () => {
   const { colors } = useTheme();
 
   return (
-    <motion.div
+    <MotionDiv
       className="text-center"
       style={{
         paddingTop: '48px',
@@ -32,7 +32,7 @@ const CTASection = () => {
         className="flex justify-center flex-wrap"
         style={{ gap: '16px' }}
       >
-        <motion.a
+        <MotionLink
           href="https://github.com/anindya"
           target="_blank"
           rel="noopener noreferrer"
@@ -55,9 +55,9 @@ const CTASection = () => {
           whileTap={{ scale: 0.98 }}
         >
           <GitHubIcon /> View GitHub
-        </motion.a>
+        </MotionLink>
 
-        <motion.a
+        <MotionLink
           href="#contact"
           style={{
             padding: '14px 28px',
@@ -74,9 +74,9 @@ const CTASection = () => {
           whileTap={{ scale: 0.98 }}
         >
           Get in Touch →
-        </motion.a>
+        </MotionLink>
       </div>
-    </motion.div>
+    </MotionDiv>
   );
 };
 
