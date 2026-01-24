@@ -14,9 +14,9 @@ const ContentArea = () => {
   return (
     <section className="flex-1 overflow-y-auto max-w-300 w-full mx-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
       <AnimatePresence mode="wait">
-        {activeTab === 'experience' && (
+        {activeTab === 'profession' && (
           <MotionDiv
-            key="experience"
+            key="profession"
             preset="slideUp"
             transition={{ duration: 0.4 }}
           >

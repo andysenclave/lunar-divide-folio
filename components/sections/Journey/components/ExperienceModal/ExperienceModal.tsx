@@ -40,7 +40,7 @@ const ExperienceModal = ({ exp, onClose }: ExperienceModalProps) => {
     <AnimatePresence>
       {exp && (
         <MotionDiv
-          className="fixed inset-0 z-[1000]"
+          className="fixed inset-0 z-1000"
           style={{
             background: 'rgba(10, 14, 39, 0.97)',
             backdropFilter: 'blur(30px)',

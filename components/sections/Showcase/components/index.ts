@@ -1,0 +1,10 @@
+export { default as Background } from './Background';
+export { default as SectionHeader } from './SectionHeader';
+export { default as FilterTabs } from './FilterTabs';
+export { default as ContentArea } from './ContentArea';
+export { default as CertificationCard } from './CertificationCard';
+export { default as FeaturedProjectCard } from './FeaturedProjectCard';
+export { default as GitHubCard } from './GitHubCard';
+export { default as DesignSnapCard } from './DesignSnapCard';
+export { default as CTASection } from './CTASection';
+export * from './icons';

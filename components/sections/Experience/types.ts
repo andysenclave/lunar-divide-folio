@@ -2,7 +2,7 @@
 // ============================================
 
 export type SideType = 'engineering' | 'adventure';
-export type TabType = 'expertise' | 'experience' | 'tools';
+export type TabType = 'expertise' | 'profession' | 'tools';
 
 export interface Skill {
   name: string;
