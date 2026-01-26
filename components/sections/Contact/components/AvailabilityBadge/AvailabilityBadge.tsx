@@ -18,8 +18,8 @@ const AvailabilityBadge = () => {
       <MotionSpan
         className="w-2.5 h-2.5 rounded-full"
         style={{
-          background: '#10B981',
-          boxShadow: '0 0 10px rgba(16, 185, 129, 0.6)',
+          background: colors.verified,
+          boxShadow: `0 0 10px ${colors.verified}99`,
         }}
         animate={{
           scale: [1, 1.2, 1],

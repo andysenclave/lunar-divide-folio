@@ -56,7 +56,7 @@ export const ExperienceProvider = ({
           background: colors.bg,
           fontFamily: 'var(--font-heading)',
         }}
-        id="expertise"
+        id="experience"
       >
         {/* Sticky container */}
         <section className="sticky top-0 min-h-screen overflow-hidden">

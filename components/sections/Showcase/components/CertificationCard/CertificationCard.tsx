@@ -25,8 +25,8 @@ const CertificationCard = ({ cert }: CertificationCardProps) => {
     <MotionDiv
       className="relative overflow-hidden"
       style={{
-        background: `linear-gradient(135deg, ${colors.bgSecondary}95 0%, rgba(16, 185, 129, 0.05) 100%)`,
-        border: `1px solid rgba(16, 185, 129, 0.4)`,
+        background: `linear-gradient(135deg, ${colors.bgSecondary}95 0%, ${colors.verifiedGlow} 100%)`,
+        border: `1px solid ${colors.verified}66`,
         borderRadius: '24px',
         padding: 'clamp(24px, 4vw, 40px)',
         marginBottom: '32px',

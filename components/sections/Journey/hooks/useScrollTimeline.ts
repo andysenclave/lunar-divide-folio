@@ -9,13 +9,25 @@ import { LOCATIONS } from '../data';
 // ============================================
 
 interface TimelineConfig {
-  progressPerLocation: number;
+  initialHold: number;
   transitionTime: number;
   cardRevealDelay: number;
 }
 
+// Dwell times per location (percentage of scroll progress)
+// Total should sum to ~0.92 (leaving room for initial hold and final state)
+const LOCATION_DWELL_TIMES: Record<string, number> = {
+  'kolkata-2': 0.12, // Recent history - faster
+  'berlin': 0.18, // European experience - slower
+  'oslo': 0.20, // European experience - slower (longer stint)
+  'kolkata-1': 0.14, // Standard
+  'chennai': 0.14, // Standard
+};
+
+const DEFAULT_DWELL = 0.14;
+
 const DEFAULT_CONFIG: TimelineConfig = {
-  progressPerLocation: 0.14,
+  initialHold: 0.06, // Buffer before animation starts
   transitionTime: 0.05,
   cardRevealDelay: 0.018,
 };
@@ -25,11 +37,30 @@ export function buildScrollTimeline(
   config: TimelineConfig = DEFAULT_CONFIG
 ): TimelineKeyframe[] {
   const timeline: TimelineKeyframe[] = [];
-  let currentProgress = 0;
-  const { progressPerLocation, transitionTime, cardRevealDelay } = config;
+  const { initialHold, transitionTime, cardRevealDelay } = config;
+
+  // Initial state: Globe centered on first location
+  const firstLoc = locations[0];
+  if (firstLoc) {
+    timeline.push({
+      progress: 0,
+      scale: 1.8,
+      rotation: [-firstLoc.coords[0], -firstLoc.coords[1]],
+      locationId: firstLoc.id,
+      year: firstLoc.year,
+      era: firstLoc.era,
+      cardVisibility: [],
+      isTransition: false,
+    });
+  }
+
+  // Start with initial hold (globe stays on first location)
+  let currentProgress = initialHold;
 
   locations.forEach((loc, locIndex) => {
     const startProgress = currentProgress;
+    const progressPerLocation =
+      LOCATION_DWELL_TIMES[loc.id] || DEFAULT_DWELL;
 
     // Add transition keyframes between locations
     if (locIndex > 0) {

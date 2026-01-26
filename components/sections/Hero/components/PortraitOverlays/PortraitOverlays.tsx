@@ -1,46 +1,41 @@
 'use client';
 
-import MotionSection from '@/components/motion/MotionSection/MotionSection';
-import { MotionValue, useTransform } from 'framer-motion';
+import { MotionDiv } from '@/components/motion';
+import { usePortraitState } from './hooks/usePortraitState';
 import EngineeringPortrait from './EngineeringPortrait';
 import AdventurePortrait from './AdventurePortrait';
 
-interface PortraitOverlaysProps {
-  scrollYProgress: MotionValue<number>;
-  mouseX: MotionValue<number>;
-}
-
-const PortraitOverlays = ({
-  scrollYProgress,
-  mouseX,
-}: PortraitOverlaysProps) => {
-  const containerOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const leftReveal = useTransform(mouseX, [0.1, 0.4], [1, 0]);
-  const rightReveal = useTransform(mouseX, [0.6, 0.9], [0, 1]);
+/**
+ * Portrait overlays that appear on mouse hover (left/right sides).
+ * Uses fixed positioning to align exactly with the FloatingMoon component.
+ * Both share the same viewport-centered position: left 50%, top 50%.
+ */
+const PortraitOverlays = () => {
+  const { containerOpacity, leftReveal, rightReveal } = usePortraitState();
 
   return (
-    <MotionSection
-      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden z-51 pointer-events-none"
+    <MotionDiv
+      className="fixed z-51 rounded-full overflow-hidden pointer-events-none"
       style={{
+        left: '50%',
+        top: '50%',
+        x: '-50%',
+        y: '-50%',
         width: 'clamp(200px, 30vw, 300px)',
         height: 'clamp(200px, 30vw, 300px)',
         opacity: containerOpacity,
       }}
     >
-      <MotionSection
-        className="absolute inset-0"
-        style={{ opacity: leftReveal }}
-      >
+      {/* Engineering Portrait - reveals on left hover */}
+      <MotionDiv className="absolute inset-0" style={{ opacity: leftReveal }}>
         <EngineeringPortrait />
-      </MotionSection>
+      </MotionDiv>
 
-      <MotionSection
-        className="absolute inset-0"
-        style={{ opacity: rightReveal }}
-      >
+      {/* Adventure Portrait - reveals on right hover */}
+      <MotionDiv className="absolute inset-0" style={{ opacity: rightReveal }}>
         <AdventurePortrait />
-      </MotionSection>
-    </MotionSection>
+      </MotionDiv>
+    </MotionDiv>
   );
 };
 

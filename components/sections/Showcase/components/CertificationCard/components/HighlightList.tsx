@@ -33,7 +33,7 @@ const HighlightList = ({ highlights }: HighlightListProps) => {
           viewport={{ once: true }}
           transition={{ delay: 0.5 + idx * 0.1 }}
         >
-          <span style={{ color: '#10B981', fontWeight: 700 }}>✓</span>
+          <span style={{ color: colors.verified, fontWeight: 700 }}>✓</span>
           <span>{highlight}</span>
         </MotionDiv>
       ))}

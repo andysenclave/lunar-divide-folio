@@ -1,10 +1,10 @@
 'use client';
 
-interface DecorativeCirclesProps {
-  color?: string;
-}
+import { useTheme } from '@/theme/ThemeProvider';
 
-const DecorativeCircles = ({ color = 'rgba(16, 185, 129, 0.2)' }: DecorativeCirclesProps) => {
+const DecorativeCircles = () => {
+  const { colors } = useTheme();
+
   return (
     <>
       <div
@@ -14,7 +14,7 @@ const DecorativeCircles = ({ color = 'rgba(16, 185, 129, 0.2)' }: DecorativeCirc
           left: '-20px',
           width: '100px',
           height: '100px',
-          border: `1px solid ${color}`,
+          border: `1px solid ${colors.verifiedGlow}`,
           borderRadius: '50%',
         }}
       />
@@ -25,8 +25,9 @@ const DecorativeCircles = ({ color = 'rgba(16, 185, 129, 0.2)' }: DecorativeCirc
           left: '10px',
           width: '60px',
           height: '60px',
-          border: `1px solid ${color.replace('0.2', '0.15')}`,
+          border: `1px solid ${colors.verifiedGlow}`,
           borderRadius: '50%',
+          opacity: 0.75,
         }}
       />
     </>

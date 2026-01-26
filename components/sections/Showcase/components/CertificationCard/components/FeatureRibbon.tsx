@@ -16,9 +16,9 @@ const FeatureRibbon = ({ label = 'VERIFIED CREDENTIAL' }: FeatureRibbonProps) =>
         top: '20px',
         right: '20px',
         padding: '8px 16px',
-        background: `linear-gradient(135deg, #10B981 0%, ${colors.cyan} 100%)`,
+        background: `linear-gradient(135deg, ${colors.verified} 0%, ${colors.cyan} 100%)`,
         borderRadius: '20px',
-        boxShadow: `0 4px 16px rgba(16, 185, 129, 0.3)`,
+        boxShadow: `0 4px 16px ${colors.verifiedGlow}`,
       }}
     >
       <span

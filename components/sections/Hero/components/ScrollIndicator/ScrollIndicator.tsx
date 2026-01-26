@@ -19,12 +19,7 @@ const ScrollIndicator = ({ lastActiveSide, opacity }: ScrollIndicatorProps) => {
         ? colors.orange
         : colors.text;
 
-  const text =
-    lastActiveSide === 'engineering'
-      ? 'Scroll into Engineering'
-      : lastActiveSide === 'adventure'
-        ? 'Scroll into Adventure'
-        : 'Scroll to explore';
+  const text = 'Begin the Journey';
 
   return (
     <MotionSection

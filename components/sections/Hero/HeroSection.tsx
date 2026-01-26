@@ -62,10 +62,7 @@ const HeroSection = () => {
             mouseX={smoothMouseX}
           />
 
-          <PortraitOverlays
-            mouseX={smoothMouseX}
-            scrollYProgress={scrollYProgress}
-          />
+          <PortraitOverlays />
         </div>
 
         <Tagline activeSide={activeSide} opacity={heroContentOpacity} />

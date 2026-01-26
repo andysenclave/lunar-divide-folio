@@ -35,7 +35,7 @@ const ScoreDisplay = ({ score, passingScore }: ScoreDisplayProps) => {
           style={{
             fontSize: '20px',
             fontWeight: 700,
-            color: '#10B981',
+            color: 'colors.verified',
             fontFamily: 'var(--font-mono)',
           }}
         >
@@ -67,7 +67,7 @@ const ScoreDisplay = ({ score, passingScore }: ScoreDisplayProps) => {
         <MotionDiv
           style={{
             height: '100%',
-            background: `linear-gradient(90deg, #10B981 0%, ${colors.cyan} 100%)`,
+            background: `linear-gradient(90deg, colors.verified 0%, ${colors.cyan} 100%)`,
             borderRadius: '2px',
           }}
           initial={{ width: 0 }}
