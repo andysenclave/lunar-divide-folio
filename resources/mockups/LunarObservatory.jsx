@@ -2167,7 +2167,7 @@ export default function LunarObservatory() {
       {/* Loading Screen */}
       {isLoading && (
         <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-gradient-radial from-gray-900 to-black">
-          <div className="w-28 h-28 rounded-full bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 shadow-2xl animate-pulse relative">
+          <div className="w-28 h-28 rounded-full bg-linear-to-br from-gray-800 via-gray-700 to-gray-800 shadow-2xl animate-pulse relative">
             <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-gray-700/60 rounded-full" />
             <div className="absolute top-1/3 right-1/4 w-4 h-4 bg-gray-700/40 rounded-full" />
             <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-gray-700/50 rounded-full" />
@@ -2177,7 +2177,7 @@ export default function LunarObservatory() {
           </div>
           <div className="w-48 h-0.5 mt-5 bg-white/10 rounded overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300"
+              className="h-full bg-linear-to-r from-blue-500 to-purple-500 transition-all duration-300"
               style={{ width: `${loadProgress}%` }}
             />
           </div>
