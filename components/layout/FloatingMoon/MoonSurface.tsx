@@ -1,9 +1,10 @@
 'use client';
 
-import { MotionSection } from '@/components/motion';
+import { motion } from 'framer-motion';
 import { ThemeMode } from '@/theme/theme';
 import { MotionValue, useTransform } from 'framer-motion';
-import React from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { generateMoonTexture } from '@/lib/moon';
 
 interface MoonSurfaceProps {
   lightX: MotionValue<number>;
@@ -11,114 +12,172 @@ interface MoonSurfaceProps {
   mode: ThemeMode;
 }
 
-const MoonSurface = ({ lightX, moonRotation, mode }: MoonSurfaceProps) => {
-  const moonColors =
-    mode === 'dark'
-      ? {
-          highlight: '#E8E8E0',
-          mid: '#A8A8A0',
-          dark: '#484848',
-          shadow: '#282828',
-        }
-      : {
-          highlight: '#F5F5F0',
-          mid: '#D0D0C8',
-          dark: '#787878',
-          shadow: '#484848',
-        };
+const MoonSurface = ({ lightX, mode }: MoonSurfaceProps) => {
+  const [moonTexture, setMoonTexture] = useState<string | null>(null);
+  const textureRef = useRef<string | null>(null);
+
+  // Generate procedural texture on mount - only once, persist in ref
+  useEffect(() => {
+    // If we already have texture in ref, use it (handles re-renders/strict mode)
+    if (textureRef.current) {
+      setMoonTexture(textureRef.current);
+      return;
+    }
+
+    // Generate texture
+    try {
+      const texture = generateMoonTexture(1024, 512);
+      textureRef.current = texture;
+      setMoonTexture(texture);
+    } catch (error) {
+      console.error('Failed to generate moon texture:', error);
+    }
+  }, []);
+
+  // Subtle 3D shadow - lighter to preserve texture
+  const boxShadow = useTransform(lightX, (x) => {
+    const normalizedX = (x - 50) / 50;
+    const shadowX = normalizedX * 12;
+    const shadowY = normalizedX * 6;
+
+    return `
+      inset ${shadowX}px ${shadowY}px 30px 15px rgba(0, 0, 0, 0.25),
+      inset ${shadowX * 1.2}px ${shadowY * 1.1}px 60px 35px rgba(0, 0, 0, 0.15),
+      inset ${-shadowX * 0.15}px ${-shadowY * 0.15}px 25px 8px rgba(255, 255, 255, 0.04)
+    `;
+  });
+
+  // Very subtle terminator - preserves texture visibility
+  const terminatorGradient = useTransform(lightX, (x) => {
+    const angle = 90 + (x - 50) * 0.5;
+    return `linear-gradient(${angle}deg,
+      transparent 0%,
+      transparent 45%,
+      rgba(0, 0, 0, 0.05) 55%,
+      rgba(0, 0, 0, 0.12) 65%,
+      rgba(0, 0, 0, 0.22) 80%,
+      rgba(0, 0, 0, 0.32) 100%
+    )`;
+  });
+
+  // Background position follows light subtly
+  const backgroundPosition = useTransform(
+    lightX,
+    (x) => `${50 + (x - 50) * 0.12}% 50%`
+  );
+
+  // Soft highlight gradient on lit side
+  const highlightGradient = useTransform(
+    lightX,
+    (x) =>
+      `radial-gradient(ellipse at ${100 - x * 0.7}% 30%, rgba(255,255,255,0.05) 0%, transparent 35%)`
+  );
+
+  // Atmospheric glow color
+  const glowColor = mode === 'dark'
+    ? 'rgba(180, 190, 210, 0.2)'
+    : 'rgba(150, 160, 180, 0.15)';
+
+  // Don't render anything until texture is ready - no fallback versions
+  if (!moonTexture) {
+    return null;
+  }
+
   return (
-    <section
+    <div
       style={{
         width: '100%',
         height: '100%',
         borderRadius: '50%',
         position: 'relative',
-        boxShadow:
-          mode === 'dark'
-            ? '0 0 60px rgba(180, 190, 180, 0.15)'
-            : '0 0 60px rgba(0, 0, 0, 0.1)',
       }}
     >
-      <MotionSection
+      {/* Atmospheric glow - outer */}
+      <div
         style={{
           position: 'absolute',
-          inset: 0,
+          inset: '-12%',
           borderRadius: '50%',
-          background: useTransform(
-            lightX,
-            (x) => `
-                radial-gradient(circle at ${x}% 35%, 
-                  ${moonColors.highlight} 0%, 
-                  #D0D0C8 15%,
-                  ${moonColors.mid} 35%, 
-                  ${moonColors.dark} 55%,
-                  ${moonColors.dark} 75%,
-                  ${moonColors.shadow} 100%)
-              `,
-          ),
+          background: `radial-gradient(circle, ${glowColor} 0%, transparent 65%)`,
+          filter: 'blur(15px)',
+          pointerEvents: 'none',
         }}
       />
 
-      <MotionSection
+      {/* Moon container with overflow hidden */}
+      <div
         style={{
-          position: 'absolute',
-          inset: 0,
-          borderRadius: '50%',
-          background: useTransform(
-            moonRotation,
-            (r) => `
-                linear-gradient(${90 + r}deg, 
-                  transparent 0%, 
-                  transparent 45%, 
-                  rgba(0,0,0,0.3) 50%, 
-                  rgba(0,0,0,0.6) 60%,
-                  rgba(0,0,0,0.8) 100%)
-              `,
-          ),
-        }}
-      />
-
-      <svg
-        style={{
-          position: 'absolute',
-          inset: 0,
           width: '100%',
           height: '100%',
+          borderRadius: '50%',
+          position: 'relative',
+          overflow: 'hidden',
         }}
-        viewBox="0 0 300 300"
       >
-        <ellipse cx="180" cy="200" rx="35" ry="32" fill="rgba(0,0,0,0.15)" />
-        <ellipse cx="180" cy="200" rx="28" ry="25" fill="rgba(60,60,55,0.3)" />
-        <ellipse cx="175" cy="195" rx="12" ry="10" fill="rgba(90,90,85,0.2)" />
-        <ellipse cx="120" cy="100" rx="28" ry="26" fill="rgba(0,0,0,0.12)" />
-        <ellipse cx="120" cy="100" rx="22" ry="20" fill="rgba(70,70,65,0.25)" />
-        <ellipse cx="90" cy="160" rx="50" ry="45" fill="rgba(40,45,40,0.2)" />
-        <ellipse cx="220" cy="90" rx="18" ry="16" fill="rgba(0,0,0,0.1)" />
-        <ellipse cx="200" cy="140" rx="35" ry="30" fill="rgba(50,55,50,0.15)" />
-        {[
-          [70, 80],
-          [250, 180],
-          [150, 60],
-          [60, 220],
-          [160, 240],
-        ].map(([cx, cy], i) => (
-          <React.Fragment key={i}>
-            <ellipse cx={cx} cy={cy} r={12 - i} fill="rgba(0,0,0,0.1)" />
-            <ellipse cx={cx} cy={cy} r={9 - i} fill="rgba(80,80,75,0.12)" />
-          </React.Fragment>
-        ))}
-      </svg>
+        {/* Procedural moon texture - only layer, no fallback */}
+        <motion.div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            borderRadius: '50%',
+            backgroundImage: moonTexture ? `url(${moonTexture})` : 'none',
+            backgroundSize: '200% 100%',
+            backgroundPosition,
+          }}
+        />
 
-      <section
+        {/* Very subtle terminator gradient */}
+        <motion.div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            borderRadius: '50%',
+            background: terminatorGradient,
+          }}
+        />
+
+        {/* Soft highlight on lit side */}
+        <motion.div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            borderRadius: '50%',
+            background: highlightGradient,
+          }}
+        />
+
+        {/* 3D shadow effect - on top but subtle */}
+        <motion.div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            borderRadius: '50%',
+            boxShadow,
+          }}
+        />
+
+        {/* Subtle inner edge for spherical depth */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            borderRadius: '50%',
+            boxShadow: 'inset 0 0 25px 5px rgba(0, 0, 0, 0.1)',
+          }}
+        />
+      </div>
+
+      {/* Subtle outer glow ring */}
+      <div
         style={{
           position: 'absolute',
-          inset: 0,
+          inset: '-1px',
           borderRadius: '50%',
-          boxShadow:
-            'inset -30px -20px 60px rgba(0,0,0,0.5), inset 10px 10px 40px rgba(255,255,255,0.05)',
+          boxShadow: `0 0 25px 3px ${glowColor}, 0 0 50px 8px rgba(150, 160, 180, 0.08)`,
+          pointerEvents: 'none',
         }}
       />
-    </section>
+    </div>
   );
 };
 

@@ -10,7 +10,10 @@
 | 2017 | Europe | Brussels, Amsterdam, Rotterdam, Paris, Luxembourg |
 | 2018 | Scandinavia | Sweden, Copenhagen ferry, casino adventures |
 | 2019-2021 | Berlin | Krakow offsite, Munich Oktoberfest, Amsterdam remote month |
-| 2021-Present | Kolkata | Road trips across Eastern India, mountain returns, Andy's Enclave |
+| 2021-2023 | Kolkata | Localoi startup, Fitch Ratings, RBC engagement begins |
+| 2021-2022 | Kolkata | Midnight Tales podcast — horror storytelling & audio production |
+| 2023-Present | Eastern India | Eastern Horizons YouTube, Puri pilgrimage, Shantiniketan, Purulia expeditions |
+| 2025-Present | North Bengal | Himalayan Luxe (Taj, ITC, Sterling), Dooars wildlife, Kurseong & Kalimpong |
 
 ---
 
@@ -84,30 +87,134 @@ Munich with friends for Oktoberfest and a Bayern Munich match. The combination o
 
 ## Kolkata | 2021–Present | *The Return & The Road*
 
-### Lockdown Focus
+### Lockdown Focus (2021)
 
 Returned to India between lockdowns. COVID restrictions were still in force, so travel took a backseat. The focus shifted to building Localoi — late nights, product decisions, the grind of making a startup happen from scratch.
 
-### The Driving Chapter
+### The Driving Chapter (2021-2022)
 
 Once things settled at Nous, a new hobby emerged: driving. Bought a car and discovered the freedom of the open road. Weekend escapes became the norm — not flights and visas, but highways and pit stops.
 
-### Road Trips Across Eastern India
+---
 
-The car became a portal:
-- **Purulia** — red laterite landscapes and Chhau dance country
-- **Puri, Odisha** — the Jagannath Temple, Konark, and endless coastline
-- **Bolpur, Shantiniketan** — Tagore's land, baul music, and quiet afternoons
-- **Asansol, Durgapur** — industrial heartland with unexpected beauty
-- **Jharkhand** — forests, waterfalls, and roads less travelled
+## Midnight Tales | 2021–2022 | *Horror Podcast & Audio Storytelling*
 
-### Back to the Mountains
+When the sun sets, the stories begin. Launched a horror storytelling podcast — atmospheric audio dramas narrated in the style of classic radio broadcasts. Think campfire tales meets professional audio production.
 
-Multiple trips to Kalimpong, Sikkim, and Darjeeling. The Himalayas never get old. This time with friends, in my own car, on my own terms. The roads winding up, the tea gardens rolling by, and the peaks emerging from the clouds.
+### The Craft
+- Script writing and narrative adaptation from classic horror tales
+- Voice modulation and character work — multiple voices, atmospheric delivery
+- Ambient sound design and post-production in home studio
+- Building a community of horror enthusiasts
 
-### Andy's Enclave — The Content Journey
+The intersection of engineering precision and creative storytelling — every episode engineered for maximum immersion. The same attention to detail that goes into debugging code, applied to crafting spine-chilling narratives.
 
-Started documenting. YouTube vlogs, shorts, content capturing these road trips and mountain escapes. Andy's Enclave became the outlet — a place where the adventure side has a voice. Still building it, still filming, still creating alongside the day job and upskilling.
+---
+
+## Eastern Horizons | 2023–Present | *Andy's Enclave on YouTube*
+
+What started as casual trip recordings evolved into a full content creation workflow. Cinematic travel vlogs documenting road trips across Eastern India — from coastal drives to mountain escapes, every journey becomes a story.
+
+### The Pipeline
+- Shot on mobile + action cams for authentic POV
+- Edited in DaVinci Resolve with custom LUTs
+- Narrative structure: setup, journey, reflection
+- Background scores and ambient audio mixing
+
+The same attention to detail that goes into code reviews — applied to visual storytelling.
+
+---
+
+## Coastal Pilgrimage | 2023 | *Puri & The Sun Temple*
+
+Where spirituality meets the sea — a pilgrimage that was as much about the journey as the destination.
+
+### The Journey
+The drive from Kolkata to Puri unfolds like a meditation — crossing state borders, watching the landscape shift from urban sprawl to coastal serenity.
+
+### Highlights
+- **Jagannath Temple at dawn** — the energy, the devotion, the architecture
+- **Konark Sun Temple** — UNESCO heritage frozen in stone
+- **Chandrabhaga Beach** — where ancient rituals meet the morning sun
+- **Seafood by the shore** — conversations with locals, fresh catches
+
+Documented every moment for the channel. The kind of trip that resets your perspective.
+
+---
+
+## Shantiniketan Sojourn | 2024 | *Tagore's Land & Baul Music*
+
+Shantiniketan is not a place — it is an idea. A reminder that creativity has no boundaries.
+
+### The Experience
+Tagore's vision of education without walls, art without limits. Walking through the same grounds where Rabindranath composed, painted, philosophized.
+
+- **Uttarayan & Konark** — Tagore's personal residences
+- **Kala Bhavana** — where art students create under open skies
+- **Baul music sessions** — folk philosophy in melody
+- **Local handicrafts** — the weekly Sonajhuri haat
+
+Shot a vlog that captured not just visuals, but the vibe. Some places you feel more than you see.
+
+---
+
+## Red Earth Expedition | 2024 | *Purulia, Baranti & Maithon*
+
+Where the red earth meets the sky — Purulia is Bengal stripped to its raw, untouched essence.
+
+### The Landscape
+The landscape shifts dramatically as you cross into Purulia. Red laterite soil, palash trees, ancient rock formations. A terrain that feels more like the Deccan than Bengal.
+
+### The Journey
+- **Maithon Dam** — engineering marvel meets natural beauty, sunrise over the reservoir
+- **Baranti Lake** — camping by the water, bonfires under star-filled skies
+- **Garpanchkot ruins** — history crumbling into the hills
+- **Chhau dance country** — glimpses of the warrior dance tradition
+
+This trip pushed the content game — drone shots, time-lapses, the full cinematic treatment.
+
+---
+
+## Himalayan Luxe | 2025 | *Darjeeling with Taj, ITC & Sterling*
+
+Some journeys are about the destination. Others are about how you experience it.
+
+### A Different Chapter
+After years of backpacking and budget travel, this chapter was different — curated experiences, world-class hospitality, and sharing it all with my partner.
+
+### The Properties
+- **Taj Darjeeling** — colonial grandeur with Kanchenjunga views at sunrise
+- **ITC Fortune** — business-class comfort in the hills
+- **Sterling Resorts** — family-friendly luxury with local experiences
+
+### Beyond the Hotels
+- **Ghoom Monastery** — the oldest Tibetan monastery in Darjeeling
+- **Batasia Loop** — toy train romance and war memorial
+- **Tea estate tours** — from leaf to cup, the Darjeeling process
+
+Proof that adventure doesn't always mean roughing it. Sometimes, it's about experiencing familiar places through a new lens.
+
+---
+
+## Dooars & Foothills | 2025–Present | *Kurseong, Kalimpong & Tea Country*
+
+The foothills of the Eastern Himalayas — where every turn reveals a different shade of green.
+
+### Not the Tourist Trail
+Not the tourist-heavy Darjeeling circuit, but its quieter siblings. Places where the pace slows and nature takes center stage.
+
+### Dooars
+- **Jaldapara & Gorumara** — elephant safaris, rhinos in the wild
+- **Endless tea gardens** — stretching to the horizon
+- **River crossings and forest lodges**
+
+### Kurseong & Kalimpong
+- **Eagle's Craig** — sunrise viewpoints
+- **Zang Dhok Palri Phodang monastery**
+- **Flower nurseries and local markets**
+- **Misty drives through pine forests**
+
+Each trip adds footage to the library. Building a visual archive of these disappearing landscapes.
 
 ---
 
@@ -123,6 +230,13 @@ Started documenting. YouTube vlogs, shorts, content capturing these road trips a
 | Gurudongmar Lake | Sikkim | 2016 | 🏔️ Trek | 17,800 ft — one of the highest lakes in the world |
 | Krakow Offsite | Poland | 2019 | 🎉 Team | 5 days of work, play, and lifelong friendships |
 | Amsterdam Remote | Netherlands | 2021 | 🏙️ Work | A month of canals, cafes, and code |
+| **Midnight Tales** | Kolkata | 2021-22 | 🎙️ Podcast | Horror storytelling & audio production |
+| **Eastern Horizons** | Eastern India | 2023+ | 🎬 YouTube | Cinematic travel vlogs on Andy's Enclave |
+| **Coastal Pilgrimage** | Puri, Odisha | 2023 | 🌊 Road Trip | Jagannath Temple, Konark, Bay of Bengal |
+| **Shantiniketan** | Bolpur | 2024 | 🎨 Heritage | Tagore's land, Baul music, artistic soul |
+| **Red Earth Expedition** | Purulia | 2024 | 🏜️ Offbeat | Baranti, Maithon, drone cinematography |
+| **Himalayan Luxe** | Darjeeling | 2025 | ✨ Premium | Taj, ITC, Sterling with partner |
+| **Dooars & Foothills** | North Bengal | 2025+ | 🌿 Wildlife | Kurseong, Kalimpong, tea country |
 
 ### Adventure Gear (Content Creation)
 
@@ -130,26 +244,51 @@ Started documenting. YouTube vlogs, shorts, content capturing these road trips a
 |------|---------|
 | DJI Osmo | Gimbal for vlog footage |
 | Sony A6000 | Photography |
-| iPhone 13 Pro | Mobile filming |
+| iPhone 15 Pro | Mobile filming, 4K video |
 | iPad Pro | Editing on the go |
 | GoPro | Action footage |
+| DJI Mini | Drone cinematography |
+| Rode Wireless | Audio recording |
+| DaVinci Resolve | Post-production, color grading |
 
-### Content Platform
+### Content Platforms
 
-- **Andy's Enclave** — YouTube channel for travel vlogs, road trip documentation, mountain content
-- Focus: Eastern India road trips, Himalayan escapes, weekend adventures
-- Format: Vlogs, shorts, photo essays
+**Andy's Enclave (YouTube)**
+- Cinematic travel vlogs documenting road trips across Eastern India
+- From coastal drives to mountain escapes — every journey, a story
+- Format: Long-form vlogs, shorts, travel guides
+
+**Midnight Tales (Podcast)**
+- Horror storytelling podcast — atmospheric audio dramas
+- Classic radio broadcast style with professional audio production
+- Script writing, voice modulation, ambient sound design
+
+### Content Philosophy
+The same attention to detail that goes into code reviews — applied to visual and audio storytelling. Engineering precision meets creative expression.
 
 ---
 
 ## Countries & Cities Visited
 
-### Countries (8)
+### Countries (10)
 India, Norway, Germany, Poland, Belgium, Netherlands, France, Luxembourg, Sweden, Denmark
 
-### Notable Cities
-- **India**: Chennai, Kolkata, Pondicherry, Puri, Darjeeling, Kalimpong, Sikkim
-- **Norway**: Oslo, Bergen, Flåm, Hemsedal
+### Notable Destinations
+
+**India — Eastern Region (2021-Present)**
+- **West Bengal**: Kolkata, Darjeeling, Kalimpong, Kurseong, Shantiniketan (Bolpur), Purulia (Baranti, Maithon), Dooars
+- **Odisha**: Puri, Konark
+- **Sikkim**: Gangtok, Gurudongmar Lake, Nathang Valley
+- **Jharkhand**: Forests and waterfalls
+
+**India — South (2013-2015)**
+- **Tamil Nadu**: Chennai, Pondicherry
+
+**India — North (2016)**
+- **Uttarakhand**: Bali Pass trek
+
+**Europe (2016-2021)**
+- **Norway**: Oslo, Bergen, Flåm, Hemsedal, Sognefjord
 - **Germany**: Berlin, Munich, Hamburg
 - **Others**: Brussels, Amsterdam, Rotterdam, Paris, Luxembourg, Krakow, Copenhagen
 
@@ -160,3 +299,14 @@ India, Norway, Germany, Poland, Belgium, Netherlands, France, Luxembourg, Sweden
 > "It's not about conquering fear — it's about proving your body is always there for you."
 
 The adventure side isn't separate from the engineering side. Both are about exploration — one through code, one through roads and mountains. Both require preparation, risk assessment, and the willingness to push into the unknown.
+
+### The Divide
+
+**Engineering** brings structure, precision, and problem-solving.
+**Adventure** brings perspective, creativity, and stories worth telling.
+
+The best work happens when both sides are active. Code during the week, roads on the weekend. Debug in the morning, document the journey by night. The podcast and YouTube channel aren't hobbies — they're the other half of who I am.
+
+---
+
+*Last Updated: January 2026*

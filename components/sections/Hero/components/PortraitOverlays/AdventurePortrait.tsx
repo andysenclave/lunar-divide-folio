@@ -19,59 +19,28 @@ const AdventurePortrait = () => {
         overflow: 'hidden',
       }}
     >
-      <section
-        className="adventure-portrait__background"
+      {/* Using native img to avoid Next.js Image processing */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/images/adventure-portrait.jpeg"
+        alt="Skydiving adventure with mountains in the background"
         style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '50%',
-          background: `linear-gradient(180deg, transparent 0%, ${colors.orangeGlow} 100%)`,
-          clipPath:
-            'polygon(0% 100%, 15% 60%, 30% 80%, 45% 40%, 55% 55%, 70% 25%, 85% 50%, 100% 30%, 100% 100%)',
+          transform: 'scale(1.3)',
+          opacity: 0.82,
         }}
       />
 
+      {/* Orange theme overlay */}
       <section
-        className="adventure-portrait__body"
+        className="adventure-portrait__theme-overlay"
         style={{
-          width: 140,
-          height: 160,
-          background: 'linear-gradient(180deg, #2a1a0a 0%, #1a0d05 100%)',
-          borderRadius: '70px 70px 35px 35px',
-          position: 'relative',
-          marginTop: -20,
+          position: 'absolute',
+          inset: 0,
+          borderRadius: '50%',
+          background: colors.orange,
+          opacity: 0.08,
         }}
-      >
-        <section
-          className="adventure-portrait__eye-container"
-          style={{
-            position: 'absolute',
-            bottom: '25%',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: 55,
-            height: 38,
-            background: 'linear-gradient(180deg, #3a2a1a 0%, #2a1a0a 100%)',
-            borderRadius: 6,
-          }}
-        >
-          <section
-            className="adventure-portrait__eye"
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: 22,
-              height: 22,
-              border: '3px solid #4a3a2a',
-              borderRadius: '50%',
-            }}
-          />
-        </section>
-      </section>
+      />
 
       <section
         className="adventure-portrait__glow-overlay"

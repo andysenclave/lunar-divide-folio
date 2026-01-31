@@ -12,7 +12,12 @@ export const LOCATIONS: Location[] = [
     period: '2021 – Present',
     era: 'The Return',
     year: 2026,
+    // ============================================
+    // EXPERIENCES ORDERED CHRONOLOGICALLY (2026 → 2021)
+    // Cards appear based on scroll position matching their dates
+    // ============================================
     experiences: [
+      // 2026-2025: Current ongoing experiences
       {
         id: 'nous-rbc',
         type: 'engineering',
@@ -38,6 +43,152 @@ export const LOCATIONS: Location[] = [
         },
       },
       {
+        id: 'dooars-foothills',
+        type: 'adventure',
+        icon: '🌿',
+        title: 'Dooars & Foothills',
+        subtitle: 'Kurseong, Kalimpong & Tea Country',
+        desc: 'Multiple trips through the Eastern Himalayan foothills — wildlife in Dooars, misty trails in Kurseong, and the quiet charm of Kalimpong.',
+        date: '2025 – Present',
+        places: ['Dooars', 'Kurseong', 'Kalimpong', 'North Bengal'],
+        hasVideo: true,
+        hasPhotos: true,
+        content: {
+          intro:
+            'The foothills of the Eastern Himalayas — where every turn reveals a different shade of green.',
+          body: '<p>Not the tourist-heavy Darjeeling circuit, but its quieter siblings. Places where the pace slows and nature takes center stage.</p><h3>Dooars</h3><ul><li>Jaldapara & Gorumara — elephant safaris, rhinos in the wild</li><li>Endless tea gardens stretching to the horizon</li><li>River crossings and forest lodges</li></ul><h3>Kurseong & Kalimpong</h3><ul><li>Eagle\'s Craig and sunrise viewpoints</li><li>Zang Dhok Palri Phodang monastery</li><li>Flower nurseries and local markets</li><li>Misty drives through pine forests</li></ul><p>Each trip adds footage to the library. Building a visual archive of these disappearing landscapes.</p>',
+          tags: [
+            'Dooars',
+            'Wildlife',
+            'Tea Gardens',
+            'Kurseong',
+            'Kalimpong',
+            'Nature',
+          ],
+        },
+      },
+      // 2025: Luxury mountain experiences
+      {
+        id: 'himalayan-luxe',
+        type: 'adventure',
+        icon: '✨',
+        title: 'Himalayan Luxe',
+        subtitle: 'Darjeeling with Taj, ITC & Sterling',
+        desc: 'Premium mountain getaways with my wife — experiencing Darjeeling and Ghoom through the lens of luxury hospitality.',
+        date: '2025',
+        featured: true,
+        places: ['Darjeeling', 'Ghoom', 'Sterling', 'Taj', 'ITC'],
+        hasVideo: true,
+        hasPhotos: true,
+        content: {
+          intro:
+            'Some journeys are about the destination. Others are about how you experience it.',
+          body: "<p>After years of backpacking and budget travel, this chapter was different — curated experiences, world-class hospitality, and sharing it all with my partner.</p><h3>The Properties</h3><ul><li>Taj Darjeeling — colonial grandeur with Kanchenjunga views at sunrise</li><li>ITC Fortune — business-class comfort in the hills</li><li>Sterling Resorts — family-friendly luxury with local experiences</li></ul><h3>Beyond the Hotels</h3><ul><li>Ghoom Monastery — the oldest Tibetan monastery in Darjeeling</li><li>Batasia Loop — toy train romance and war memorial</li><li>Tea estate tours — from leaf to cup, the Darjeeling process</li></ul><p>Proof that adventure doesn't always mean roughing it. Sometimes, it's about experiencing familiar places through a new lens.</p>",
+          tags: [
+            'Luxury Travel',
+            'Darjeeling',
+            'Mountains',
+            'Couples',
+            'Hospitality',
+            'Premium',
+          ],
+        },
+      },
+      // 2024: Offbeat explorations
+      {
+        id: 'red-earth-expedition',
+        type: 'adventure',
+        icon: '🏜️',
+        title: 'Red Earth Expedition',
+        subtitle: 'Purulia, Baranti & Maithon',
+        desc: "Exploring the raw landscapes of Purulia — laterite hills, serene lakes, and the untouched wilderness of Bengal's western frontier.",
+        date: '2024',
+        places: ['Purulia', 'Baranti', 'Maithon Dam', 'West Bengal'],
+        hasVideo: true,
+        hasPhotos: true,
+        content: {
+          intro:
+            'Where the red earth meets the sky — Purulia is Bengal stripped to its raw, untouched essence.',
+          body: '<p>The landscape shifts dramatically as you cross into Purulia. Red laterite soil, palash trees, ancient rock formations. A terrain that feels more like the Deccan than Bengal.</p><h3>The Journey</h3><ul><li>Maithon Dam — engineering marvel meets natural beauty, sunrise over the reservoir</li><li>Baranti Lake — camping by the water, bonfires under star-filled skies</li><li>Garpanchkot ruins — history crumbling into the hills</li><li>Chhau dance country — glimpses of the warrior dance tradition</li></ul><p>This trip pushed the content game — drone shots, time-lapses, the full cinematic treatment.</p>',
+          tags: [
+            'Purulia',
+            'Offbeat',
+            'Camping',
+            'Landscape',
+            'Wilderness',
+            'Drone',
+          ],
+        },
+      },
+      {
+        id: 'shantiniketan-sojourn',
+        type: 'adventure',
+        icon: '🎨',
+        title: 'Shantiniketan Sojourn',
+        subtitle: "Tagore's Land & Baul Music",
+        desc: "Weekend escape to Bolpur — walking through Visva-Bharati, listening to Baul singers, and experiencing Bengal's artistic soul.",
+        date: '2024',
+        places: ['Bolpur', 'Shantiniketan', 'West Bengal'],
+        hasPhotos: true,
+        content: {
+          intro:
+            'Shantiniketan is not a place — it is an idea. A reminder that creativity has no boundaries.',
+          body: "<p>Tagore's vision of education without walls, art without limits. Walking through the same grounds where Rabindranath composed, painted, philosophized.</p><h3>The Experience</h3><ul><li>Uttarayan & Konark — Tagore's personal residences</li><li>Kala Bhavana — where art students create under open skies</li><li>Baul music sessions — folk philosophy in melody</li><li>Local handicrafts and the weekly Sonajhuri haat</li></ul><p>Shot a vlog that captured not just visuals, but the vibe. Some places you feel more than you see.</p>",
+          tags: [
+            'Shantiniketan',
+            'Tagore',
+            'Art',
+            'Culture',
+            'Baul Music',
+            'Heritage',
+          ],
+        },
+      },
+      // 2023: YouTube channel launch & road trips
+      {
+        id: 'eastern-horizons',
+        type: 'adventure',
+        icon: '🎬',
+        title: 'Eastern Horizons',
+        subtitle: "Andy's Enclave on YouTube",
+        desc: 'Cinematic travel vlogs documenting road trips across Eastern India. From coastal drives to mountain escapes — every journey, a story.',
+        date: '2023 – Present',
+        featured: true,
+        places: ['Eastern India', 'YouTube'],
+        hasVideo: true,
+        content: {
+          intro:
+            "Andy's Enclave became the canvas — a YouTube channel where engineering meets adventure.",
+          body: "<p>What started as casual trip recordings evolved into a full content creation workflow. Cinematic vlogs, color grading, narrative editing — treating each video like a short film.</p><h3>The Pipeline</h3><ul><li>Shot on mobile + action cams for authentic POV</li><li>Edited in DaVinci Resolve with custom LUTs</li><li>Narrative structure: setup, journey, reflection</li><li>Background scores and ambient audio mixing</li></ul><p>The same attention to detail that goes into code reviews — applied to visual storytelling.</p>",
+          tags: [
+            'YouTube',
+            'Vlogging',
+            'Video Production',
+            'Content Creation',
+            'Cinematography',
+          ],
+        },
+      },
+      {
+        id: 'coastal-pilgrimage',
+        type: 'adventure',
+        icon: '🌊',
+        title: 'Coastal Pilgrimage',
+        subtitle: 'Puri & The Sun Temple',
+        desc: 'Road trip to Odisha — Jagannath Temple, Konark Sun Temple, and endless stretches of the Bay of Bengal coastline.',
+        date: '2023',
+        places: ['Puri', 'Konark', 'Odisha'],
+        hasVideo: true,
+        hasPhotos: true,
+        content: {
+          intro:
+            'Where spirituality meets the sea — a pilgrimage that was as much about the journey as the destination.',
+          body: '<p>The drive from Kolkata to Puri unfolds like a meditation — crossing state borders, watching the landscape shift from urban sprawl to coastal serenity.</p><h3>Highlights</h3><ul><li>Jagannath Temple at dawn — the energy, the devotion, the architecture</li><li>Konark Sun Temple — UNESCO heritage frozen in stone</li><li>Chandrabhaga Beach — where ancient rituals meet the morning sun</li><li>Seafood by the shore, conversations with locals</li></ul><p>Documented every moment for the channel. The kind of trip that resets your perspective.</p>',
+          tags: ['Odisha', 'Pilgrimage', 'Heritage', 'Road Trip', 'Coastal'],
+        },
+      },
+      // 2021-2023: Fitch Ratings project
+      {
         id: 'nous-fitch',
         type: 'engineering',
         icon: '📊',
@@ -55,6 +206,31 @@ export const LOCATIONS: Location[] = [
             'Express',
             'Architecture',
             'Fitch',
+          ],
+        },
+      },
+      // 2021-2022: Podcast & Startup
+      {
+        id: 'midnight-tales',
+        type: 'adventure',
+        icon: '🎙️',
+        title: 'Midnight Tales',
+        subtitle: 'Horror Podcast & Audio Storytelling',
+        desc: 'Launched a horror storytelling podcast — crafting atmospheric narratives, sound design, and voice production for spine-chilling audio experiences.',
+        date: '2021 – 2022',
+        featured: true,
+        places: ['Kolkata', 'Home Studio'],
+        hasVideo: true,
+        content: {
+          intro:
+            'When the sun sets, the stories begin. Building an audio universe one tale at a time.',
+          body: '<p>Started a podcast channel dedicated to horror storytelling — atmospheric audio dramas narrated in the style of classic radio broadcasts. Think campfire tales meets professional audio production.</p><h3>The Craft</h3><ul><li>Script writing and narrative adaptation</li><li>Voice modulation and character work</li><li>Ambient sound design and post-production</li><li>Building a community of horror enthusiasts</li></ul><p>The intersection of engineering precision and creative storytelling — every episode engineered for maximum immersion.</p>',
+          tags: [
+            'Podcast',
+            'Audio Production',
+            'Storytelling',
+            'Horror',
+            'Content Creation',
           ],
         },
       },
@@ -76,23 +252,6 @@ export const LOCATIONS: Location[] = [
             'Startup',
             'Entrepreneurship',
           ],
-        },
-      },
-      {
-        id: 'andys-enclave',
-        type: 'adventure',
-        icon: '🎬',
-        title: "Andy's Enclave",
-        subtitle: 'Content Creation & Road Trips',
-        desc: 'YouTube vlogs, road trips across Eastern India, mountain escapes. Documenting adventures from behind the wheel.',
-        date: 'Ongoing',
-        featured: true,
-        places: ['Darjeeling', 'Sikkim', 'Kalimpong', 'Purulia', 'Puri'],
-        hasVideo: true,
-        content: {
-          intro: 'Where the adventure side gets its voice.',
-          body: "<p>Andy's Enclave became the outlet — a place where the adventure side has a voice. Started documenting road trips and mountain escapes.</p><h3>Road Trips</h3><ul><li>Purulia — red laterite landscapes and Chhau dance country</li><li>Puri, Odisha — Jagannath Temple, Konark, endless coastline</li><li>Bolpur, Shantiniketan — Tagore's land, baul music</li><li>Multiple trips to Kalimpong, Sikkim, Darjeeling</li></ul>",
-          tags: ['YouTube', 'Road Trips', 'Mountains', 'Content Creation'],
         },
       },
     ],

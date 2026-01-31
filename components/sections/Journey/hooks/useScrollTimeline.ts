@@ -17,11 +17,11 @@ interface TimelineConfig {
 // Dwell times per location (percentage of scroll progress)
 // Total should sum to ~0.92 (leaving room for initial hold and final state)
 const LOCATION_DWELL_TIMES: Record<string, number> = {
-  'kolkata-2': 0.12, // Recent history - faster
-  'berlin': 0.18, // European experience - slower
-  'oslo': 0.20, // European experience - slower (longer stint)
-  'kolkata-1': 0.14, // Standard
-  'chennai': 0.14, // Standard
+  'kolkata-2': 0.24, // 2021-2026: 10 experiences, needs more scroll time
+  'berlin': 0.16, // European experience
+  'oslo': 0.18, // European experience (longer stint)
+  'kolkata-1': 0.12, // Standard
+  'chennai': 0.12, // Standard
 };
 
 const DEFAULT_DWELL = 0.14;

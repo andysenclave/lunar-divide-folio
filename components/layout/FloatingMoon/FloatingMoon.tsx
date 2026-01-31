@@ -37,16 +37,34 @@ export default function FloatingMoon() {
         cursor: isInCorner ? 'pointer' : 'default',
       }}
     >
-      <MoonHoverWrapper
-        isInCorner={isInCorner}
-        isHovered={isHovered}
-        onHoverStart={() => setIsHovered(true)}
-        onHoverEnd={() => setIsHovered(false)}
-        onClick={() => isInCorner && handleReturnHome()}
+      {/* Floating animation wrapper */}
+      <MotionDiv
+        className="w-full h-full"
+        animate={{
+          y: [0, -8, 0, 4, 0],
+          rotateZ: [0, 0.5, 0, -0.5, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
       >
-        <MoonSurface lightX={lightX} moonRotation={moonRotation} mode={mode} />
-        <ReturnHomeTooltip isVisible={isHovered && isInCorner} />
-      </MoonHoverWrapper>
+        <MoonHoverWrapper
+          isInCorner={isInCorner}
+          isHovered={isHovered}
+          onHoverStart={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
+          onClick={() => isInCorner && handleReturnHome()}
+        >
+          <MoonSurface
+            lightX={lightX}
+            moonRotation={moonRotation}
+            mode={mode}
+          />
+          <ReturnHomeTooltip isVisible={isHovered && isInCorner} />
+        </MoonHoverWrapper>
+      </MotionDiv>
     </MotionDiv>
   );
 }
