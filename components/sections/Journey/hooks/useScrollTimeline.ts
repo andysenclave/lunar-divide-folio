@@ -158,17 +158,21 @@ export function buildScrollTimeline(
     currentProgress = dwellStart + progressPerLocation;
   });
 
-  // Final keyframe
-  timeline.push({
-    progress: 0.98,
-    scale: 1.1,
-    rotation: [-82, -22],
-    locationId: null,
-    year: 2013,
-    era: 'Where It All Began',
-    cardVisibility: [],
-    isTransition: false,
-  });
+  // Keep the last location's state stable through the end
+  // No fancy zoom-out transition - just maintain the final view
+  const lastLoc = locations[locations.length - 1];
+  if (lastLoc) {
+    timeline.push({
+      progress: 1.0,
+      scale: 2.2,
+      rotation: [-lastLoc.coords[0], -lastLoc.coords[1]],
+      locationId: lastLoc.id,
+      year: parseInt(lastLoc.period.split('–')[0]) || lastLoc.year,
+      era: lastLoc.era,
+      cardVisibility: lastLoc.experiences.map((_, i) => i),
+      isTransition: false,
+    });
+  }
 
   return timeline;
 }

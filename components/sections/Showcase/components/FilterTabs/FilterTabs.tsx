@@ -1,7 +1,6 @@
 'use client';
 
-import { AnimatePresence } from 'framer-motion';
-import { MotionDiv, MotionSpan } from '@/components/motion';
+import { MotionDiv } from '@/components/motion';
 import { useTheme } from '@/theme/ThemeProvider';
 import { useShowcase } from '../../context';
 import { useHoverState } from '../../hooks';
@@ -41,30 +40,6 @@ const FilterTabs = () => {
           onSelect={() => setActiveFilter(filter.id)}
         />
       ))}
-
-      {/* Hint text when compact */}
-      <AnimatePresence>
-        {isScrolled && !isHovered && (
-          <MotionSpan
-            className="absolute"
-            style={{
-              bottom: '2px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              fontSize: '9px',
-              color: colors.textMuted,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, delay: 0.5 }}
-          >
-            hover to expand
-          </MotionSpan>
-        )}
-      </AnimatePresence>
     </MotionDiv>
   );
 };

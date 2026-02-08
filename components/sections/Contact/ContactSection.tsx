@@ -7,7 +7,6 @@ import {
   AvailabilityBadge,
   CTAButtons,
   Footer,
-  BackToTop,
 } from './components';
 
 const ContactSection = () => {
@@ -19,7 +18,6 @@ const ContactSection = () => {
       <AvailabilityBadge />
       <CTAButtons />
       <Footer />
-      <BackToTop />
     </ContactProvider>
   );
 };

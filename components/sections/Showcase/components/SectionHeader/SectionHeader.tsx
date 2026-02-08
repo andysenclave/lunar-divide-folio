@@ -26,7 +26,7 @@ const SectionHeader = () => {
         className="t-h1"
         style={{
           fontWeight: 700,
-          color: colors.white,
+          color: colors.text,
           letterSpacing: '-0.02em',
           lineHeight: 1.1,
         }}

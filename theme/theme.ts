@@ -39,7 +39,9 @@ export const THEME = {
       globeOcean: '#0D1A2D',
       globeLand: '#1E4D5C',
       globeLandStroke: '#2A6A7A',
-      globeGraticule: 'rgba(255, 255, 255, 0.08)',
+      globeGraticule: 'rgba(42, 106, 122, 0.1)',
+      globeFlightPath: 'rgba(255, 255, 255, 0.6)',
+      globeFlightGlow: 'rgba(255, 255, 255, 0.3)',
 
       // Text
       white: '#FFFFFF',
@@ -97,10 +99,12 @@ export const THEME = {
       archivedGlow: 'rgba(147, 51, 234, 0.12)',
 
       // Globe colors (Journey section)
-      globeOcean: '#E8F4FC',
-      globeLand: '#B8D4E3',
-      globeLandStroke: '#8FBDD3',
-      globeGraticule: 'rgba(0, 0, 0, 0.08)',
+      globeOcean: '#E8F8FF', // Light cyan water
+      globeLand: '#7DD3E8', // Soft cyan land
+      globeLandStroke: '#0099CC', // Darker cyan borders
+      globeGraticule: 'rgba(0, 153, 204, 0.15)', // Subtle cyan grid lines
+      globeFlightPath: 'rgba(255, 255, 255, 0.6)', // White flight trails
+      globeFlightGlow: 'rgba(255, 255, 255, 0.3)', // White glow for plane
 
       // Text
       white: '#FFFFFF',

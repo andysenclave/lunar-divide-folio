@@ -1,7 +1,6 @@
 'use client';
 
 import { useTheme } from '@/theme/ThemeProvider';
-import { GLOBE_COLORS } from '../../hooks/useGlobe';
 import { useJourney } from '../../context';
 
 const StarField = () => {
@@ -15,8 +14,8 @@ const StarField = () => {
         className="absolute inset-0 transition-all duration-800"
         style={{
           background: isAdventureMode
-            ? `radial-gradient(ellipse 100% 80% at 50% 50%, ${GLOBE_COLORS.orangeGlow}15 0%, transparent 60%), linear-gradient(180deg, ${colors.bg} 0%, ${colors.bgSecondary} 50%, ${colors.bg} 100%)`
-            : `radial-gradient(ellipse 100% 80% at 50% 50%, ${GLOBE_COLORS.cyanGlow}10 0%, transparent 60%), linear-gradient(180deg, ${colors.bg} 0%, ${colors.bgSecondary} 50%, ${colors.bg} 100%)`,
+            ? `radial-gradient(ellipse 100% 80% at 50% 50%, ${colors.orangeGlow}15 0%, transparent 60%), linear-gradient(180deg, ${colors.bg} 0%, ${colors.bgSecondary} 50%, ${colors.bg} 100%)`
+            : `radial-gradient(ellipse 100% 80% at 50% 50%, ${colors.cyanGlow}10 0%, transparent 60%), linear-gradient(180deg, ${colors.bg} 0%, ${colors.bgSecondary} 50%, ${colors.bg} 100%)`,
         }}
       />
 

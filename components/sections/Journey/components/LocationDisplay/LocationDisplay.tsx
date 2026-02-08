@@ -54,7 +54,7 @@ const LocationDisplay = ({
             <div
               style={{
                 fontSize: '12px',
-                color: colors.textDim,
+                color: colors.textMuted,
               }}
             >
               {currentLocation.period}

@@ -4,26 +4,10 @@ import { useEffect, useRef, useCallback } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson-client';
 import type { Topology, GeometryCollection } from 'topojson-specification';
-import type { FlightData, GlobeColors } from '../types';
+import type { FlightData } from '../types';
 import { MARKER_LOCATIONS } from '../data';
 import { generateArcPoints } from './useJourneyScroll';
-
-// ============================================
-// GLOBE COLORS
-// ============================================
-
-export const GLOBE_COLORS: GlobeColors = {
-  ocean: '#0D1A2D',
-  land: '#1E4D5C',
-  landStroke: '#2A6A7A',
-  graticule: 'rgba(42, 106, 122, 0.1)',
-  flightPath: 'rgba(255, 255, 255, 0.6)',
-  flightGlow: 'rgba(255, 255, 255, 0.3)',
-  cyan: '#00D9FF',
-  cyanGlow: 'rgba(0, 217, 255, 0.3)',
-  orange: '#FF6B35',
-  orangeGlow: 'rgba(255, 107, 53, 0.3)',
-};
+import { useTheme } from '@/theme/ThemeProvider';
 
 // ============================================
 // HOOK: useGlobe
@@ -42,6 +26,13 @@ export function useGlobe(): UseGlobeReturn {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const projectionRef = useRef<d3.GeoProjection | null>(null);
   const baseScaleRef = useRef<number>(0);
+  const { colors } = useTheme();
+
+  // Store colors in a ref for use in updateGlobe callback
+  const colorsRef = useRef(colors);
+  useEffect(() => {
+    colorsRef.current = colors;
+  }, [colors]);
 
   // Initialize D3 Globe
   useEffect(() => {
@@ -75,15 +66,16 @@ export function useGlobe(): UseGlobeReturn {
       .attr('cx', width / 2)
       .attr('cy', height / 2)
       .attr('r', projection.scale())
-      .style('fill', GLOBE_COLORS.ocean);
+      .style('fill', colors.globeOcean);
 
     // Graticule
     globe
       .append('path')
+      .attr('class', 'graticule')
       .datum(d3.geoGraticule().step([15, 15]))
       .attr('d', path)
       .style('fill', 'none')
-      .style('stroke', GLOBE_COLORS.graticule)
+      .style('stroke', colors.globeGraticule)
       .style('stroke-width', 0.5);
 
     // Groups for layering
@@ -143,18 +135,22 @@ export function useGlobe(): UseGlobeReturn {
         .enter()
         .append('path')
         .attr('d', path as unknown as string)
-        .style('fill', GLOBE_COLORS.land)
-        .style('stroke', GLOBE_COLORS.landStroke)
+        .style('fill', colorsRef.current.globeLand)
+        .style('stroke', colorsRef.current.globeLandStroke)
         .style('stroke-width', 0.5);
 
       // Add markers
       MARKER_LOCATIONS.forEach((loc) => {
         const g = markersGroup.append('g').attr('data-id', loc.id);
         const color =
-          loc.type === 'adventure' ? GLOBE_COLORS.orange : GLOBE_COLORS.cyan;
+          loc.type === 'adventure'
+            ? colorsRef.current.orange
+            : colorsRef.current.cyan;
 
         // Glow
         g.append('circle')
+          .attr('class', 'marker-glow')
+          .attr('data-type', loc.type)
           .attr('r', 16)
           .style('fill', color)
           .style('opacity', 0.12)
@@ -163,6 +159,7 @@ export function useGlobe(): UseGlobeReturn {
         // Pulse ring
         g.append('circle')
           .attr('class', 'pulse')
+          .attr('data-type', loc.type)
           .attr('r', 6)
           .style('fill', 'none')
           .style('stroke', color)
@@ -171,6 +168,8 @@ export function useGlobe(): UseGlobeReturn {
 
         // Core dot
         g.append('circle')
+          .attr('class', 'marker-core')
+          .attr('data-type', loc.type)
           .attr('r', 4)
           .style('fill', color)
           .style('stroke', '#fff')
@@ -211,7 +210,46 @@ export function useGlobe(): UseGlobeReturn {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Update colors when theme changes
+  useEffect(() => {
+    if (!svgRef.current) return;
+
+    const svg = d3.select(svgRef.current);
+
+    // Update ocean color
+    svg.select('.ocean').style('fill', colors.globeOcean);
+
+    // Update graticule color
+    svg.select('.graticule').style('stroke', colors.globeGraticule);
+
+    // Update land colors
+    svg
+      .selectAll('.countries path')
+      .style('fill', colors.globeLand)
+      .style('stroke', colors.globeLandStroke);
+
+    // Update marker colors
+    svg.selectAll('.marker-glow').each(function () {
+      const el = d3.select(this);
+      const type = el.attr('data-type');
+      el.style('fill', type === 'adventure' ? colors.orange : colors.cyan);
+    });
+
+    svg.selectAll('.pulse').each(function () {
+      const el = d3.select(this);
+      const type = el.attr('data-type');
+      el.style('stroke', type === 'adventure' ? colors.orange : colors.cyan);
+    });
+
+    svg.selectAll('.marker-core').each(function () {
+      const el = d3.select(this);
+      const type = el.attr('data-type');
+      el.style('fill', type === 'adventure' ? colors.orange : colors.cyan);
+    });
+  }, [colors]);
 
   // Update globe rotation and scale
   const updateGlobe = useCallback(
@@ -222,6 +260,7 @@ export function useGlobe(): UseGlobeReturn {
     ) => {
       if (!projectionRef.current || !svgRef.current) return;
 
+      const currentColors = colorsRef.current;
       const projection = projectionRef.current;
       projection.scale(baseScaleRef.current * scale);
       projection.rotate([rotation[0], rotation[1]]);
@@ -278,7 +317,7 @@ export function useGlobe(): UseGlobeReturn {
           const trailPoints = visiblePoints.slice(0, pointsToShow);
 
           if (trailPoints.length >= 2) {
-            // Trail segments
+            // Trail segments - thicker and more prominent
             for (let i = 0; i < 6; i++) {
               const start = Math.floor((trailPoints.length * i) / 6);
               const end = Math.floor((trailPoints.length * (i + 1)) / 6);
@@ -289,37 +328,52 @@ export function useGlobe(): UseGlobeReturn {
                   .datum(seg)
                   .attr('d', lineGen)
                   .style('fill', 'none')
-                  .style('stroke', GLOBE_COLORS.flightPath)
-                  .style('stroke-width', 2 - i * 0.25)
-                  .style('opacity', 0.15 + (i / 6) * 0.5)
+                  .style('stroke', currentColors.globeFlightPath)
+                  .style('stroke-width', 4 - i * 0.5)
+                  .style('opacity', 0.2 + (i / 6) * 0.6)
                   .style('stroke-linecap', 'round');
               }
             }
 
-            // Plane dot
+            // Calculate plane rotation angle
             const currentPos = trailPoints[trailPoints.length - 1];
+            const prevPos = trailPoints[Math.max(0, trailPoints.length - 3)];
             const proj = projection(currentPos);
-            if (proj) {
+            const prevProj = projection(prevPos);
+
+            if (proj && prevProj) {
+              // Calculate angle for plane direction
+              const dx = proj[0] - prevProj[0];
+              const dy = proj[1] - prevProj[1];
+              const angle = (Math.atan2(dy, dx) * 180) / Math.PI + 90;
+
+              // Glow behind plane
               flightGroup
                 .append('circle')
                 .attr('cx', proj[0])
                 .attr('cy', proj[1])
-                .attr('r', 10)
-                .style('fill', GLOBE_COLORS.flightGlow)
-                .style('filter', 'blur(5px)');
+                .attr('r', 14)
+                .style('fill', currentColors.globeFlightGlow)
+                .style('filter', 'blur(6px)');
+
+              // Plane icon (small airplane shape)
+              const planeScale = 0.8;
               flightGroup
-                .append('circle')
-                .attr('cx', proj[0])
-                .attr('cy', proj[1])
-                .attr('r', 4)
+                .append('path')
+                .attr('d', 'M12 2L8 8L2 10L8 12L12 22L16 12L22 10L16 8L12 2Z')
+                .attr(
+                  'transform',
+                  `translate(${proj[0]}, ${proj[1]}) rotate(${angle}) scale(${planeScale}) translate(-12, -12)`,
+                )
                 .style('fill', '#fff')
-                .style('stroke', GLOBE_COLORS.cyan)
-                .style('stroke-width', 2);
+                .style('stroke', currentColors.cyan)
+                .style('stroke-width', 1.5)
+                .style('filter', 'drop-shadow(0 0 3px rgba(0,217,255,0.5))');
             }
 
-            // Cloud trail
-            for (let c = 1; c <= 4; c++) {
-              const idx = Math.max(0, trailPoints.length - 1 - c * 4);
+            // Cloud/contrail behind plane
+            for (let c = 1; c <= 5; c++) {
+              const idx = Math.max(0, trailPoints.length - 1 - c * 3);
               if (trailPoints[idx]) {
                 const cp = projection(trailPoints[idx]);
                 if (cp) {
@@ -327,8 +381,8 @@ export function useGlobe(): UseGlobeReturn {
                     .append('circle')
                     .attr('cx', cp[0])
                     .attr('cy', cp[1])
-                    .attr('r', 4 - c * 0.7)
-                    .style('fill', 'rgba(255,255,255,' + (0.4 - c * 0.08) + ')')
+                    .attr('r', 5 - c * 0.8)
+                    .style('fill', 'rgba(255,255,255,' + (0.5 - c * 0.08) + ')')
                     .style('filter', 'blur(3px)');
                 }
               }

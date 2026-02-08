@@ -2,29 +2,32 @@
 
 ## Complete Timeline
 
-| Period | Company | Role | Location | Client/Focus |
-|--------|---------|------|----------|--------------|
-| 2013-2015 | Cognizant | Junior Front-end Developer | Chennai | USA Healthcare |
-| 2015-2016 | Cognizant | Front-end & Mobile Developer | Kolkata | Belgium Insurance |
-| 2016-2018 | Cognizant | Full Stack JavaScript Developer | Kolkata | Norway Insurance |
-| 2018-2019 | Cognizant | Onsite Coordinator & Team Lead | Oslo, Norway | Norway Insurance |
-| 2019-2020 | FinCompare | Mobile & Web App Developer | Berlin | FinTech |
-| 2020-2021 | FinCompare | Team Lead & Full Stack Developer | Berlin | FinTech |
-| Aug-Dec 2021 | Localoi.in | CTO & Co-founder | Kolkata | E-commerce Startup |
-| Dec 2021-Jun 2023 | Nous Infosystems | Senior Technical Lead | Kolkata | Fitch Ratings (US) |
-| Jun 2023-Present | Nous Infosystems | Senior Technical Lead | Kolkata | Royal Bank of Canada (US) |
+| Period            | Company          | Role                            | Location     | Client/Focus              |
+| ----------------- | ---------------- | ------------------------------- | ------------ | ------------------------- |
+| 2013-2015         | Cognizant        | Programmer Analyst              | Chennai      | USA Healthcare            |
+| 2015-2016         | Cognizant        | Associate Software Developer    | Kolkata      | Belgium Insurance         |
+| 2016-2018         | Cognizant        | Full Stack JavaScript Developer | Kolkata      | Norway Insurance          |
+| 2018-2019         | Cognizant        | Onsite Coordinator & Team Lead  | Oslo, Norway | Norway Insurance          |
+| 2019-2020         | FinCompare       | Frontend Engineer               | Berlin       | FinTech                   |
+| 2020-2021         | FinCompare       | Senior Fullstack Engineer       | Berlin       | FinTech                   |
+| Aug-Dec 2021      | Localoi.in       | CTO & Co-founder                | Kolkata      | E-commerce Startup        |
+| Dec 2021-Jun 2023 | Nous Infosystems | Technical Lead                  | Kolkata      | Fitch Ratings (US)        |
+| Jun 2023-Present  | Nous Infosystems | Senior Technical Lead           | Kolkata      | Royal Bank of Canada (US) |
 
 ---
 
-## Nous Infosystems | Senior Technical Lead
+## Nous Infosystems | Technical Lead → Senior Technical Lead
+
 **December 2021 – Present | Kolkata, India**
 
 ### Overview
-Leading frontend engineering for enterprise clients in financial services — credit ratings (Fitch Ratings) and capital markets (Royal Bank of Canada). Managing multiple squads, driving engineering excellence, and contributing to organizational growth through COE and innovation initiatives.
+
+Leading frontend engineering for enterprise clients in financial services — credit ratings (Fitch Ratings) as Technical Lead and capital markets (Royal Bank of Canada) as Senior Technical Lead. Managing multiple squads, driving engineering excellence, and contributing to organizational growth through COE and innovation initiatives.
 
 ---
 
 ### Client Engagement: Royal Bank of Canada (RBC)
+
 **June 2023 – Present | Capital Markets, US**
 
 **Program Scale**
@@ -47,6 +50,7 @@ Leading frontend engineering for enterprise clients in financial services — cr
 | Quality | SonarQube, 85% unit test coverage gate |
 
 **Technical Ownership**
+
 - UI development and deployment ownership across multiple squads
 - Mobile apps with React Native and real-time GraphQL subscriptions
 - CI/CD: Jenkins, Helios pipelines with custom security configurations
@@ -54,12 +58,14 @@ Leading frontend engineering for enterprise clients in financial services — cr
 - Code Quality: GitHub security checks, SonarQube for tech debt
 
 **Leadership & Delivery**
+
 - Attend multiple Daily Standups across squads
 - Coordinate with Scrum Masters, Product Owners, DevOps teams
 - Estimation, sizing, task structuring with developers
 - Hands-on guidance, PR reviews, merge management, deployment oversight
 
 **Professional Development (During RBC)**
+
 - **GitHub Copilot Certification (GH-300)** — Scored 92%
 - Participated in multiple internal hackathons
 - Expanded into AI tooling and Spring Boot Java
@@ -67,18 +73,20 @@ Leading frontend engineering for enterprise clients in financial services — cr
 ---
 
 ### Client Engagement: Fitch Ratings
+
 **December 2021 – June 2023 | Credit Ratings, US**
 
 **Platform Architecture**
 
 Led two interlinked squads building a comprehensive meeting lifecycle platform:
 
-| Squad | Focus | Team |
-|-------|-------|------|
-| **Committee** | Meeting participants, feedback collection, voice notes, email responses, agenda generation | 2 UI Developers |
-| **Workflow** | Meeting planning, decision recording, arguments/conversations capture, architecture documentation | 3 UI Developers |
+| Squad         | Focus                                                                                             | Team            |
+| ------------- | ------------------------------------------------------------------------------------------------- | --------------- |
+| **Committee** | Meeting participants, feedback collection, voice notes, email responses, agenda generation        | 2 UI Developers |
+| **Workflow**  | Meeting planning, decision recording, arguments/conversations capture, architecture documentation | 3 UI Developers |
 
 **Technical Contributions**
+
 - Architected real-time meeting features using GraphQL Subscriptions for live data feeds
 - Built middleware layer: Node.js, Express, MongoDB, GraphQL
 - Made critical decisions on performance optimization, caching strategies, and service boundaries
@@ -86,6 +94,7 @@ Led two interlinked squads building a comprehensive meeting lifecycle platform:
 - Established patterns for developers to follow, then enabled them to take ownership
 
 **Leadership & Delivery**
+
 - Led team of 5 UI developers across both squads
 - Collaborated daily with Scrum Masters, Product Owners, Managers
 - Created and sized tasks, ran sprint ceremonies
@@ -111,9 +120,11 @@ Led two interlinked squads building a comprehensive meeting lifecycle platform:
 ---
 
 ## Localoi.in | CTO & Co-founder
+
 **August 2021 – December 2021 | Kolkata, India**
 
 ### Overview
+
 Co-founded and led technology for a hyperlocal e-commerce platform connecting local businesses with neighborhood customers. Full ownership of platform architecture, team building, and go-to-market technical execution.
 
 ---
@@ -121,6 +132,7 @@ Co-founded and led technology for a hyperlocal e-commerce platform connecting lo
 ### Technical Leadership
 
 **Platform Architecture**
+
 - Designed and built 3-app ecosystem from scratch:
   - **Localite** — Consumer-facing mobile app
   - **Business Partner** — Merchant management app
@@ -137,6 +149,7 @@ Co-founded and led technology for a hyperlocal e-commerce platform connecting lo
 | Infrastructure | Docker, CI/CD via Bamboo |
 
 **Integrations**
+
 - Google Maps — Location services, routing
 - Razorpay, Paytm — Payment processing
 - SMS Gateway — OTP and notifications
@@ -144,6 +157,7 @@ Co-founded and led technology for a hyperlocal e-commerce platform connecting lo
 - FCM — Push notifications
 
 **Engineering & Delivery**
+
 - Led team of 3 developers end-to-end
 - Drove security, reliability, and scalability as core requirements
 - Owned technical decisions across all platforms
@@ -153,52 +167,62 @@ Co-founded and led technology for a hyperlocal e-commerce platform connecting lo
 ### Content & Marketing Leadership
 
 **Creative Operations**
+
 - Hired and managed video editing team
 - Defined tooling standards: Final Cut Pro, DaVinci Resolve, Canva
 - Directed content strategy for launch campaigns
 
 **Campaign Results**
+
 - ~10,000 views on promotional content
 - ~500+ engagements on video ads and shorts
 
 ---
 
 ## FinCompare GmbH | Berlin, Germany
+
 **2019 – 2021**
 
-### Senior UI Lead (2020-2021)
+### Senior Fullstack Engineer (2020-2021)
+
 - Led team of 3 UI developers at FinTech startup
 - Built shared component library from scratch
 - Implemented SME financing onboarding flows
 - Met Dan Abramov at a Berlin hackathon 🎉
 
-### Mobile & Web App Developer (2019-2020)
+### Frontend Engineer (2019-2020)
+
 - React, Redux, Styled Components, Node.js, Jest
 - SME lending platform development
 
 ---
 
 ## Cognizant Technology Solutions
+
 **2013 – 2019**
 
 ### Onsite Coordinator & Team Lead | Oslo, Norway (2018-2019)
+
 - Led knowledge transition for React applications
 - Full ownership of TrackMyCase application
 - Tech: React, Redux Saga, Express.js, MQTT, CouchDB
 
-### Full Stack JavaScript Developer | Kolkata (2016-2018)
+### Associate Software Developer | Kolkata (2016-2018)
+
 - Norway Insurance client
 - React, Node.js, Full Stack development
 
-### Front-end & Mobile Developer | Kolkata (2015-2016)
+### Associate Software Developer | Kolkata (2015-2016)
+
 - Belgium Insurance client (AXA, Allianz, Zurich)
 - Built mobile apps for innovation demos
 - Hackathon champion
 
-### Junior Front-end Developer | Chennai (2013-2015)
+### Programmer Analyst | Chennai (2013-2015)
+
 - USA Healthcare client
 - Center of Excellence member
-- Progressed from trainee to analyst
+- Progressed from trainee to Programmer Analyst
 - Tech: JavaScript, AngularJS, Java, Cordova, jQuery
 
 ---
@@ -213,13 +237,13 @@ Co-founded and led technology for a hyperlocal e-commerce platform connecting lo
 
 ## Core Tech Stack Summary
 
-| Category | Technologies |
-|----------|-------------|
+| Category | Technologies                                                   |
+| -------- | -------------------------------------------------------------- |
 | Frontend | React, React Native, Next.js, TypeScript, Redux, Framer Motion |
-| Backend | Node.js, Express, NestJS, Spring Boot (Java) |
-| API | GraphQL (including Subscriptions), REST |
-| Database | MongoDB, MySQL, PostgreSQL, CouchDB |
-| DevOps | Docker, Jenkins, GitHub Actions, Bamboo, Helios |
-| Cloud | AWS |
-| Quality | Jest, React Testing Library, SonarQube |
-| Tools | Git, Jira, Notion, Figma, Postman |
+| Backend  | Node.js, Express, NestJS, Spring Boot (Java)                   |
+| API      | GraphQL (including Subscriptions), REST                        |
+| Database | MongoDB, MySQL, PostgreSQL, CouchDB                            |
+| DevOps   | Docker, Jenkins, GitHub Actions, Bamboo, Helios                |
+| Cloud    | AWS                                                            |
+| Quality  | Jest, React Testing Library, SonarQube                         |
+| Tools    | Git, Jira, Notion, Figma, Postman                              |

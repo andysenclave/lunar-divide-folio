@@ -34,8 +34,8 @@ export function useMoonState(): UseMoonStateReturn {
 
   // Scroll-driven position transforms
   const scrollEased = useTransform(scrollYProgress, [...SCROLL_RANGE], [0, 1]);
-  const moonX = useTransform(scrollEased, [0, 1], ['50%', '92%']);
-  const moonY = useTransform(scrollEased, [0, 1], ['50%', '88%']);
+  const moonX = useTransform(scrollEased, [0, 1], ['50%', '96%']);
+  const moonY = useTransform(scrollEased, [0, 1], ['50%', '95%']);
   const moonScale = useTransform(scrollEased, [0, 1], [1, 0.16]);
   const moonOpacity = useTransform(scrollEased, [0, 1], [1, 0.35]);
 

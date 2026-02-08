@@ -20,7 +20,7 @@ const SkillTags = ({ skills }: SkillTagsProps) => {
           style={{
             fontSize: '11px',
             fontWeight: 500,
-            color: colors.white,
+            color: colors.text,
             background: colors.bgSecondary,
             border: `1px solid ${colors.border}`,
             padding: '6px 12px',

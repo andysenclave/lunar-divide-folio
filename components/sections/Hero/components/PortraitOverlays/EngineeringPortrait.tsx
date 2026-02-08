@@ -22,16 +22,14 @@ const EngineeringPortrait = () => {
       {/* Using native img to avoid Next.js Image processing */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/engineering-portrait.jpeg"
+        src="/images/engineering-portrait.png"
         alt="Andy working on laptop with headphones"
         style={{
-          maxWidth: '180%',
-          maxHeight: '100%',
+          maxWidth: '110%',
           width: 'auto',
           height: 'auto',
           objectFit: 'contain',
           position: 'absolute',
-          left: '-30%',
           opacity: 0.82,
         }}
       />

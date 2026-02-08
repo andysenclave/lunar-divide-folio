@@ -8,6 +8,7 @@ export { default as MotionSection } from './MotionSection';
 export { default as MotionH1 } from './MotionH1';
 export { default as MotionH2 } from './MotionH2';
 export { default as MotionP } from './MotionP';
+export { default as MotionFigure } from './MotionFigure';
 
 // Animation utilities
 export { variants, reducedMotionVariants, transitions } from './variants';
@@ -26,4 +27,5 @@ export type {
   MotionH1Props,
   MotionH2Props,
   MotionPProps,
+  MotionFigureProps,
 } from './types';

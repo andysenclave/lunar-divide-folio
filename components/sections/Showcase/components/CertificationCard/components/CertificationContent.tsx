@@ -44,7 +44,7 @@ const CertificationContent = ({ cert }: CertificationContentProps) => {
         style={{
           fontSize: 'clamp(22px, 3vw, 28px)',
           fontWeight: 700,
-          color: colors.white,
+          color: colors.text,
           marginBottom: '10px',
           lineHeight: 1.2,
         }}

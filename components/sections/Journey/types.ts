@@ -69,15 +69,3 @@ export interface JourneyState {
   flightData: FlightData | null;
 }
 
-export interface GlobeColors {
-  ocean: string;
-  land: string;
-  landStroke: string;
-  graticule: string;
-  flightPath: string;
-  flightGlow: string;
-  cyan: string;
-  cyanGlow: string;
-  orange: string;
-  orangeGlow: string;
-}

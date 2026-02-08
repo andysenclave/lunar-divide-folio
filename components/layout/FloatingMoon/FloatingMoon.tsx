@@ -3,8 +3,9 @@
 import { MotionDiv } from '@/components/motion';
 import { useTheme } from '@/theme/ThemeProvider';
 import { useMoonState } from './hooks/useMoonState';
-import { MoonHoverWrapper, ReturnHomeTooltip } from './components';
+import { MoonHoverWrapper } from './components';
 import MoonSurface from './MoonSurface';
+import EngineeringPortrait from '@/components/sections/Hero/components/PortraitOverlays/EngineeringPortrait';
 
 export default function FloatingMoon() {
   const { mode } = useTheme();
@@ -62,7 +63,6 @@ export default function FloatingMoon() {
             moonRotation={moonRotation}
             mode={mode}
           />
-          <ReturnHomeTooltip isVisible={isHovered && isInCorner} />
         </MoonHoverWrapper>
       </MotionDiv>
     </MotionDiv>
