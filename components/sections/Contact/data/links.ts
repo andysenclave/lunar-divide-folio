@@ -4,10 +4,11 @@
 import type { FooterLink } from '../types';
 
 export const FOOTER_LINKS: FooterLink[] = [
-  { name: 'Home', href: '#' },
-  { name: 'Expertise', href: '#expertise' },
+  { name: 'Home', href: '#', isScrollToTop: true },
   { name: 'Journey', href: '#journey' },
-  { name: 'Projects', href: '#projects' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Showcase', href: '#showcase' },
+  { name: 'Contact', href: '#contact' },
 ];
 
 export const SOCIAL_LINKS = [

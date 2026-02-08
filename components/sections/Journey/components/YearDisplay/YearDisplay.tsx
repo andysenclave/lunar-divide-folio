@@ -23,7 +23,7 @@ const YearDisplay = ({
         style={{
           fontSize: 'clamp(42px, 7vw, 72px)',
           fontWeight: 700,
-          color: colors.white,
+          color: colors.textSecondary,
           letterSpacing: '-0.03em',
           opacity: scrollProgress > 0.02 ? 0.4 : 0.15,
         }}

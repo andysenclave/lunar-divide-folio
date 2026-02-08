@@ -1,30 +1,31 @@
 'use client';
 
-import {
-  createContext,
-  useContext,
-  useState,
-  useRef,
-  useEffect,
-  ReactNode,
-  RefObject,
-} from 'react';
+import { createContext, useContext, ReactNode, RefObject } from 'react';
 import { MotionValue } from 'framer-motion';
 import { useTheme } from '@/theme/ThemeProvider';
 import type { FilterType } from '../types';
+import { useShowcaseFilter, useScrollState } from '../hooks';
 import { Background } from '../components';
 
+// ============================================
+// CONTEXT TYPES
+// ============================================
 interface ShowcaseContextValue {
+  // Filter state
   activeFilter: FilterType;
   setActiveFilter: (filter: FilterType) => void;
   showFeatured: boolean;
   showCertifications: boolean;
   showGitHub: boolean;
   showDesigns: boolean;
+  // Scroll state
   isScrolled: boolean;
   contentRef: RefObject<HTMLDivElement | null>;
 }
 
+// ============================================
+// CONTEXT
+// ============================================
 const ShowcaseContext = createContext<ShowcaseContextValue | null>(null);
 
 export const useShowcase = () => {
@@ -35,6 +36,30 @@ export const useShowcase = () => {
   return context;
 };
 
+// ============================================
+// SCROLLBAR STYLES
+// ============================================
+const ScrollbarStyles = ({ borderColor, hoverColor }: { borderColor: string; hoverColor: string }) => (
+  <style>{`
+    .showcase-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .showcase-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .showcase-scroll::-webkit-scrollbar-thumb {
+      background: ${borderColor};
+      border-radius: 3px;
+    }
+    .showcase-scroll::-webkit-scrollbar-thumb:hover {
+      background: ${hoverColor};
+    }
+  `}</style>
+);
+
+// ============================================
+// PROVIDER
+// ============================================
 interface ShowcaseProviderProps {
   children: ReactNode;
   sectionRef: RefObject<HTMLElement | null>;
@@ -47,79 +72,44 @@ export const ShowcaseProvider = ({
   backgroundY,
 }: ShowcaseProviderProps) => {
   const { colors } = useTheme();
-  const [activeFilter, setActiveFilter] = useState<FilterType>('all');
-  const [isScrolled, setIsScrolled] = useState(false);
-  const contentRef = useRef<HTMLDivElement>(null);
 
-  // Listen to scroll events on the content area
-  useEffect(() => {
-    const contentElement = contentRef.current;
-    if (!contentElement) return;
+  // Use extracted hooks
+  const filterState = useShowcaseFilter('all');
+  const scrollState = useScrollState(20);
 
-    const handleScroll = () => {
-      setIsScrolled(contentElement.scrollTop > 20);
-    };
-
-    contentElement.addEventListener('scroll', handleScroll, { passive: true });
-    return () => contentElement.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const showFeatured = activeFilter === 'all' || activeFilter === 'featured';
-  const showCertifications =
-    activeFilter === 'all' || activeFilter === 'certifications';
-  const showGitHub = activeFilter === 'all' || activeFilter === 'github';
-  const showDesigns = activeFilter === 'all' || activeFilter === 'designs';
+  const contextValue: ShowcaseContextValue = {
+    ...filterState,
+    isScrolled: scrollState.isScrolled,
+    contentRef: scrollState.contentRef,
+  };
 
   return (
-    <ShowcaseContext.Provider
-      value={{
-        activeFilter,
-        setActiveFilter,
-        showFeatured,
-        showCertifications,
-        showGitHub,
-        showDesigns,
-        isScrolled,
-        contentRef,
-      }}
-    >
+    <ShowcaseContext.Provider value={contextValue}>
       <section
         ref={sectionRef}
+        id="showcase"
         className="relative"
         style={{
           height: '400vh',
           background: colors.bg,
           fontFamily: 'var(--font-heading)',
         }}
-        id="showcase"
       >
-        {/* Sticky container - full viewport height */}
+        {/* Sticky viewport */}
         <section className="sticky top-0 h-screen overflow-hidden">
           <Background backgroundY={backgroundY} />
 
-          {/* Main layout - flex column to stack header, tabs, and content */}
+          {/* Content layout */}
           <div className="relative z-10 h-full flex flex-col">
             {children}
           </div>
         </section>
       </section>
 
-      {/* Custom scrollbar styles */}
-      <style>{`
-        .showcase-scroll::-webkit-scrollbar {
-          width: 6px;
-        }
-        .showcase-scroll::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .showcase-scroll::-webkit-scrollbar-thumb {
-          background: ${colors.border};
-          border-radius: 3px;
-        }
-        .showcase-scroll::-webkit-scrollbar-thumb:hover {
-          background: ${colors.textMuted};
-        }
-      `}</style>
+      <ScrollbarStyles
+        borderColor={colors.border}
+        hoverColor={colors.textMuted}
+      />
     </ShowcaseContext.Provider>
   );
 };

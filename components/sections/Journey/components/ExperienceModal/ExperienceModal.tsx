@@ -5,6 +5,7 @@ import { useTheme } from '@/theme/ThemeProvider';
 import { MotionDiv } from '@/components/motion';
 import { AnimatePresence } from 'framer-motion';
 import type { Experience } from '../../types';
+import { ModalHero } from './components';
 
 interface ExperienceModalProps {
   exp: Experience | null;
@@ -34,7 +35,7 @@ const ExperienceModal = ({ exp, onClose }: ExperienceModalProps) => {
 
   const isEng = exp.type === 'engineering';
   const accent = isEng ? colors.cyan : colors.orange;
-  const gold = '#FFD700';
+  const accentGlow = isEng ? colors.cyanGlow : colors.orangeGlow;
 
   return (
     <AnimatePresence>
@@ -42,7 +43,7 @@ const ExperienceModal = ({ exp, onClose }: ExperienceModalProps) => {
         <MotionDiv
           className="fixed inset-0 z-1000"
           style={{
-            background: 'rgba(10, 14, 39, 0.97)',
+            background: `${colors.bg}f8`, // 97% opacity
             backdropFilter: 'blur(30px)',
           }}
           initial={{ opacity: 0 }}
@@ -52,7 +53,7 @@ const ExperienceModal = ({ exp, onClose }: ExperienceModalProps) => {
         >
           {/* Close button */}
           <button
-            className="fixed top-6 right-6 w-12 h-12 rounded-full flex items-center justify-center cursor-pointer z-[1001]"
+            className="fixed top-6 right-6 w-12 h-12 rounded-full flex items-center justify-center cursor-pointer z-1001"
             style={{
               border: `1px solid ${colors.border}`,
               background: colors.bgSecondary,
@@ -78,9 +79,7 @@ const ExperienceModal = ({ exp, onClose }: ExperienceModalProps) => {
               <span
                 className="inline-block px-3.5 py-1.5 rounded-[20px] text-[10px] font-semibold uppercase tracking-[0.12em] mb-4"
                 style={{
-                  background: isEng
-                    ? 'rgba(0, 217, 255, 0.12)'
-                    : 'rgba(255, 107, 53, 0.12)',
+                  background: accentGlow,
                   color: accent,
                 }}
               >
@@ -125,15 +124,8 @@ const ExperienceModal = ({ exp, onClose }: ExperienceModalProps) => {
                 {exp.places && <span>📍 {exp.places[0]}</span>}
               </div>
 
-              {/* Hero placeholder */}
-              <div
-                className="w-full h-80 rounded-2xl mb-8 flex items-center justify-center"
-                style={{ background: colors.bgSecondary }}
-              >
-                <span className="text-6xl opacity-15">
-                  {exp.icon || (isEng ? '💻' : '🌍')}
-                </span>
-              </div>
+              {/* Hero visual */}
+              <ModalHero exp={exp} />
 
               {/* Body content */}
               <div
@@ -155,9 +147,8 @@ const ExperienceModal = ({ exp, onClose }: ExperienceModalProps) => {
                 <div
                   className="flex items-start gap-3 rounded-xl p-4 my-6"
                   style={{
-                    background:
-                      'linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%)',
-                    border: '1px solid rgba(255, 215, 0, 0.2)',
+                    background: `linear-gradient(135deg, ${colors.goldGlow} 0%, ${colors.goldGlow}80 100%)`,
+                    border: `1px solid ${colors.gold}33`,
                   }}
                 >
                   <span className="text-xl">🎉</span>

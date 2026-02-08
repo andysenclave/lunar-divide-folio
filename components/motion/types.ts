@@ -19,3 +19,4 @@ export type MotionLinkProps = HTMLMotionProps<'a'> & MotionPresetProps;
 export type MotionH1Props = HTMLMotionProps<'h1'> & MotionPresetProps;
 export type MotionH2Props = HTMLMotionProps<'h2'> & MotionPresetProps;
 export type MotionPProps = HTMLMotionProps<'p'> & MotionPresetProps;
+export type MotionFigureProps = HTMLMotionProps<'figure'> & MotionPresetProps;

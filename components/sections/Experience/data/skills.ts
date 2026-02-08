@@ -8,11 +8,11 @@ export const SKILL_CATEGORIES: Record<SideType, SkillCategory[]> = {
       icon: '\u269B', // Atom symbol
       description: 'Building scalable, accessible UIs',
       skills: [
-        { name: 'React', level: 95, years: 7 },
-        { name: 'Next.js', level: 92, years: 4 },
+        { name: 'React', level: 95, years: 8 },
+        { name: 'React Native', level: 85, years: 4 },
         { name: 'TypeScript', level: 90, years: 5 },
+        { name: 'Next.js', level: 92, years: 4 },
         { name: 'Redux', level: 88, years: 6 },
-        { name: 'Framer Motion', level: 85, years: 3 },
       ],
     },
     {
@@ -21,11 +21,11 @@ export const SKILL_CATEGORIES: Record<SideType, SkillCategory[]> = {
       icon: '\u26A1', // Lightning
       description: 'Designing robust service architectures',
       skills: [
-        { name: 'Node.js', level: 92, years: 8 },
-        { name: 'Express.js', level: 90, years: 8 },
+        { name: 'Node.js', level: 92, years: 10 },
         { name: 'GraphQL', level: 88, years: 5 },
-        { name: 'REST APIs', level: 95, years: 10 },
-        { name: 'PostgreSQL', level: 82, years: 6 },
+        { name: 'MongoDB', level: 85, years: 5 },
+        { name: 'Spring Boot', level: 70, years: 1 },
+        { name: 'MySQL', level: 80, years: 4 },
       ],
     },
     {
@@ -48,10 +48,10 @@ export const SKILL_CATEGORIES: Record<SideType, SkillCategory[]> = {
       description: 'Leading teams, defining architecture',
       skills: [
         { name: 'Team Leadership', level: 95, years: 6 },
-        { name: 'Code Review', level: 95, years: 8 },
         { name: 'Architecture', level: 90, years: 7 },
+        { name: 'CI/CD & DevOps', level: 85, years: 4 },
+        { name: 'Code Review', level: 95, years: 8 },
         { name: 'Mentoring', level: 92, years: 6 },
-        { name: 'Agile/Scrum', level: 88, years: 8 },
       ],
     },
   ],

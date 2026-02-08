@@ -14,6 +14,7 @@ export interface SocialLink {
 export interface FooterLink {
   name: string;
   href: string;
+  isScrollToTop?: boolean;
 }
 
 export interface TargetLocation {

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { MotionDiv, MotionH2, MotionP } from '@/components/motion';
 import { useTheme } from '@/theme/ThemeProvider';
 import { useShowcase } from '../../context';
 
@@ -9,7 +9,7 @@ const SectionHeader = () => {
   const { isScrolled } = useShowcase();
 
   return (
-    <motion.div
+    <MotionDiv
       className="text-center shrink-0"
       style={{
         padding: 'clamp(24px, 4vh, 40px) clamp(20px, 5vw, 48px)',
@@ -22,23 +22,25 @@ const SectionHeader = () => {
       }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
     >
-      <motion.h2
+      <MotionH2
         className="t-h1"
         style={{
           fontWeight: 700,
-          color: colors.white,
+          color: colors.text,
           letterSpacing: '-0.02em',
           lineHeight: 1.1,
         }}
         animate={{
-          fontSize: isScrolled ? 'clamp(24px, 3vw, 32px)' : 'clamp(32px, 5vw, 52px)',
+          fontSize: isScrolled
+            ? 'clamp(24px, 3vw, 32px)'
+            : 'clamp(32px, 5vw, 52px)',
         }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
       >
         Showcase
-      </motion.h2>
+      </MotionH2>
 
-      <motion.p
+      <MotionP
         style={{
           fontSize: 'clamp(13px, 1.5vw, 15px)',
           color: colors.textSecondary,
@@ -56,8 +58,8 @@ const SectionHeader = () => {
       >
         Featured work, certifications, and experiments from engineering to
         exploration.
-      </motion.p>
-    </motion.div>
+      </MotionP>
+    </MotionDiv>
   );
 };
 

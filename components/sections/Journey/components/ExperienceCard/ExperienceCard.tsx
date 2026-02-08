@@ -20,7 +20,7 @@ const ExperienceCard = ({
   const { colors } = useTheme();
   const isEng = exp.type === 'engineering';
   const accent = isEng ? colors.cyan : colors.orange;
-  const gold = '#FFD700';
+  const accentGlow = isEng ? colors.cyanGlow : colors.orangeGlow;
 
   return (
     <MotionDiv
@@ -28,10 +28,10 @@ const ExperienceCard = ({
       style={{
         width: 300,
         margin: '0 8px',
-        background: 'rgba(26, 31, 58, 0.95)',
-        border: `1px solid ${exp.featured ? gold : colors.border}`,
+        background: `${colors.bgSecondary}f2`, // 95% opacity
+        border: `1px solid ${exp.featured ? colors.gold : colors.border}`,
         backdropFilter: 'blur(16px)',
-        boxShadow: exp.featured ? '0 0 20px rgba(255, 215, 0, 0.15)' : 'none',
+        boxShadow: exp.featured ? `0 0 20px ${colors.goldGlow}` : 'none',
       }}
       initial={{ opacity: 0, x: isEng ? -40 : 40 }}
       animate={{
@@ -53,19 +53,13 @@ const ExperienceCard = ({
       {/* Header */}
       <header className="flex items-start justify-between gap-3 px-6 pt-5 pb-3">
         <span
-          className="px-3 py-1.5 rounded-xl text-[9px] font-semibold uppercase tracking-[0.1em] shrink-0 border"
+          className="px-3 py-1.5 rounded-xl text-[9px] font-semibold uppercase tracking-widest shrink-0 border"
           style={{
-            background: exp.featured
-              ? 'rgba(255, 215, 0, 0.15)'
-              : isEng
-                ? 'rgba(0, 217, 255, 0.15)'
-                : 'rgba(255, 107, 53, 0.15)',
-            color: exp.featured ? gold : accent,
+            background: exp.featured ? colors.goldGlow : accentGlow,
+            color: exp.featured ? colors.gold : accent,
             borderColor: exp.featured
-              ? 'rgba(255, 215, 0, 0.3)'
-              : isEng
-                ? 'rgba(0, 217, 255, 0.25)'
-                : 'rgba(255, 107, 53, 0.25)',
+              ? `${colors.gold}4d` // 30% opacity
+              : `${accent}40`, // 25% opacity
           }}
         >
           {exp.featured ? '⭐ ' : ''}
@@ -123,7 +117,7 @@ const ExperienceCard = ({
                 className="px-2.5 py-1.5 rounded-lg"
                 style={{
                   fontSize: '10px',
-                  background: 'rgba(255,255,255,0.05)',
+                  background: colors.surfaceHover,
                   color: colors.textSecondary,
                 }}
               >
@@ -147,7 +141,7 @@ const ExperienceCard = ({
             {exp.date}
           </time>
           <span
-            className="font-semibold tracking-[0.1em]"
+            className="font-semibold tracking-widest"
             style={{
               fontSize: '10px',
               color: accent,

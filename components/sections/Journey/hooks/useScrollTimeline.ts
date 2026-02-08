@@ -9,13 +9,25 @@ import { LOCATIONS } from '../data';
 // ============================================
 
 interface TimelineConfig {
-  progressPerLocation: number;
+  initialHold: number;
   transitionTime: number;
   cardRevealDelay: number;
 }
 
+// Dwell times per location (percentage of scroll progress)
+// Total should sum to ~0.92 (leaving room for initial hold and final state)
+const LOCATION_DWELL_TIMES: Record<string, number> = {
+  'kolkata-2': 0.24, // 2021-2026: 10 experiences, needs more scroll time
+  'berlin': 0.16, // European experience
+  'oslo': 0.18, // European experience (longer stint)
+  'kolkata-1': 0.12, // Standard
+  'chennai': 0.12, // Standard
+};
+
+const DEFAULT_DWELL = 0.14;
+
 const DEFAULT_CONFIG: TimelineConfig = {
-  progressPerLocation: 0.14,
+  initialHold: 0.06, // Buffer before animation starts
   transitionTime: 0.05,
   cardRevealDelay: 0.018,
 };
@@ -25,11 +37,30 @@ export function buildScrollTimeline(
   config: TimelineConfig = DEFAULT_CONFIG
 ): TimelineKeyframe[] {
   const timeline: TimelineKeyframe[] = [];
-  let currentProgress = 0;
-  const { progressPerLocation, transitionTime, cardRevealDelay } = config;
+  const { initialHold, transitionTime, cardRevealDelay } = config;
+
+  // Initial state: Globe centered on first location
+  const firstLoc = locations[0];
+  if (firstLoc) {
+    timeline.push({
+      progress: 0,
+      scale: 1.8,
+      rotation: [-firstLoc.coords[0], -firstLoc.coords[1]],
+      locationId: firstLoc.id,
+      year: firstLoc.year,
+      era: firstLoc.era,
+      cardVisibility: [],
+      isTransition: false,
+    });
+  }
+
+  // Start with initial hold (globe stays on first location)
+  let currentProgress = initialHold;
 
   locations.forEach((loc, locIndex) => {
     const startProgress = currentProgress;
+    const progressPerLocation =
+      LOCATION_DWELL_TIMES[loc.id] || DEFAULT_DWELL;
 
     // Add transition keyframes between locations
     if (locIndex > 0) {
@@ -127,17 +158,21 @@ export function buildScrollTimeline(
     currentProgress = dwellStart + progressPerLocation;
   });
 
-  // Final keyframe
-  timeline.push({
-    progress: 0.98,
-    scale: 1.1,
-    rotation: [-82, -22],
-    locationId: null,
-    year: 2013,
-    era: 'Where It All Began',
-    cardVisibility: [],
-    isTransition: false,
-  });
+  // Keep the last location's state stable through the end
+  // No fancy zoom-out transition - just maintain the final view
+  const lastLoc = locations[locations.length - 1];
+  if (lastLoc) {
+    timeline.push({
+      progress: 1.0,
+      scale: 2.2,
+      rotation: [-lastLoc.coords[0], -lastLoc.coords[1]],
+      locationId: lastLoc.id,
+      year: parseInt(lastLoc.period.split('–')[0]) || lastLoc.year,
+      era: lastLoc.era,
+      cardVisibility: lastLoc.experiences.map((_, i) => i),
+      isTransition: false,
+    });
+  }
 
   return timeline;
 }

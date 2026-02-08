@@ -76,6 +76,7 @@ export const JourneyProvider = ({
       {/* Main journey section */}
       <section
         ref={sectionRef}
+        id="journey"
         className="relative"
         style={{ height: '2800vh' }}
       >
