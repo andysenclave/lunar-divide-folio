@@ -5,7 +5,6 @@ import { useTheme } from '@/theme/ThemeProvider';
 import { useMoonState } from './hooks/useMoonState';
 import { MoonHoverWrapper } from './components';
 import MoonSurface from './MoonSurface';
-import EngineeringPortrait from '@/components/sections/Hero/components/PortraitOverlays/EngineeringPortrait';
 
 export default function FloatingMoon() {
   const { mode } = useTheme();
@@ -14,7 +13,6 @@ export default function FloatingMoon() {
     moonY,
     moonScale,
     moonRotation,
-    lightX,
     combinedOpacity,
     isInCorner,
     isHovered,
@@ -58,11 +56,7 @@ export default function FloatingMoon() {
           onHoverEnd={() => setIsHovered(false)}
           onClick={() => isInCorner && handleReturnHome()}
         >
-          <MoonSurface
-            lightX={lightX}
-            moonRotation={moonRotation}
-            mode={mode}
-          />
+          <MoonSurface mode={mode} />
         </MoonHoverWrapper>
       </MotionDiv>
     </MotionDiv>

@@ -1,40 +1,20 @@
 'use client';
 
-import { MotionValue } from 'framer-motion';
 import { ThemeMode } from '@/theme/theme';
-import { useMoonTexture, useMoonLighting } from './hooks';
-import {
-  AtmosphericGlow,
-  MoonTextureLayer,
-  TerminatorLayer,
-  HighlightLayer,
-  ShadowLayers,
-  OuterGlowRing,
-} from './components';
+import styles from './MoonSurface.module.css';
 
 interface MoonSurfaceProps {
-  lightX: MotionValue<number>;
-  moonRotation: MotionValue<number>;
   mode: ThemeMode;
 }
 
 /**
- * Renders the moon surface with procedural texture and dynamic lighting effects.
- * Composed of multiple visual layers for realistic 3D appearance.
+ * Renders the moon surface with real texture and CSS-based rotation animation.
+ * Uses the 2K moon texture from Solar System Scope with pure CSS animation.
  */
-export default function MoonSurface({ lightX, mode }: MoonSurfaceProps) {
-  const { texture, isLoading } = useMoonTexture();
-  const {
-    boxShadow,
-    terminatorGradient,
-    backgroundPosition,
-    highlightGradient,
-  } = useMoonLighting({ lightX });
-
-  // Don't render until texture is ready
-  if (isLoading || !texture) {
-    return null;
-  }
+export default function MoonSurface({ mode }: MoonSurfaceProps) {
+  const glowColor = mode === 'dark'
+    ? 'rgba(255, 255, 255, 0.15)'
+    : 'rgba(200, 200, 220, 0.25)';
 
   return (
     <article
@@ -42,22 +22,24 @@ export default function MoonSurface({ lightX, mode }: MoonSurfaceProps) {
       aria-label="Decorative moon"
       className="relative w-full h-full rounded-full"
     >
-      <AtmosphericGlow mode={mode} />
+      {/* Atmospheric glow */}
+      <div
+        className="absolute inset-[-15%] rounded-full pointer-events-none"
+        style={{
+          background: `radial-gradient(circle, ${glowColor} 0%, transparent 70%)`,
+        }}
+      />
 
-      <section
-        aria-hidden="true"
-        className="relative w-full h-full rounded-full overflow-hidden"
-      >
-        <MoonTextureLayer
-          texture={texture}
-          backgroundPosition={backgroundPosition}
-        />
-        <TerminatorLayer gradient={terminatorGradient} />
-        <HighlightLayer gradient={highlightGradient} />
-        <ShadowLayers boxShadow={boxShadow} />
-      </section>
+      {/* Moon sphere with texture */}
+      <div className={styles.moon} />
 
-      <OuterGlowRing mode={mode} />
+      {/* Outer glow ring */}
+      <div
+        className="absolute inset-[-2px] rounded-full pointer-events-none"
+        style={{
+          background: `radial-gradient(circle, transparent 45%, ${glowColor} 50%, transparent 55%)`,
+        }}
+      />
     </article>
   );
 }
