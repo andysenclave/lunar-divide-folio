@@ -1,3 +1,4 @@
+import { cdn } from '@/config';
 import { useTheme } from '@/theme/ThemeProvider';
 
 const EngineeringPortrait = () => {
@@ -22,7 +23,7 @@ const EngineeringPortrait = () => {
       {/* Using native img to avoid Next.js Image processing */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={`${process.env.NEXT_PUBLIC_BLOB_BASE_URL}/portraits/engineering-portrait.png`}
+        src={cdn.portrait('engineering-portrait.png')}
         alt="Andy working on laptop with headphones"
         style={{
           maxWidth: '110%',

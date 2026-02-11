@@ -1,6 +1,7 @@
 'use client';
 
 import { MotionButton, MotionHeader, MotionLink } from '@/components/motion';
+import { cdn } from '@/config';
 import { NAV_ITEMS } from '@/constants/navigation';
 import { useAnimation } from '@/context';
 import { useTheme } from '@/theme/ThemeProvider';
@@ -48,7 +49,7 @@ export default function Header() {
         }}
       >
         <Image
-          src={`${process.env.NEXT_PUBLIC_BLOB_BASE_URL}/portraits/avatar.jpg`}
+          src={cdn.portrait('avatar.jpg')}
           alt=""
           width={28}
           height={28}

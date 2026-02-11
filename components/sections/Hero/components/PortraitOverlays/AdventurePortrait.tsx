@@ -1,3 +1,4 @@
+import { cdn } from '@/config';
 import { useTheme } from '@/theme/ThemeProvider';
 
 const AdventurePortrait = () => {
@@ -22,7 +23,7 @@ const AdventurePortrait = () => {
       {/* Using native img to avoid Next.js Image processing */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={`${process.env.NEXT_PUBLIC_BLOB_BASE_URL}/portraits/adventure-portrait.jpeg`}
+        src={cdn.portrait('adventure-portrait.jpeg')}
         alt="Skydiving adventure with mountains in the background"
         style={{
           transform: 'scale(1.3)',

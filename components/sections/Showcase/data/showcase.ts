@@ -1,3 +1,4 @@
+import { cdn } from '@/config';
 import type { ShowcaseData, FilterItem } from '../types';
 
 export const FILTERS: FilterItem[] = [
@@ -47,7 +48,7 @@ export const SHOWCASE: ShowcaseData = {
       code: 'GH-300',
       issuer: 'GitHub',
       issuerLogo: '🐙',
-      badgeImage: `${process.env.NEXT_PUBLIC_BLOB_BASE_URL}/badges/github-copilot.svg`,
+      badgeImage: cdn.badge('github-copilot.svg'),
       description:
         'Certified in AI-assisted development with GitHub Copilot. Demonstrates expertise in prompt engineering, code generation, and AI pair programming workflows.',
       score: 92,
@@ -122,19 +123,19 @@ export const SHOWCASE: ShowcaseData = {
       id: 'hero-mockup-1',
       title: 'Hero Section - Neutral State',
       description: 'Moon in center with dual-side labels',
-      image: `${process.env.NEXT_PUBLIC_BLOB_BASE_URL}/showcase/screenshot-1.png`,
+      image: cdn.showcase('screenshot-1.png'),
     },
     {
       id: 'hero-mockup-2',
       title: 'Hero Section - Engineering Hover',
       description: 'Left side hover reveals engineering persona',
-      image: `${process.env.NEXT_PUBLIC_BLOB_BASE_URL}/showcase/screenshot-2-hover-left.png`,
+      image: cdn.showcase('screenshot-2-hover-left.png'),
     },
     {
       id: 'hero-mockup-3',
       title: 'Hero Section - Adventure Hover',
       description: 'Right side hover reveals adventure persona',
-      image: `${process.env.NEXT_PUBLIC_BLOB_BASE_URL}/showcase/screenshot-2-hover-right.png`,
+      image: cdn.showcase('screenshot-2-hover-right.png'),
     },
   ],
 };

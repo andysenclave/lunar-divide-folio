@@ -1,5 +1,6 @@
 'use client';
 
+import { cdn } from '@/config';
 import { ThemeMode } from '@/theme/theme';
 
 interface MoonSurfaceProps {
@@ -31,9 +32,8 @@ const KEYFRAMES_CSS = `
  * Uses the 2K moon texture from Solar System Scope with pure CSS animation.
  */
 export function MoonSurface({ mode }: MoonSurfaceProps) {
-  const glowColor = mode === 'dark'
-    ? 'rgba(255, 255, 255, 0.15)'
-    : 'rgba(200, 200, 220, 0.25)';
+  const glowColor =
+    mode === 'dark' ? 'rgba(255, 255, 255, 0.15)' : 'rgba(200, 200, 220, 0.25)';
 
   return (
     <article
@@ -56,13 +56,13 @@ export function MoonSurface({ mode }: MoonSurfaceProps) {
         className="motion-safe:animate-[moonRotation_15s_linear_infinite] motion-reduce:animate-none motion-reduce:bg-center"
         style={{
           ...MOON_STYLES,
-          backgroundImage: `url('${process.env.NEXT_PUBLIC_BLOB_BASE_URL}/textures/moon.jpg')`,
+          backgroundImage: `url('${cdn.texture('moon.jpg')}')`,
         }}
       />
 
       {/* Outer glow ring */}
       <div
-        className="absolute inset-[-2px] rounded-full pointer-events-none"
+        className="absolute -inset-0.5 rounded-full pointer-events-none"
         style={{
           background: `radial-gradient(circle, transparent 45%, ${glowColor} 50%, transparent 55%)`,
         }}
