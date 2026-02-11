@@ -48,7 +48,7 @@ export default function Header() {
         }}
       >
         <Image
-          src="/images/avatar.jpg"
+          src={`${process.env.NEXT_PUBLIC_BLOB_BASE_URL}/portraits/avatar.jpg`}
           alt=""
           width={28}
           height={28}

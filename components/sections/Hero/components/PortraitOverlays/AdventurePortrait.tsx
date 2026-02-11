@@ -22,7 +22,7 @@ const AdventurePortrait = () => {
       {/* Using native img to avoid Next.js Image processing */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/adventure-portrait.jpeg"
+        src={`${process.env.NEXT_PUBLIC_BLOB_BASE_URL}/portraits/adventure-portrait.jpeg`}
         alt="Skydiving adventure with mountains in the background"
         style={{
           transform: 'scale(1.3)',

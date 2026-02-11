@@ -3,8 +3,7 @@
 import { MotionDiv } from '@/components/motion';
 import { useTheme } from '@/theme/ThemeProvider';
 import { useMoonState } from './hooks/useMoonState';
-import { MoonHoverWrapper } from './components';
-import MoonSurface from './MoonSurface';
+import { MoonHoverWrapper, MoonSurface } from './components';
 
 export default function FloatingMoon() {
   const { mode } = useTheme();
