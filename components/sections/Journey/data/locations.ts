@@ -31,7 +31,7 @@ export const LOCATIONS: Location[] = [
         content: {
           intro:
             'Leading frontend engineering for one of the largest banks in the world.',
-          body: '<p>Managing 8 UI developers across 6 squads on a ~50-member program (QA, Backend, DB, UI). Total UI team of 21 members with 2-4 senior devs per squad. Building web and mobile apps for capital markets with real-time GraphQL subscriptions.</p><h3>Program Scale</h3><ul><li>~50 members total (QA, Backend, DB, UI)</li><li>6 squads with rotating leadership</li><li>21 UI team members, 8 direct reports</li><li>4 leads managing ~3 squads each</li></ul><h3>Technical Ownership</h3><ul><li>React & React Native across multiple squads</li><li>GraphQL subscriptions for live market updates</li><li>CI/CD: Jenkins, Helios, Docker with security policies</li><li>85% unit test coverage gate via SonarQube</li><li>GitHub security checks and SonarQube for tech debt</li></ul><h3>Leadership & Delivery</h3><ul><li>Multiple daily standups across squads</li><li>Coordination with Scrum Masters, POs, DevOps</li><li>Hands-on PR reviews, merge management, deployment oversight</li></ul>',
+          body: '<p>Managing 8 UI developers across 6 squads on a ~50-member program (QA, Backend, DB, UI). Total UI team of 21 members with 2-4 senior devs per squad. Building web and mobile apps for capital markets with real-time GraphQL subscriptions.</p>',
           tags: [
             'React',
             'React Native',
@@ -41,6 +41,45 @@ export const LOCATIONS: Location[] = [
             'RBC',
             'Spring Boot',
           ],
+        },
+        professional: {
+          projectDescription:
+            'Leading frontend engineering for Royal Bank of Canada\'s capital markets platform, building web and mobile applications with real-time data subscriptions for trading and portfolio management.',
+          domain: 'Capital Markets',
+          client: 'Royal Bank of Canada',
+          employer: 'Nous Infosystems',
+          location: 'Kolkata, India (Remote)',
+          employmentType: 'full-time',
+          team: {
+            directReports: 8,
+            totalTeam: 21,
+            programSize: 50,
+            structure:
+              '6 squads with 2-4 senior devs per squad, 4 leads managing ~3 squads each',
+          },
+          roleDescription:
+            'Senior Technical Lead responsible for all frontend architecture decisions, code quality standards, CI/CD pipelines, and developer experience across a multi-squad capital markets program. Hands-on with PR reviews, merge management, and deployment oversight while coordinating with Scrum Masters, Product Owners, and DevOps.',
+          responsibilities: [
+            'Architect and maintain frontend applications across 6 squads using React, React Native, and TypeScript',
+            'Define and enforce coding standards, achieving 85% unit test coverage gate via SonarQube',
+            'Own CI/CD pipeline configuration with Jenkins, Helios, and Docker under enterprise security policies',
+            'Conduct daily standups, sprint ceremonies, and cross-squad coordination',
+            'Perform hands-on PR reviews, merge management, and production deployment oversight',
+            'Recruit, mentor, and evaluate UI developers across the program',
+          ],
+          achievements: [
+            'Scaled frontend team from initial setup to 21 UI developers across 6 squads',
+            'Established 85% test coverage gate that reduced production defects',
+            'Achieved GitHub Copilot Certification (GH-300) with 92% score',
+            'Implemented real-time GraphQL subscriptions for live market data feeds',
+          ],
+          techStack: [
+            { category: 'Frontend', technologies: ['React', 'React Native', 'TypeScript'] },
+            { category: 'API', technologies: ['GraphQL', 'GraphQL Subscriptions'] },
+            { category: 'Backend', technologies: ['Spring Boot', 'Node.js'] },
+            { category: 'DevOps', technologies: ['Jenkins', 'Helios', 'Docker', 'SonarQube'] },
+          ],
+          certifications: ['GitHub Copilot Certified (GH-300) — 92%'],
         },
       },
       {
@@ -54,6 +93,7 @@ export const LOCATIONS: Location[] = [
         places: ['Dooars', 'Kurseong', 'Kalimpong', 'North Bengal'],
         hasVideo: true,
         hasPhotos: true,
+        images: ['adventure/dooars-foothills1.jpg', 'adventure/dooars-foothills2.jpg', 'adventure/dooars-foothills3.jpg'],
         content: {
           intro:
             'The foothills of the Eastern Himalayas — where every turn reveals a different shade of green.',
@@ -81,6 +121,7 @@ export const LOCATIONS: Location[] = [
         places: ['Darjeeling', 'Ghoom', 'Sterling', 'Taj', 'ITC'],
         hasVideo: true,
         hasPhotos: true,
+        images: ['adventure/himalayan-luxe1.jpg', 'adventure/himalayan-luxe2.jpg', 'adventure/himalayan-luxe3.jpg'],
         content: {
           intro:
             'Some journeys are about the destination. Others are about how you experience it.',
@@ -107,6 +148,7 @@ export const LOCATIONS: Location[] = [
         places: ['Purulia', 'Baranti', 'Maithon Dam', 'West Bengal'],
         hasVideo: true,
         hasPhotos: true,
+        images: ['adventure/red-earth-expedition1.jpg', 'adventure/red-earth-expedition2.jpg', 'adventure/red-earth-expedition3.jpg'],
         content: {
           intro:
             'Where the red earth meets the sky — Purulia is Bengal stripped to its raw, untouched essence.',
@@ -131,6 +173,7 @@ export const LOCATIONS: Location[] = [
         date: '2024',
         places: ['Bolpur', 'Shantiniketan', 'West Bengal'],
         hasPhotos: true,
+        images: ['adventure/shantiniketan-sojourn.jpg'],
         content: {
           intro:
             'Shantiniketan is not a place — it is an idea. A reminder that creativity has no boundaries.',
@@ -157,6 +200,7 @@ export const LOCATIONS: Location[] = [
         featured: true,
         places: ['Eastern India', 'YouTube'],
         hasVideo: true,
+        images: ['adventure/eastern-horizons1.jpg', 'adventure/eastern-horizons2.jpg', 'adventure/eastern-horizons3.jpg'],
         content: {
           intro:
             "Andy's Enclave became the canvas — a YouTube channel where engineering meets adventure.",
@@ -181,6 +225,7 @@ export const LOCATIONS: Location[] = [
         places: ['Puri', 'Konark', 'Odisha'],
         hasVideo: true,
         hasPhotos: true,
+        images: ['adventure/coastal-pilgrimage1.jpg', 'adventure/coastal-pilgrimage2.jpg', 'adventure/coastal-pilgrimage3.jpg'],
         content: {
           intro:
             'Where spirituality meets the sea — a pilgrimage that was as much about the journey as the destination.',
@@ -199,7 +244,7 @@ export const LOCATIONS: Location[] = [
         date: '2021 – 2023',
         content: {
           intro: 'Built the foundation for credit rating committee workflows.',
-          body: '<p>Led two interlinked squads building a comprehensive meeting lifecycle platform for Fitch Ratings.</p><h3>Platform Architecture</h3><table><tr><td><strong>Committee Squad (2 UI Devs)</strong></td><td>Meeting participants, feedback collection, voice notes, email responses, agenda generation</td></tr><tr><td><strong>Workflow Squad (3 UI Devs)</strong></td><td>Meeting planning, decision recording, arguments/conversations capture, architecture documentation</td></tr></table><h3>Technical Contributions</h3><ul><li>Architected real-time features using GraphQL Subscriptions for live data feeds</li><li>Built middleware layer: Node.js, Express, MongoDB, GraphQL</li><li>Made critical decisions on performance optimization, caching strategies, and service boundaries</li><li>Established patterns for developers to follow, then enabled ownership</li></ul><h3>Leadership & Delivery</h3><ul><li>Led team of 5 UI developers across both squads</li><li>Daily collaboration with Scrum Masters, Product Owners, Managers</li><li>Created and sized tasks, ran sprint ceremonies</li><li>Code reviews with focus on quality and maintainability</li></ul>',
+          body: '<p>Led two interlinked squads building a comprehensive meeting lifecycle platform for Fitch Ratings.</p>',
           tags: [
             'Node.js',
             'MongoDB',
@@ -208,6 +253,43 @@ export const LOCATIONS: Location[] = [
             'Architecture',
             'Fitch',
             'Leadership',
+          ],
+        },
+        professional: {
+          projectDescription:
+            'Architected and led development of a real-time meeting lifecycle platform for credit rating committee workflows at Fitch Ratings, managing feedback collection, agenda generation, and decision recording.',
+          domain: 'Credit Ratings',
+          client: 'Fitch Ratings',
+          employer: 'Nous Infosystems',
+          location: 'Kolkata, India (Remote)',
+          employmentType: 'full-time',
+          team: {
+            directReports: 5,
+            totalTeam: 5,
+            structure:
+              'Committee Squad (2 UI devs) + Workflow Squad (3 UI devs)',
+          },
+          roleDescription:
+            'Technical Lead responsible for frontend and middleware architecture across two interlinked squads building a comprehensive meeting lifecycle platform. Made critical decisions on performance optimization, caching strategies, and service boundaries while establishing development patterns for the team.',
+          responsibilities: [
+            'Architect real-time features using GraphQL Subscriptions for live data feeds',
+            'Build and maintain middleware layer with Node.js, Express, MongoDB, and GraphQL',
+            'Lead 5 UI developers across Committee and Workflow squads',
+            'Define architecture patterns and enable developer ownership',
+            'Collaborate daily with Scrum Masters, Product Owners, and Managers',
+            'Create and size tasks, run sprint ceremonies, and conduct code reviews',
+          ],
+          achievements: [
+            'Delivered real-time meeting platform handling live feedback and decision recording',
+            'Established architectural patterns adopted by both squads for consistent development',
+            'Built middleware layer from scratch serving both frontend squads',
+            'Optimized caching strategies reducing API response times',
+          ],
+          techStack: [
+            { category: 'Frontend', technologies: ['React', 'TypeScript'] },
+            { category: 'API', technologies: ['GraphQL', 'GraphQL Subscriptions', 'REST'] },
+            { category: 'Backend', technologies: ['Node.js', 'Express'] },
+            { category: 'Database', technologies: ['MongoDB'] },
           ],
         },
       },
@@ -223,6 +305,7 @@ export const LOCATIONS: Location[] = [
         featured: true,
         places: ['Kolkata', 'Home Studio'],
         hasVideo: true,
+        images: ['adventure/midnight-tales1.png', 'adventure/midnight-tales2.png'],
         content: {
           intro:
             'When the sun sets, the stories begin. Building an audio universe one tale at a time.',
@@ -247,7 +330,7 @@ export const LOCATIONS: Location[] = [
         featured: true,
         content: {
           intro: 'The entrepreneurial chapter — building a hyperlocal platform from scratch.',
-          body: '<p>Co-founded and led technology for a hyperlocal e-commerce platform connecting local businesses with neighborhood customers. Full ownership of platform architecture, team building, and go-to-market technical execution.</p><h3>What We Built</h3><ul><li><strong>Localite</strong> — Consumer-facing mobile app</li><li><strong>Business Partner</strong> — Merchant management app</li><li><strong>Delivery Partner</strong> — Logistics and fulfillment app</li></ul><h3>Tech Stack</h3><ul><li>Mobile: React Native</li><li>Web: Next.js, React</li><li>Backend: Node.js, Express, NestJS</li><li>API: GraphQL, REST</li><li>Database: MongoDB, MySQL</li><li>Infrastructure: Docker, CI/CD via Bamboo</li></ul><h3>Integrations</h3><ul><li>Google Maps — Location services, routing</li><li>Razorpay, Paytm — Payment processing</li><li>SMS Gateway — OTP and notifications</li><li>WhatsApp Business API — Customer communication</li><li>FCM — Push notifications</li></ul><h3>Content & Marketing</h3><ul><li>Hired and managed video editing team</li><li>Defined tooling standards: Final Cut Pro, DaVinci Resolve, Canva</li><li>Directed content strategy for launch campaigns</li><li>Results: ~10,000 views, ~500+ engagements on promotional content</li></ul><h3>Team Leadership</h3><p>Led team of 3 developers end-to-end. Drove security, reliability, and scalability as core requirements.</p>',
+          body: '<p>Co-founded and led technology for a hyperlocal e-commerce platform connecting local businesses with neighborhood customers.</p>',
           tags: [
             'React Native',
             'NestJS',
@@ -256,6 +339,41 @@ export const LOCATIONS: Location[] = [
             'Startup',
             'Entrepreneurship',
             'Content Marketing',
+          ],
+        },
+        professional: {
+          projectDescription:
+            'Co-founded and led technology for a hyperlocal e-commerce platform connecting local businesses with neighborhood customers through a 3-app ecosystem: Localite (consumer), Business Partner (merchant), and Delivery Partner (logistics).',
+          domain: 'Hyperlocal E-commerce',
+          location: 'Kolkata, India',
+          employmentType: 'co-founder',
+          team: {
+            directReports: 3,
+            totalTeam: 6,
+            structure: '3 developers + video editing team for content marketing',
+          },
+          roleDescription:
+            'CTO with full ownership of platform architecture, team building, technology decisions, and go-to-market technical execution. Also directed content strategy and marketing campaigns for launch.',
+          responsibilities: [
+            'Design full-stack architecture for consumer, merchant, and delivery applications',
+            'Lead team of 3 developers through end-to-end product delivery',
+            'Integrate payment gateways (Razorpay, Paytm), location services (Google Maps), and messaging (WhatsApp Business API)',
+            'Define tooling standards and workflows for content creation and marketing',
+            'Drive security, reliability, and scalability as core platform requirements',
+          ],
+          achievements: [
+            'Built 3-app ecosystem from scratch: Localite (consumer), Business Partner (merchant), Delivery Partner (logistics)',
+            'Integrated 5+ third-party services including Razorpay, Google Maps, WhatsApp Business API, FCM',
+            'Achieved ~10,000 views and 500+ engagements on launch promotional content',
+            'Delivered MVP within 5-month timeline (Aug–Dec 2021)',
+          ],
+          techStack: [
+            { category: 'Mobile', technologies: ['React Native'] },
+            { category: 'Frontend', technologies: ['Next.js', 'React'] },
+            { category: 'Backend', technologies: ['NestJS', 'Node.js', 'Express'] },
+            { category: 'API', technologies: ['GraphQL', 'REST'] },
+            { category: 'Database', technologies: ['MongoDB', 'MySQL'] },
+            { category: 'Infrastructure', technologies: ['Docker', 'Bamboo CI/CD'] },
           ],
         },
       },
@@ -282,8 +400,39 @@ export const LOCATIONS: Location[] = [
         funFact: 'Met Dan Abramov at a Berlin hackathon!',
         content: {
           intro: 'Resigned from Cognizant. Joined the Berlin startup scene.',
-          body: '<p>Berlin won over offers from Rotterdam and Hamburg — more opportunities, lower cost of living, and startup energy.</p><h3>Senior Fullstack Engineer (2020-2021)</h3><ul><li>Led team of 3 UI developers at FinTech startup</li><li>Built shared component library from scratch</li><li>Implemented SME financing onboarding flows</li></ul><h3>Frontend Engineer (2019-2020)</h3><ul><li>React, Redux, Styled Components development</li><li>SME lending platform features</li><li>Marketing pages and brand experience</li></ul><h3>Tech Stack</h3><p>React, Redux, Styled Components, Node.js, Jest</p><p>The chance to understand why ideas succeed, and why they fail.</p>',
+          body: '<p>Berlin won over offers from Rotterdam and Hamburg — more opportunities, lower cost of living, and startup energy.</p>',
           tags: ['FinTech', 'React', 'Component Library', 'Startup', 'Berlin', 'Team Lead'],
+        },
+        professional: {
+          projectDescription:
+            'Full-stack development at a Berlin FinTech startup building an SME financing platform, growing from Frontend Engineer to Senior Fullstack Engineer leading a team.',
+          domain: 'FinTech / SME Financing',
+          location: 'Berlin, Germany',
+          employmentType: 'full-time',
+          team: {
+            directReports: 3,
+            totalTeam: 3,
+            structure: 'UI team of 3 developers within engineering department',
+          },
+          roleDescription:
+            'Started as Frontend Engineer delivering React-based UI features, grew to Senior Fullstack Engineer leading a team of 3, owning shared component library and core SME onboarding flows.',
+          responsibilities: [
+            'Lead team of 3 UI developers as Senior Fullstack Engineer',
+            'Design and build shared component library from scratch',
+            'Implement SME financing onboarding flows end-to-end',
+            'Develop marketing pages and brand experience components',
+            'Write and maintain comprehensive test suites with Jest',
+          ],
+          achievements: [
+            'Promoted from Frontend Engineer to Senior Fullstack Engineer within 1 year',
+            'Built reusable component library adopted across all product teams',
+            'Delivered complete SME lending onboarding flow used by thousands of businesses',
+          ],
+          techStack: [
+            { category: 'Frontend', technologies: ['React', 'Redux', 'Styled Components'] },
+            { category: 'Backend', technologies: ['Node.js'] },
+            { category: 'Testing', technologies: ['Jest'] },
+          ],
         },
       },
       {
@@ -297,6 +446,7 @@ export const LOCATIONS: Location[] = [
         featured: true,
         places: ['Krakow', 'Poland'],
         hasPhotos: true,
+        images: ['adventure/krakow-offsite1.jpg', 'adventure/krakow-offsite2.jpg', 'adventure/krakow-offsite3.jpg', 'adventure/krakow-offsite4.jpg'],
         content: {
           intro: 'Five days in Krakow with the FinCompare team.',
           body: '<p>Mornings were work — ideation sessions, planning, gap analysis. But afternoons? Rowing competitions, surfing, football, flying kites.</p><p>Evenings brought themed parties and the kind of bonding that turns colleagues into close friends. One of the best weeks of my life.</p>',
@@ -312,26 +462,12 @@ export const LOCATIONS: Location[] = [
         desc: 'A month of remote work in Amsterdam. Morning espressos, afternoon work, evening strolls by the canals.',
         date: '2021',
         places: ['Amsterdam', 'Netherlands'],
+        images: ['adventure/amsterdam-remote1.jpg', 'adventure/amsterdam-remote2.jpg', 'adventure/amsterdam-remote3.jpg', 'adventure/amsterdam-remote4.jpg'],
         content: {
           intro:
             'As lockdowns lifted, Amsterdam for a month of working remotely.',
           body: '<p>Cafes by the canals. Parks and gardens. A city designed for walking. Strict restrictions still in place, but Amsterdam found a way to stay alive — and so did we.</p><p>Morning espressos, afternoon work sessions, evening strolls through a city that felt like it was exhaling after holding its breath.</p>',
           tags: ['Amsterdam', 'Remote Work', 'Netherlands', 'Canals'],
-        },
-      },
-      {
-        id: 'munich-oktoberfest',
-        type: 'adventure',
-        icon: '🍺',
-        title: 'Munich & Oktoberfest',
-        subtitle: 'Beer, Football & Bavaria',
-        desc: 'Oktoberfest with friends, Bayern Munich match. The combination of beer, football, and Bavarian atmosphere.',
-        date: '2019',
-        places: ['Munich', 'Germany'],
-        content: {
-          intro: 'Munich with friends for Oktoberfest and a Bayern match.',
-          body: '<p>The combination of beer, football, and the Bavarian atmosphere is hard to beat. Traditional lederhosen, giant pretzels, and the energy of thousands celebrating together.</p>',
-          tags: ['Oktoberfest', 'Munich', 'Bayern', 'Football'],
         },
       },
     ],
@@ -356,8 +492,41 @@ export const LOCATIONS: Location[] = [
         featured: true,
         content: {
           intro: 'Norway changed everything — technically and personally.',
-          body: '<p>Traveled to Oslo for Knowledge Transition, ended up staying over a year. First time in Europe — the quiet, the systems that just worked.</p><h3>TrackMyCase — Full Ownership</h3><p>Express.js backend, REST APIs, real-time updates via MQTT, CouchDB for document storage. Complete full-stack ownership.</p>',
+          body: '<p>Traveled to Oslo for Knowledge Transition, ended up staying over a year. First time in Europe.</p>',
           tags: ['React', 'Redux Saga', 'Express.js', 'MQTT', 'Full Stack'],
+        },
+        professional: {
+          projectDescription:
+            'Led knowledge transition for React applications and took full-stack ownership of TrackMyCase, a customer case management portal for Storebrand, Norway\'s largest insurance provider.',
+          domain: 'Insurance',
+          client: 'Storebrand ASA',
+          employer: 'Cognizant Technology Solutions',
+          location: 'Oslo, Norway (Onsite)',
+          employmentType: 'full-time',
+          team: {
+            totalTeam: 4,
+            structure: 'Onsite coordinator bridging offshore and onsite teams',
+          },
+          roleDescription:
+            'Onsite Coordinator and Team Lead responsible for knowledge transition of React applications and complete full-stack ownership of TrackMyCase — a customer portal with Express.js backend, REST APIs, real-time updates via MQTT, and CouchDB document storage.',
+          responsibilities: [
+            'Lead knowledge transition for React frontend applications from outgoing team',
+            'Own full-stack development of TrackMyCase customer portal end-to-end',
+            'Build and maintain Express.js REST APIs with real-time MQTT updates',
+            'Manage CouchDB document storage and data layer',
+            'Coordinate between offshore development team and onsite stakeholders',
+          ],
+          achievements: [
+            'Successfully completed knowledge transition ensuring zero production downtime',
+            'Achieved complete full-stack ownership of production application within 3 months',
+            'Transitioned from remote contributor to onsite coordinator role',
+          ],
+          techStack: [
+            { category: 'Frontend', technologies: ['React', 'Redux Saga'] },
+            { category: 'Backend', technologies: ['Express.js', 'REST APIs'] },
+            { category: 'Realtime', technologies: ['MQTT'] },
+            { category: 'Database', technologies: ['CouchDB'] },
+          ],
         },
       },
       {
@@ -371,6 +540,7 @@ export const LOCATIONS: Location[] = [
         featured: true,
         places: ['Hemsedal', 'Norway'],
         hasVideo: true,
+        images: ['adventure/skydiving1.jpg', 'adventure/skydiving2.jpg', 'adventure/skydiving3.jpg'],
         content: {
           intro:
             "Standing at the edge of the plane, looking down at Norwegian mountains, and then jumping.",
@@ -388,6 +558,7 @@ export const LOCATIONS: Location[] = [
         date: '2017',
         places: ['Sognefjord', 'Flåm', 'Norway'],
         hasPhotos: true,
+        images: ['adventure/sognefjord1.jpg', 'adventure/sognefjord2.jpg', 'adventure/sognefjord3.jpg'],
         content: {
           intro:
             "Cruising through Sognefjord — Norway's longest and deepest fjord.",
@@ -405,6 +576,7 @@ export const LOCATIONS: Location[] = [
         date: '2017 – 2018',
         places: ['Brussels', 'Amsterdam', 'Paris', 'Luxembourg', 'Copenhagen'],
         hasPhotos: true,
+        images: ['adventure/europe-travels1.jpg', 'adventure/europe-travels2.jpg', 'adventure/europe-travels3.jpg', 'adventure/europe-travels4.jpg', 'adventure/europe-travels5.jpg', 'adventure/europe-travels6.jpg', 'adventure/europe-travels7.jpg', 'adventure/europe-travels8.jpg', 'adventure/europe-travels9.jpg'],
         content: {
           intro:
             'Living in Europe meant easy access to incredible destinations.',
@@ -433,8 +605,37 @@ export const LOCATIONS: Location[] = [
         date: '2016 – 2018',
         content: {
           intro: 'The bridge to Scandinavia — building for Norway from Kolkata.',
-          body: '<p>Joined the Norway Insurance (Storebrand) account from Kolkata, working on React and Node.js applications. This was the proving ground that led to the onsite opportunity in Oslo.</p><h3>Technical Growth</h3><ul><li>React and Redux for frontend development</li><li>Node.js backend services</li><li>Collaboration with offshore and onsite teams</li><li>Prepared for knowledge transition and onsite role</li></ul>',
+          body: '<p>Joined the Norway Insurance (Storebrand) account from Kolkata, working on React and Node.js applications.</p>',
           tags: ['React', 'Node.js', 'JavaScript', 'Redux', 'Norway Insurance'],
+        },
+        professional: {
+          projectDescription:
+            'Full-stack JavaScript development on Storebrand\'s insurance platform from the Kolkata offshore center, building React frontends and Node.js backend services that led to the onsite opportunity in Oslo.',
+          domain: 'Insurance',
+          client: 'Storebrand ASA',
+          employer: 'Cognizant Technology Solutions',
+          location: 'Kolkata, India (Offshore)',
+          employmentType: 'full-time',
+          team: {
+            totalTeam: 6,
+            structure: 'Offshore development team collaborating with onsite Norway team',
+          },
+          roleDescription:
+            'Full Stack JavaScript Developer working on the Norway Insurance (Storebrand) account, delivering React frontends and Node.js services. Proved technical depth and cross-cultural collaboration skills, earning the onsite coordinator role in Oslo.',
+          responsibilities: [
+            'Develop React and Redux frontend applications for insurance workflows',
+            'Build and maintain Node.js backend services',
+            'Collaborate with offshore and onsite teams across time zones',
+            'Prepare knowledge transition documentation for onsite handover',
+          ],
+          achievements: [
+            'Selected for onsite Knowledge Transition role in Oslo based on technical performance',
+            'Built foundation for React frontend architecture later used by onsite team',
+          ],
+          techStack: [
+            { category: 'Frontend', technologies: ['React', 'Redux', 'JavaScript'] },
+            { category: 'Backend', technologies: ['Node.js'] },
+          ],
         },
       },
       {
@@ -447,8 +648,39 @@ export const LOCATIONS: Location[] = [
         date: '2015 – 2016',
         content: {
           intro: 'This phase transformed me from developer to innovator.',
-          body: '<p>Moved to Kolkata office, joined European Insurance vertical with major clients like AXA, Allianz, and Zurich.</p><h3>Innovation & Hackathons</h3><p>Built native and hybrid mobile apps for innovation demos. Multiple hackathon participations and wins. Started getting noticed.</p>',
+          body: '<p>Moved to Kolkata office, joined European Insurance vertical with major clients like AXA, Allianz, and Zurich.</p>',
           tags: ['Insurance', 'AXA', 'Allianz', 'Mobile Apps', 'Hackathons'],
+        },
+        professional: {
+          projectDescription:
+            'Software development in the European Insurance vertical serving major clients including AXA, Allianz, and Zurich, with focus on mobile innovation and hackathon-driven prototypes.',
+          domain: 'Insurance',
+          client: 'AXA, Allianz, Zurich',
+          employer: 'Cognizant Technology Solutions',
+          location: 'Kolkata, India',
+          employmentType: 'full-time',
+          team: {
+            totalTeam: 8,
+            structure: 'European Insurance vertical development team',
+          },
+          roleDescription:
+            'Associate Software Developer in the European Insurance vertical, building native and hybrid mobile apps for innovation demos while contributing to core insurance platform development.',
+          responsibilities: [
+            'Develop features for European insurance client platforms (AXA, Allianz, Zurich)',
+            'Build native and hybrid mobile applications for innovation demos',
+            'Participate in and lead hackathon projects showcasing emerging technologies',
+            'Contribute to frontend development using JavaScript and emerging frameworks',
+          ],
+          achievements: [
+            'Multiple hackathon wins across Cognizant innovation events',
+            'Built mobile app prototypes that were showcased to client leadership',
+            'Recognized as innovation contributor, leading to Norway account placement',
+          ],
+          techStack: [
+            { category: 'Frontend', technologies: ['JavaScript', 'AngularJS', 'jQuery'] },
+            { category: 'Mobile', technologies: ['Native Apps', 'Hybrid Apps'] },
+            { category: 'Backend', technologies: ['Java'] },
+          ],
         },
       },
       {
@@ -462,6 +694,7 @@ export const LOCATIONS: Location[] = [
         featured: true,
         places: ['Uttarakhand', 'Himalayas'],
         hasPhotos: true,
+        images: ['adventure/bali-pass1.jpg', 'adventure/bali-pass2.jpg', 'adventure/bali-pass3.jpg'],
         content: {
           intro:
             'Twelve days. Kolkata to Delhi by train, then cabs winding into Uttarakhand.',
@@ -479,6 +712,7 @@ export const LOCATIONS: Location[] = [
         date: '2016',
         places: ['Sikkim', 'Nathang Valley'],
         hasPhotos: true,
+        images: ['adventure/gurudongmar.jpg'],
         content: {
           intro:
             'Nathang Valley and Gurudongmar Lake with office colleagues.',
@@ -507,8 +741,37 @@ export const LOCATIONS: Location[] = [
         date: '2013 – 2015',
         content: {
           intro: 'Chennai is where my professional journey began.',
-          body: '<p>Joined Cognizant as trainee, progressed to Programmer Analyst. US Healthcare domain — learning the ropes of enterprise software.</p><h3>Key Milestones</h3><ul><li>Center of Excellence member</li><li>Foundation in JavaScript, AngularJS, Java</li><li>First exposure to large-scale projects</li></ul>',
+          body: '<p>Joined Cognizant as trainee, progressed to Programmer Analyst. US Healthcare domain.</p>',
           tags: ['Cognizant', 'Healthcare', 'COE', 'First Job', 'JavaScript'],
+        },
+        professional: {
+          projectDescription:
+            'Started career at Cognizant as a trainee, progressing to Programmer Analyst in the US Healthcare domain. Built foundation in enterprise software development and earned Center of Excellence membership.',
+          domain: 'US Healthcare',
+          employer: 'Cognizant Technology Solutions',
+          location: 'Chennai, India',
+          employmentType: 'full-time',
+          team: {
+            totalTeam: 12,
+            structure: 'Healthcare vertical development team',
+          },
+          roleDescription:
+            'Programmer Analyst in the US Healthcare domain, learning enterprise software development from the ground up. Selected as a Center of Excellence member for demonstrating technical aptitude beyond the role.',
+          responsibilities: [
+            'Develop and maintain healthcare domain applications using JavaScript and Java',
+            'Build frontend interfaces with AngularJS for enterprise workflows',
+            'Participate in Center of Excellence initiatives and knowledge sharing',
+            'Contribute to large-scale enterprise project deliverables',
+          ],
+          achievements: [
+            'Progressed from trainee to Programmer Analyst within expected timeline',
+            'Selected as Center of Excellence (CoE) member',
+            'Built foundational expertise in JavaScript, AngularJS, and Java',
+          ],
+          techStack: [
+            { category: 'Frontend', technologies: ['JavaScript', 'AngularJS', 'HTML/CSS'] },
+            { category: 'Backend', technologies: ['Java'] },
+          ],
         },
       },
       {
@@ -520,6 +783,7 @@ export const LOCATIONS: Location[] = [
         desc: 'After long training days, Kotivakkam Beach became the escape. Watching sunsets became a ritual.',
         date: '2013 – 2015',
         places: ['Kotivakkam', 'Chennai'],
+        images: ['adventure/chennai-beaches1.jpg', 'adventure/chennai-beaches2.jpg', 'adventure/chennai-beaches3.jpg', 'adventure/chennai-beaches4.jpg'],
         content: {
           intro: 'The seeds of adventure were planted by the Bay of Bengal.',
           body: '<p>Not the tourist-packed Marina, but Kotivakkam — this quieter stretch where the Bay of Bengal met the edge of the city. Watching sunsets there became a ritual — a way to decompress from the intensity of breaking into tech.</p>',

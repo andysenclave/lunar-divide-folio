@@ -12,7 +12,6 @@ interface UseMoonStateReturn {
 
   // Visual transforms
   moonRotation: MotionValue<number>;
-  lightX: MotionValue<number>;
   combinedOpacity: MotionValue<number>;
 
   // State
@@ -46,7 +45,6 @@ export function useMoonState(): UseMoonStateReturn {
 
   // Mouse-driven visual transforms
   const moonRotation = useTransform(smoothMouseX, [0, 1], [-10, 10]);
-  const lightX = useTransform(smoothMouseX, [0, 1], [30, 70]);
 
   // Portrait reveal opacity (reduces moon opacity when portraits show)
   const leftReveal = useTransform(smoothMouseX, [0.1, 0.4], [1, 0]);
@@ -69,7 +67,6 @@ export function useMoonState(): UseMoonStateReturn {
     moonY,
     moonScale,
     moonRotation,
-    lightX,
     combinedOpacity,
     isInCorner,
     isHovered,
