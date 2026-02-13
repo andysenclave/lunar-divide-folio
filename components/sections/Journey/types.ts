@@ -7,6 +7,31 @@ export interface ExperienceContent {
   tags: string[];
 }
 
+export interface TechStackEntry {
+  category: string;
+  technologies: string[];
+}
+
+export interface ProfessionalData {
+  projectDescription: string;
+  domain: string;
+  client?: string;
+  employer?: string;
+  location: string;
+  employmentType: 'full-time' | 'contract' | 'co-founder' | 'freelance';
+  team: {
+    directReports?: number;
+    totalTeam?: number;
+    programSize?: number;
+    structure?: string;
+  };
+  roleDescription: string;
+  responsibilities: string[];
+  achievements: string[];
+  techStack: TechStackEntry[];
+  certifications?: string[];
+}
+
 export interface Experience {
   id: string;
   type: 'engineering' | 'adventure';
@@ -20,7 +45,9 @@ export interface Experience {
   places?: string[];
   hasVideo?: boolean;
   hasPhotos?: boolean;
+  images?: string[];
   content: ExperienceContent;
+  professional?: ProfessionalData;
 }
 
 export interface Location {

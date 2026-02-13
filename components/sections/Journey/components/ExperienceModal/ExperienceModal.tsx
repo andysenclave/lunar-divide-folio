@@ -5,7 +5,7 @@ import { useTheme } from '@/theme/ThemeProvider';
 import { MotionDiv } from '@/components/motion';
 import { AnimatePresence } from 'framer-motion';
 import type { Experience } from '../../types';
-import { ModalHero } from './components';
+import { ModalHero, ProfessionalContent } from './components';
 
 interface ExperienceModalProps {
   exp: Experience | null;
@@ -124,23 +124,43 @@ const ExperienceModal = ({ exp, onClose }: ExperienceModalProps) => {
                 {exp.places && <span>📍 {exp.places[0]}</span>}
               </div>
 
-              {/* Hero visual */}
-              <ModalHero exp={exp} />
+              {/* Hero visual (adventure cards with images only) */}
+              {!isEng && exp.images && exp.images.length > 0 && (
+                <ModalHero exp={exp} />
+              )}
 
               {/* Body content */}
-              <div
-                className="mb-8"
-                style={{
-                  color: colors.textSecondary,
-                  fontSize: '15px',
-                  lineHeight: 1.8,
-                }}
-              >
-                <p>
-                  <strong>{exp.content.intro}</strong>
-                </p>
-                <div dangerouslySetInnerHTML={{ __html: exp.content.body }} />
-              </div>
+              {isEng && exp.professional ? (
+                <>
+                  <div
+                    className="mb-6"
+                    style={{
+                      color: colors.textSecondary,
+                      fontSize: '15px',
+                      lineHeight: 1.8,
+                    }}
+                  >
+                    <p>
+                      <strong>{exp.content.intro}</strong>
+                    </p>
+                  </div>
+                  <ProfessionalContent exp={exp} />
+                </>
+              ) : (
+                <div
+                  className="mb-8"
+                  style={{
+                    color: colors.textSecondary,
+                    fontSize: '15px',
+                    lineHeight: 1.8,
+                  }}
+                >
+                  <p>
+                    <strong>{exp.content.intro}</strong>
+                  </p>
+                  <div dangerouslySetInnerHTML={{ __html: exp.content.body }} />
+                </div>
+              )}
 
               {/* Fun fact */}
               {exp.funFact && (
