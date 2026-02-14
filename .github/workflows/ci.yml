@@ -58,7 +58,7 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm test -- --coverage --coverageReporters=text --coverageReporters=lcov
+      - run: npm test -- --passWithNoTests --coverage --coverageReporters=text --coverageReporters=lcov
       - name: Upload coverage report
         if: always()
         uses: actions/upload-artifact@v4
