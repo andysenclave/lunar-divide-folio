@@ -197,10 +197,10 @@ GitHub → Settings → Branches → Add rule for `develop`:
 - [x] ~~Environment variables added in Vercel Dashboard~~
 - [x] ~~Nameservers transferred (or DNS records added)~~ *(kept GoDaddy DNS; A + CNAME records added)*
 - [x] ~~SSL auto-provisioned, `andysenclave.com` resolves~~
-- [ ] `vercel.json` committed *(created locally, pending push)*
-- [ ] `.github/workflows/ci.yml` committed *(created locally, pending push)*
-- [ ] Branch protection enabled on `develop`
-- [ ] First successful CI run on a PR
+- [x] ~~`vercel.json` committed~~ *(PR #14 → develop)*
+- [x] ~~`.github/workflows/ci.yml` committed~~ *(PR #14 → develop)*
+- [x] ~~Branch protection enabled on `develop`~~ *(Lint, Type Check, Build required)*
+- [x] ~~First successful CI run on a PR~~ *(PR #14 — all checks green)*
 
 ---
 
@@ -265,7 +265,7 @@ Enable in Vercel Dashboard (free with Hobby tier):
 - [x] ~~`uat.andysenclave.com` assigned to `staging` branch~~
 - [x] ~~All subdomains resolve with SSL~~
 - [x] ~~Vercel Analytics enabled~~ *(Web Analytics + Speed Insights)*
-- [ ] `/mockup` blocked on production, accessible on dev *(configured in `vercel.json`, pending push)*
+- [x] ~~`/mockup` blocked on production, accessible on dev~~ *(configured in `vercel.json`, PR #14)*
 - [ ] Lighthouse audit run on production URL
 
 ---
@@ -285,7 +285,7 @@ const createJestConfig = nextJest({ dir: './' });
 
 const config: Config = {
   testEnvironment: 'jsdom',
-  setupFilesAfterSetup: ['<rootDir>/jest.setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
   },
@@ -416,14 +416,14 @@ The Jest config starts with a 60% threshold. Raise to 80% before enabling the pr
 
 ### Phase 3 Checklist
 
-- [x] ~~`jest.config.ts` and `jest.setup.ts` created~~ *(created locally, pending push)*
-- [x] ~~Test scripts added to `package.json`~~ *(test, test:watch, test:coverage added)*
+- [x] ~~`jest.config.ts` and `jest.setup.ts` created~~ *(PR #14 → develop)*
+- [x] ~~Test scripts added to `package.json`~~ *(test, test:watch, test:coverage — PR #14)*
 - [ ] First tests written (CDN config, theme provider)
-- [ ] CI test job running and passing
+- [x] ~~CI test job running and passing~~ *(passWithNoTests; real tests pending)*
 - [ ] Coverage at 60%+ (Phase 3b threshold)
 - [ ] Branch protection on `staging` requires `test` check
 - [ ] SonarCloud project created and token stored
-- [x] ~~`sonar-project.properties` created~~ *(created locally, pending push)*
+- [x] ~~`sonar-project.properties` created~~ *(PR #14 → develop)*
 - [ ] Sonar job uncommented and running
 - [ ] Coverage at 80%+ (Phase 3c threshold)
 
