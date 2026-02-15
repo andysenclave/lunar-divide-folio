@@ -1,0 +1,53 @@
+name: PR Agent
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+  issue_comment:
+    types: [created]
+
+permissions:
+  issues: write
+  pull-requests: write
+  contents: read
+
+jobs:
+  # Full review + description on PRs targeting develop
+  pr_agent_develop:
+    if: |
+      (github.event_name == 'pull_request' && github.event.pull_request.draft == false && github.event.pull_request.base.ref == 'develop') ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/'))
+    runs-on: ubuntu-latest
+    name: PR Agent (Develop)
+
+    steps:
+      - name: PR Agent action step
+        id: pragent
+        uses: Codium-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_action_config.auto_review: 'true'
+          github_action_config.auto_describe: 'true'
+          github_action_config.auto_improve: 'true'
+
+  # Description only on PRs targeting master or staging
+  pr_agent_describe:
+    if: |
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.draft == false &&
+      (github.event.pull_request.base.ref == 'master' || github.event.pull_request.base.ref == 'staging')
+    runs-on: ubuntu-latest
+    name: PR Agent (Describe Only)
+
+    steps:
+      - name: PR Agent describe step
+        id: pragent_describe
+        uses: Codium-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_action_config.auto_review: 'false'
+          github_action_config.auto_describe: 'true'
+          github_action_config.auto_improve: 'false'
+          pr_description.max_description_length: '150'
