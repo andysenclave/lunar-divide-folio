@@ -1,0 +1,62 @@
+# PR-Agent Configuration for lunar-divide-folio
+# Docs: https://qodo-merge-docs.qodo.ai/tools/
+
+[config]
+model = "gpt-4o"
+fallback_models = ["gpt-4o-mini"]
+
+# ── Auto Description (/describe) ──────────────────────────────
+[pr_description]
+publish_labels = true
+publish_description_as_comment = false
+add_original_user_description = true
+generate_ai_title = false
+extra_instructions = ""
+
+# ── Auto Review (/review) ─────────────────────────────────────
+[pr_reviewer]
+# Post inline comments on specific code lines
+inline_code_comments = true
+# Submit review as "REQUEST_CHANGES" when issues found
+require_score_review = true
+require_estimate_effort_to_review = true
+# Minimum confidence to post a comment (0-5 scale, higher = stricter)
+minimal_commits_for_incremental_review = 0
+# Remove previous review comments on updated PRs
+remove_previous_review_comment = true
+persistent_comment = true
+extra_instructions = ""
+
+# ── Auto Improve (/improve) ───────────────────────────────────
+[pr_code_suggestions]
+# Max number of suggestions per run
+num_code_suggestions = 4
+# Post suggestions as inline comments (not just a summary)
+commitable_code_suggestions = true
+persistent_comment = true
+extra_instructions = ""
+
+# ── Manual Commands (/ask, /update_changelog, etc.) ───────────
+[pr_questions]
+extra_instructions = ""
+
+# ── Ignore patterns ───────────────────────────────────────────
+[ignore]
+# Files to skip during review (glob patterns)
+glob = [
+    "*.lock",
+    "*.lockb",
+    "package-lock.json",
+    "yarn.lock",
+    "pnpm-lock.yaml",
+    "*.min.js",
+    "*.min.css",
+    "*.map",
+    "dist/**",
+    "build/**",
+    "node_modules/**",
+    ".next/**",
+    "coverage/**",
+    "*.generated.*",
+    "*.snap"
+]
