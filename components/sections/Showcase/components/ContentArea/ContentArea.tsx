@@ -3,7 +3,6 @@
 import { useTheme } from '@/theme/ThemeProvider';
 import { useShowcase } from '../../context';
 import { SHOWCASE } from '../../data';
-import CTASection from '../CTASection';
 import {
   CertificationsSection,
   FeaturedSection,

@@ -13,6 +13,7 @@ interface SkillConstellationProps {
 const SkillConstellation = ({ category, side }: SkillConstellationProps) => {
   const { colors } = useTheme();
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [pathOffset] = useState(() => Math.random() * 20);
 
   const isEngineering = side === 'engineering';
   const accentColor = isEngineering ? colors.cyan : colors.orange;
@@ -141,7 +142,7 @@ const SkillConstellation = ({ category, side }: SkillConstellationProps) => {
           </linearGradient>
         </defs>
         <motion.path
-          d={`M 10 20 Q 50 ${30 + Math.random() * 20} 90 40`}
+          d={`M 10 20 Q 50 ${30 + pathOffset} 90 40`}
           stroke={`url(#grad-${category.id})`}
           strokeWidth="1"
           fill="none"

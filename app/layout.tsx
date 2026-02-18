@@ -2,6 +2,8 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { ThemeProvider } from '@/theme/ThemeProvider';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Sora, Inter, JetBrains_Mono } from 'next/font/google';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://anindya.dev';
@@ -108,6 +110,8 @@ export default function RootLayout({
             Skip to main content
           </a>
           <ThemeProvider>{children}</ThemeProvider>
+          <Analytics />
+          <SpeedInsights />
         </ErrorBoundary>
       </body>
     </html>

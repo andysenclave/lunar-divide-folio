@@ -39,7 +39,7 @@ const CardColumn = ({ side }: CardColumnProps) => {
         isEngineering ? 'pl-6 pr-8 items-start' : 'pr-6 pl-8 items-end'
       }`}
     >
-      {visibleSideCards.map(({ exp, globalIdx }, idx) => (
+      {visibleSideCards.map(({ exp }, idx) => (
         <ExperienceCard
           key={exp.id}
           exp={exp}

@@ -1,41 +1,41 @@
 'use client';
 
+import Image from 'next/image';
 import { MotionDiv } from '@/components/motion';
 import { useTheme } from '@/theme/ThemeProvider';
 import ImageOverlay from './ImageOverlay';
 
 interface DesignPreviewProps {
+  image: string;
   title: string;
   isHovered: boolean;
 }
 
-const DesignPreview = ({ title, isHovered }: DesignPreviewProps) => {
+const DesignPreview = ({ image, title, isHovered }: DesignPreviewProps) => {
   const { colors } = useTheme();
 
   return (
     <MotionDiv
-      className="relative cursor-pointer"
+      className="relative cursor-pointer overflow-hidden"
+      style={{ borderRadius: '8px' }}
       whileHover={{ scale: 1.02 }}
     >
       <div
-        className="flex flex-col items-center justify-center"
+        className="relative"
         style={{
           aspectRatio: '16/10',
           background: `linear-gradient(135deg, ${colors.bgSecondary} 0%, ${colors.bg} 100%)`,
-          gap: '8px',
+          borderRadius: '8px',
+          overflow: 'hidden',
         }}
       >
-        <span style={{ fontSize: '36px', opacity: 0.3 }}>🎨</span>
-        <span
-          style={{
-            fontSize: '11px',
-            color: colors.textMuted,
-            textAlign: 'center',
-            padding: '0 20px',
-          }}
-        >
-          {title}
-        </span>
+        <Image
+          src={image}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover"
+        />
       </div>
 
       <ImageOverlay isVisible={isHovered} />

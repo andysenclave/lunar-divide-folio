@@ -30,11 +30,8 @@ const DesignsSection = ({
           {showTitle && <SubsectionTitle icon="🎨">Design Snaps</SubsectionTitle>}
 
           <div
-            className="grid"
-            style={{
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '24px',
-            }}
+            className="grid grid-cols-2 lg:grid-cols-4"
+            style={{ gap: '16px' }}
           >
             {designs.map((design, idx) => (
               <DesignSnapCard key={design.id} design={design} index={idx} />
