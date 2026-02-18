@@ -42,13 +42,14 @@ const DesignSnapCard = ({ design, index }: DesignSnapCardProps) => {
         <DesignInfo title={design.title} />
       </MotionDiv>
 
-      {typeof document !== 'undefined' &&
-        createPortal(
-          <DesignModal
-            design={isModalOpen ? design : null}
-            onClose={() => setIsModalOpen(false)}
-          />,
-          document.body
+      {isModalOpen && typeof document !== 'undefined' &&
+          createPortal(
+            <DesignModal
+              design={design}
+              onClose={() => setIsModalOpen(false)}
+            />,
+            document.body
+          )}
         )}
     </>
   );
