@@ -25,7 +25,7 @@ export interface FeaturedProject {
   tags: string[];
   links: ProjectLinks;
   type: ProjectType;
-  status: ProjectStatus;
+  status?: ProjectStatus;
 }
 
 export interface Certification {
@@ -62,7 +62,9 @@ export interface GitHubProject {
 export interface DesignSnap {
   id: string;
   title: string;
+  subtitle: string;
   description: string;
+  detail: string;
   image: string;
 }
 
