@@ -33,6 +33,7 @@ const DesignModal = ({ design, onClose }: DesignModalProps) => {
   }, [design, onClose, isFullscreen]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (!design) setIsFullscreen(false);
   }, [design]);
 

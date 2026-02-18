@@ -36,7 +36,8 @@ const FullscreenViewer = ({ src, alt, onClose }: FullscreenViewerProps) => {
 
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
-      if (e.key === '+' || e.key === '=') setScale((s) => Math.min(s + ZOOM_STEP, MAX_SCALE));
+      if (e.key === '+' || e.key === '=')
+        setScale((s) => Math.min(s + ZOOM_STEP, MAX_SCALE));
       if (e.key === '-') {
         setScale((s) => {
           const next = Math.max(s - ZOOM_STEP, MIN_SCALE);
@@ -69,22 +70,16 @@ const FullscreenViewer = ({ src, alt, onClose }: FullscreenViewerProps) => {
       translateStart.current = { ...translate };
       (e.target as HTMLElement).setPointerCapture(e.pointerId);
     },
-    [scale, translate]
+    [scale, translate],
   );
 
-  const handlePointerMove = useCallback(
-    const handlePointerMove = useCallback(
-      (e: React.PointerEvent) => {
-        if (!isDragging.current) return;
-        setTranslate({
-          x: translateStart.current.x + (e.clientX - dragStart.current.x),
-          y: translateStart.current.y + (e.clientY - dragStart.current.y),
-        });
-      },
-      [translate]
-    );
-    []
-  );
+  const handlePointerMove = useCallback((e: React.PointerEvent) => {
+    if (!isDragging.current) return;
+    setTranslate({
+      x: translateStart.current.x + (e.clientX - dragStart.current.x),
+      y: translateStart.current.y + (e.clientY - dragStart.current.y),
+    });
+  }, []);
 
   const handlePointerUp = useCallback(() => {
     isDragging.current = false;
@@ -217,6 +212,7 @@ const FullscreenViewer = ({ src, alt, onClose }: FullscreenViewerProps) => {
               className="w-full h-full flex items-center justify-center"
               style={{
                 transform: `translate(${translate.x}px, ${translate.y}px) scale(${scale})`,
+                // eslint-disable-next-line react-hooks/refs
                 transition: isDragging.current ? 'none' : 'transform 0.2s ease',
               }}
             >

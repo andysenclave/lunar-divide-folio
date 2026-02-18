@@ -38,18 +38,19 @@ const DesignSnapCard = ({ design, index }: DesignSnapCardProps) => {
         onMouseLeave={onMouseLeave}
         onClick={() => setIsModalOpen(true)}
       >
-        <DesignPreview image={design.image} title={design.title} isHovered={isHovered} />
+        <DesignPreview
+          image={design.image}
+          title={design.title}
+          isHovered={isHovered}
+        />
         <DesignInfo title={design.title} />
       </MotionDiv>
 
-      {isModalOpen && typeof document !== 'undefined' &&
-          createPortal(
-            <DesignModal
-              design={design}
-              onClose={() => setIsModalOpen(false)}
-            />,
-            document.body
-          )}
+      {isModalOpen &&
+        typeof document !== 'undefined' &&
+        createPortal(
+          <DesignModal design={design} onClose={() => setIsModalOpen(false)} />,
+          document.body,
         )}
     </>
   );
