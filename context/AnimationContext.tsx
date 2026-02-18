@@ -2,11 +2,12 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
-  useEffect,
   useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
 } from 'react';
 import {
   MotionValue,
@@ -37,10 +38,11 @@ interface AnimationContextValue {
 
 const AnimationContext = createContext<AnimationContextValue | null>(null);
 
+const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+
 export function AnimationProvider({ children }: { children: React.ReactNode }) {
   const [activeSide, setActiveSide] = useState<ActiveSide>('neutral');
   const [lastActiveSide, setLastActiveSide] = useState<ActiveSide>('neutral');
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   const heroRef = useRef<HTMLElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
@@ -53,39 +55,49 @@ export function AnimationProvider({ children }: { children: React.ReactNode }) {
   const mouseX = useMotionValue(0.5);
   const smoothMouseX = useSpring(mouseX, { stiffness: 300, damping: 30 });
 
-  // Check for reduced motion preference
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    const handler = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
-    };
-
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
+  // Reduced motion preference via useSyncExternalStore
+  // Avoids setState-in-effect lint violations
+  const subscribeReducedMotion = useCallback((callback: () => void) => {
+    const mediaQuery = window.matchMedia(REDUCED_MOTION_QUERY);
+    mediaQuery.addEventListener('change', callback);
+    return () => mediaQuery.removeEventListener('change', callback);
   }, []);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!heroContentRef.current) return;
+  const getReducedMotionSnapshot = useCallback(() => {
+    return window.matchMedia(REDUCED_MOTION_QUERY).matches;
+  }, []);
 
-    const rect = heroContentRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
+  const getReducedMotionServerSnapshot = useCallback(() => false, []);
 
-    mouseX.set(Math.max(0, Math.min(1, x)));
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot,
+  );
 
-    const newSide: ActiveSide =
-      x < 0.4 ? 'engineering' : x > 0.6 ? 'adventure' : 'neutral';
-    setActiveSide(newSide);
-    if (newSide !== 'neutral') {
-      setLastActiveSide(newSide);
-    }
-  };
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (!heroContentRef.current) return;
 
-  const handleMouseLeave = () => {
+      const rect = heroContentRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+
+      mouseX.set(Math.max(0, Math.min(1, x)));
+
+      const newSide: ActiveSide =
+        x < 0.4 ? 'engineering' : x > 0.6 ? 'adventure' : 'neutral';
+      setActiveSide(newSide);
+      if (newSide !== 'neutral') {
+        setLastActiveSide(newSide);
+      }
+    },
+    [mouseX],
+  );
+
+  const handleMouseLeave = useCallback(() => {
     mouseX.set(0.5);
     setActiveSide('neutral');
-  };
+  }, [mouseX]);
 
   const value = useMemo(
     () => ({
@@ -99,7 +111,15 @@ export function AnimationProvider({ children }: { children: React.ReactNode }) {
       handleMouseLeave,
       prefersReducedMotion,
     }),
-    [activeSide, lastActiveSide, prefersReducedMotion, scrollYProgress, smoothMouseX],
+    [
+      activeSide,
+      lastActiveSide,
+      prefersReducedMotion,
+      scrollYProgress,
+      smoothMouseX,
+      handleMouseMove,
+      handleMouseLeave,
+    ],
   );
 
   return (

@@ -1,6 +1,5 @@
 'use client';
 
-import { useMemo } from 'react';
 import { useTheme } from '@/theme/ThemeProvider';
 import { MotionDiv } from '@/components/motion';
 
@@ -16,20 +15,25 @@ interface Star {
   delay: number;
 }
 
+function generateStars(): Star[] {
+  return Array.from({ length: STAR_COUNT }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`,
+    size: Math.random() * 2.5 + 0.5,
+    colorType: (i % 5 === 0
+      ? 'cyan'
+      : i % 7 === 0
+        ? 'orange'
+        : 'white') as Star['colorType'],
+    duration: Math.random() * 3 + 2,
+    delay: Math.random() * 2,
+  }));
+}
+
 const Stars = () => {
   const { colors } = useTheme();
-
-  const stars = useMemo<Star[]>(() => {
-    return Array.from({ length: STAR_COUNT }, (_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      size: Math.random() * 2.5 + 0.5,
-      colorType: i % 5 === 0 ? 'cyan' : i % 7 === 0 ? 'orange' : 'white',
-      duration: Math.random() * 3 + 2,
-      delay: Math.random() * 2,
-    }));
-  }, []);
+  const stars = generateStars();
 
   const getStarColor = (type: Star['colorType']) => {
     switch (type) {

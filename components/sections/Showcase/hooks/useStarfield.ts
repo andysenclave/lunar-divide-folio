@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useState } from 'react';
 
 export interface Star {
   id: number;
@@ -31,26 +31,26 @@ const DEFAULT_CONFIG: Required<StarfieldConfig> = {
   maxTwinkleDuration: 5,
 };
 
+function generateStarfield(config: Required<StarfieldConfig>): Star[] {
+  return Array.from({ length: config.count }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size:
+      Math.random() * (config.maxSize - config.minSize) +
+      config.minSize,
+    opacity:
+      Math.random() * (config.maxOpacity - config.minOpacity) +
+      config.minOpacity,
+    twinkleDuration:
+      Math.random() *
+        (config.maxTwinkleDuration - config.minTwinkleDuration) +
+      config.minTwinkleDuration,
+  }));
+}
+
 export function useStarfield(config: StarfieldConfig = {}): Star[] {
   const mergedConfig = { ...DEFAULT_CONFIG, ...config };
-
-  const stars = useMemo(() => {
-    return Array.from({ length: mergedConfig.count }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size:
-        Math.random() * (mergedConfig.maxSize - mergedConfig.minSize) +
-        mergedConfig.minSize,
-      opacity:
-        Math.random() * (mergedConfig.maxOpacity - mergedConfig.minOpacity) +
-        mergedConfig.minOpacity,
-      twinkleDuration:
-        Math.random() *
-          (mergedConfig.maxTwinkleDuration - mergedConfig.minTwinkleDuration) +
-        mergedConfig.minTwinkleDuration,
-    }));
-  }, [mergedConfig]);
-
+  const [stars] = useState(() => generateStarfield(mergedConfig));
   return stars;
 }

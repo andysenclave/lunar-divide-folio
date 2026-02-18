@@ -4,32 +4,22 @@ import { useTheme } from '@/theme/ThemeProvider';
 
 interface DesignInfoProps {
   title: string;
-  description: string;
 }
 
-const DesignInfo = ({ title, description }: DesignInfoProps) => {
+const DesignInfo = ({ title }: DesignInfoProps) => {
   const { colors } = useTheme();
 
   return (
-    <div style={{ padding: '16px 20px' }}>
+    <div style={{ padding: '12px 16px' }}>
       <h4
         style={{
-          fontSize: '14px',
+          fontSize: '13px',
           fontWeight: 600,
           color: colors.white,
-          marginBottom: '4px',
         }}
       >
         {title}
       </h4>
-      <p
-        style={{
-          fontSize: '12px',
-          color: colors.textMuted,
-        }}
-      >
-        {description}
-      </p>
     </div>
   );
 };
