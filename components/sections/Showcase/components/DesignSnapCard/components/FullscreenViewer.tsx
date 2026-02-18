@@ -73,13 +73,16 @@ const FullscreenViewer = ({ src, alt, onClose }: FullscreenViewerProps) => {
   );
 
   const handlePointerMove = useCallback(
-    (e: React.PointerEvent) => {
-      if (!isDragging.current) return;
-      setTranslate({
-        x: translateStart.current.x + (e.clientX - dragStart.current.x),
-        y: translateStart.current.y + (e.clientY - dragStart.current.y),
-      });
-    },
+    const handlePointerMove = useCallback(
+      (e: React.PointerEvent) => {
+        if (!isDragging.current) return;
+        setTranslate({
+          x: translateStart.current.x + (e.clientX - dragStart.current.x),
+          y: translateStart.current.y + (e.clientY - dragStart.current.y),
+        });
+      },
+      [translate]
+    );
     []
   );
 
