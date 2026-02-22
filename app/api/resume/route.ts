@@ -1,11 +1,13 @@
 import { cdnUrl } from '@/config';
 import { NextResponse } from 'next/server';
 
-const RESUME_PATH = 'common/assets/anindya_mukherjee.andysenclave.20260222_192933.pdf';
+const RESUME_PATH =
+  'common/assets/anindya_mukherjee.andysenclave.20260222_192933.pdf';
 const DOWNLOAD_FILENAME = 'Anindya_Mukherjee_Resume_2026.pdf';
 
 export async function GET() {
   try {
+    const url = cdnUrl(RESUME_PATH);
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -21,7 +23,10 @@ export async function GET() {
         'Cache-Control': 'public, max-age=3600',
       },
     });
-  } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch resume' }, { status: 500 });
+  } catch (_err) {
+    return NextResponse.json(
+      { error: `Failed to fetch resume - ${(_err as Error).message}` },
+      { status: 500 },
+    );
   }
 }
