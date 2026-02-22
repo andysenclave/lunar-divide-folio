@@ -6,7 +6,8 @@ export type FilterType =
   | 'featured'
   | 'certifications'
   | 'github'
-  | 'designs';
+  | 'designs'
+  | 'blogs';
 
 export type ProjectType = 'engineering' | 'adventure';
 export type ProjectStatus = 'Active' | 'In Progress' | 'Completed';
@@ -68,11 +69,24 @@ export interface DesignSnap {
   image: string;
 }
 
+export interface BlogPost {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  summary: string;
+  image: string;
+  url: string;
+  date: string;
+  tags: string[];
+}
+
 export interface ShowcaseData {
   featured: FeaturedProject[];
   certifications: Certification[];
   github: GitHubProject[];
   designs: DesignSnap[];
+  blogs: BlogPost[];
 }
 
 export interface FilterItem {

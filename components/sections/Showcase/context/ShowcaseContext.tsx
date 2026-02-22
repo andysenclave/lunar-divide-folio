@@ -18,6 +18,7 @@ interface ShowcaseContextValue {
   showCertifications: boolean;
   showGitHub: boolean;
   showDesigns: boolean;
+  showBlogs: boolean;
   // Scroll state
   isScrolled: boolean;
   contentRef: RefObject<HTMLDivElement | null>;
