@@ -6,5 +6,6 @@ export { default as CertificationCard } from './CertificationCard';
 export { default as FeaturedProjectCard } from './FeaturedProjectCard';
 export { default as GitHubCard } from './GitHubCard';
 export { default as DesignSnapCard } from './DesignSnapCard';
+export { default as BlogCard } from './BlogCard';
 export { default as CTASection } from './CTASection';
 export * from './icons';

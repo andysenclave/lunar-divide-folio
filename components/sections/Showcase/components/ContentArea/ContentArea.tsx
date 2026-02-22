@@ -8,6 +8,7 @@ import {
   FeaturedSection,
   GitHubSection,
   DesignsSection,
+  BlogsSection,
 } from './components';
 
 const ContentArea = () => {
@@ -18,6 +19,7 @@ const ContentArea = () => {
     showCertifications,
     showGitHub,
     showDesigns,
+    showBlogs,
     contentRef,
   } = useShowcase();
 
@@ -67,6 +69,13 @@ const ContentArea = () => {
           designs={SHOWCASE.designs}
           showTitle={showAllSectionTitles}
           isVisible={showDesigns}
+        />
+
+        {/* Blogs */}
+        <BlogsSection
+          blogs={SHOWCASE.blogs}
+          showTitle={showAllSectionTitles}
+          isVisible={showBlogs}
         />
       </div>
     </div>
