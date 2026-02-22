@@ -7,6 +7,7 @@ export const FILTERS: FilterItem[] = [
   { id: 'certifications', label: 'Certifications', icon: '🏆' },
   { id: 'github', label: 'GitHub', icon: '⌨' },
   { id: 'designs', label: 'Design Snaps', icon: '🎨' },
+  { id: 'blogs', label: 'Blogs', icon: '✍' },
 ];
 
 export const SHOWCASE: ShowcaseData = {
@@ -52,9 +53,9 @@ export const SHOWCASE: ShowcaseData = {
         'Certified in AI-assisted development with GitHub Copilot. Demonstrates expertise in prompt engineering, code generation, and AI pair programming workflows.',
       score: 92,
       passingScore: 70,
-      earnedDate: 'January 2025',
-      validUntil: 'January 2028',
-      credentialId: 'GH-300-2025-XXXX',
+      earnedDate: 'January 2026',
+      validUntil: 'January 2029',
+      credentialId: 'GH-300-2026-XXXX',
       skills: [
         'AI Pair Programming',
         'Prompt Engineering',
@@ -161,6 +162,47 @@ export const SHOWCASE: ShowcaseData = {
       detail:
         'Thimple Solutions Private Limited was designed as a unified SaaS platform enabling businesses to onboard and manage multiple applications within a single ecosystem. The platform provides built-in capabilities such as CMS integration, multi-language and internationalization support, AI-powered features, and a complete authentication and authorization framework with configurable entitlement rules. The design focused on simplifying complex platform operations through a clear onboarding experience and an intuitive operational dashboard. Both the landing experience and admin interface were crafted to help organizations efficiently manage applications, users, and content at scale while maintaining flexibility and security.',
       image: cdn.showcase('thimple-solutions.png'),
+    },
+  ],
+  blogs: [
+    {
+      id: 'nestjs-betterauth-part-1',
+      title: 'NestJS + BetterAuth, Part 1: From Zero to Login',
+      subtitle: 'Prisma + Cookies',
+      description:
+        'A step-by-step guide to setting up NestJS with BetterAuth, Prisma, and cookie-based sessions for a clean, modern authentication backend.',
+      summary:
+        'This guide walks through setting up a NestJS backend with BetterAuth for cookie-based authentication using Prisma and PostgreSQL. It covers mounting BetterAuth as middleware, configuring the Prisma adapter, and creating a protected route with AuthGuard. The result is a working sign-up and session flow testable via curl or Postman — no frontend required. No Passport.js, no JWT refresh tokens, just BetterAuth, a cookie, and a database.',
+      image: 'https://cdn-images-1.medium.com/max/1024/0*cn7S92o6IWmSjE1x',
+      url: 'https://medium.com/@andysenclave/nestjs-betterauth-part-1-from-zero-to-login-prisma-cookies-8bbd8d71e6d6',
+      date: 'Feb 20, 2026',
+      tags: ['NestJS', 'BetterAuth', 'Prisma', 'Authentication'],
+    },
+    {
+      id: 'nestjs-betterauth-part-2',
+      title: 'NestJS + BetterAuth, Part 2: Next.js Client',
+      subtitle: 'CSR + SSR + Middleware',
+      description:
+        'Building a Next.js frontend with BetterAuth React hooks, server-side session reading, and middleware-based route protection.',
+      summary:
+        'Part 2 connects a Next.js App Router frontend to the NestJS auth backend from Part 1. It covers sign-in/sign-up forms using BetterAuth React hooks, useSession() for real-time session state across tabs, and SSR session reads via Server Components. Route protection is handled by Next.js middleware that checks for the session cookie before rendering protected pages.',
+      image: 'https://cdn-images-1.medium.com/max/1024/0*hKcyj2kQSxVEIghw',
+      url: 'https://medium.com/@andysenclave/nestjs-betterauth-part-2-next-js-client-csr-ssr-middleware-1423f6c9309e',
+      date: 'Feb 20, 2026',
+      tags: ['Next.js', 'React', 'SSR', 'Middleware'],
+    },
+    {
+      id: 'nestjs-betterauth-part-3',
+      title: 'NestJS + BetterAuth, Part 3: OAuth, Roles & AI',
+      subtitle: 'The Endgame',
+      description:
+        'Adding Google/GitHub OAuth, role-based access control, and four AI-powered endpoints to the NestJS + BetterAuth stack.',
+      summary:
+        'The final part of the series adds social login (Google, GitHub), an admin plugin with role-based access control using @Roles() decorators, and four AI-powered endpoints: identity-aware chat, content moderation, login anomaly scoring, and admin insights. Every AI endpoint uses the session to know who is asking and what they are allowed to do. The organization plugin enables custom access control with per-resource permissions.',
+      image: 'https://cdn-images-1.medium.com/max/1024/0*Ikd9UPCm05-I9lxn',
+      url: 'https://medium.com/@andysenclave/nestjs-betterauth-part-3-oauth-roles-ai-the-endgame-cd7b07d5fed6',
+      date: 'Feb 22, 2026',
+      tags: ['OAuth', 'RBAC', 'AI', 'OpenAI'],
     },
   ],
 };

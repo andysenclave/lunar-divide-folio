@@ -2,11 +2,12 @@
 
 import { useTheme } from '@/theme/ThemeProvider';
 
-interface DesignInfoProps {
+interface BlogInfoProps {
   title: string;
+  date: string;
 }
 
-const DesignInfo = ({ title }: DesignInfoProps) => {
+const BlogInfo = ({ title, date }: BlogInfoProps) => {
   const { colors } = useTheme();
 
   return (
@@ -16,12 +17,21 @@ const DesignInfo = ({ title }: DesignInfoProps) => {
           fontSize: '13px',
           fontWeight: 600,
           color: colors.text,
+          marginBottom: '4px',
         }}
       >
         {title}
       </h4>
+      <span
+        style={{
+          fontSize: '11px',
+          color: colors.textMuted,
+        }}
+      >
+        {date}
+      </span>
     </div>
   );
 };
 
-export default DesignInfo;
+export default BlogInfo;

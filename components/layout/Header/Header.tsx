@@ -117,7 +117,7 @@ export default function Header() {
         </MotionButton>
 
         <MotionLink
-          href="#contact"
+          href="/api/resume"
           whileHover={{ scale: 1.05, borderColor: colors.text }}
           whileTap={{ scale: 0.98 }}
           style={{
@@ -132,7 +132,7 @@ export default function Header() {
             transition: 'all 0.3s ease',
           }}
         >
-          CONTACT →
+          GRAB MY CV ↓
         </MotionLink>
       </div>
     </MotionHeader>

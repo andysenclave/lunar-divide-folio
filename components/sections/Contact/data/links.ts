@@ -42,5 +42,5 @@ export const SOCIAL_LINKS = [
 export const CTA_CONFIG = {
   email: 'hello@anindya.dev',
   emailSubject: "Let's Connect",
-  resumePath: '/resume.pdf',
+  resumePath: '/api/resume',
 } as const;
