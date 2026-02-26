@@ -5,7 +5,7 @@ import { useTheme } from '@/theme/ThemeProvider';
 import { MotionDiv } from '@/components/motion';
 import { AnimatePresence } from 'framer-motion';
 import type { Experience } from '../../types';
-import { ModalHero, ProfessionalContent } from './components';
+import { ModalHero, ProfessionalContent, HighlightGif } from './components';
 
 interface ExperienceModalProps {
   exp: Experience | null;
@@ -127,6 +127,14 @@ const ExperienceModal = ({ exp, onClose }: ExperienceModalProps) => {
               {/* Hero visual (adventure cards with images only) */}
               {!isEng && exp.images && exp.images.length > 0 && (
                 <ModalHero exp={exp} />
+              )}
+
+              {/* Highlight GIF */}
+              {exp.highlightGif && (
+                <HighlightGif
+                  src={exp.highlightGif}
+                  alt={`${exp.title} highlight`}
+                />
               )}
 
               {/* Body content */}
