@@ -6,6 +6,7 @@ import { cdn } from '@/config/cdn';
 interface ImageCarouselProps {
   images: string[];
   alt: string;
+  videoLinks?: string[];
 }
 
 const INTERVAL_MS = 4000;
@@ -19,6 +20,8 @@ const imageCache = new Map<string, HTMLImageElement>();
 const inflight = new Map<string, Promise<boolean>>();
 
 function resolveUrl(path: string): string {
+  // External URLs (e.g. YouTube thumbnails) are used as-is
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
   return cdn.journey(path);
 }
 
@@ -44,7 +47,7 @@ function preload(path: string): Promise<boolean> {
   return p;
 }
 
-const ImageCarousel = ({ images, alt }: ImageCarouselProps) => {
+const ImageCarousel = ({ images, alt, videoLinks }: ImageCarouselProps) => {
   const [current, setCurrent] = useState(0);
 
   // Seed loaded state from the persistent cache so reopened modals are instant
@@ -113,6 +116,15 @@ const ImageCarousel = ({ images, alt }: ImageCarouselProps) => {
       {images.map((img, i) => {
         const isActive = i === current;
         const isLoaded = loaded.has(img);
+        const videoLink = videoLinks?.[i];
+        const imgElement = isLoaded && (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={resolveUrl(img)}
+            alt={isActive ? `${alt} - ${i + 1}` : ''}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        );
         return (
           <div
             key={img}
@@ -124,13 +136,19 @@ const ImageCarousel = ({ images, alt }: ImageCarouselProps) => {
             }}
             aria-hidden={!isActive}
           >
-            {isLoaded && (
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img
-                src={resolveUrl(img)}
-                alt={isActive ? `${alt} - ${i + 1}` : ''}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
+            {videoLink ? (
+              <a
+                href={videoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 cursor-pointer"
+                aria-label={`Watch ${alt} - Episode ${i + 1} on YouTube`}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {imgElement}
+              </a>
+            ) : (
+              imgElement
             )}
           </div>
         );

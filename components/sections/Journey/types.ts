@@ -46,6 +46,8 @@ export interface Experience {
   hasVideo?: boolean;
   hasPhotos?: boolean;
   images?: string[];
+  videoLinks?: string[];
+  highlightGif?: string;
   content: ExperienceContent;
   professional?: ProfessionalData;
 }
