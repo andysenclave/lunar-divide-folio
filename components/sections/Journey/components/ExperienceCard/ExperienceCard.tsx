@@ -132,14 +132,53 @@ const ExperienceCard = ({
           className="flex items-center justify-between mt-5 pt-4"
           style={{ borderTop: `1px solid ${colors.border}` }}
         >
-          <time
-            style={{
-              fontSize: '11px',
-              color: colors.textDim,
-            }}
-          >
-            {exp.date}
-          </time>
+          <span className="flex items-center gap-2">
+            <time
+              style={{
+                fontSize: '11px',
+                color: colors.textDim,
+              }}
+            >
+              {exp.date}
+            </time>
+            {exp.videoLinks && exp.videoLinks.length > 0 && (
+              <span
+                className="flex items-center gap-1 px-1.5 py-0.5 rounded"
+                style={{
+                  background: 'rgba(255, 0, 0, 0.08)',
+                  border: '1px solid rgba(255, 0, 0, 0.15)',
+                }}
+                aria-label="YouTube video available"
+              >
+                <svg
+                  width="14"
+                  height="10"
+                  viewBox="0 0 24 17"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M23.5 2.5C23.2 1.1 22.1 0 20.7 0 17.5-.2 14.2-.2 11-.2c-3.2 0-6.5 0-9.7.2C-.1 0-1.2 1.1-1.5 2.5c-.3 2-.3 4.1-.3 6.1s0 4.1.3 6.1c.3 1.4 1.4 2.5 2.8 2.5 3.2.2 6.5.2 9.7.2s6.5 0 9.7-.2c1.4 0 2.5-1.1 2.8-2.5.3-2 .3-4.1.3-6.1s0-4.1-.3-6.1z"
+                    fill="#FF0000"
+                    opacity="0.7"
+                    transform="translate(1, 0)"
+                  />
+                  <polygon points="10,4 16,8.5 10,13" fill="white" />
+                </svg>
+                <span
+                  style={{
+                    fontSize: '8px',
+                    color: 'rgba(255, 80, 80, 0.8)',
+                    fontWeight: 600,
+                    letterSpacing: '0.05em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  YouTube
+                </span>
+              </span>
+            )}
+          </span>
           <span
             className="font-semibold tracking-widest"
             style={{

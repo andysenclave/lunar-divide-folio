@@ -5,6 +5,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Sora, Inter, JetBrains_Mono } from 'next/font/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://anindya.dev';
 
@@ -113,6 +114,7 @@ export default function RootLayout({
           <Analytics />
           <SpeedInsights />
         </ErrorBoundary>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || 'G-XXXXXXXXXX'} />
       </body>
     </html>
   );
