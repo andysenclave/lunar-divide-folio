@@ -457,7 +457,7 @@ export const LOCATIONS: Location[] = [
     coords: [13.405, 52.52],
     period: '2019 – 2021',
     era: 'The Startup Phase',
-    year: 2019,
+    year: 2021,
     experiences: [
       {
         id: 'fincompare',
@@ -548,9 +548,9 @@ export const LOCATIONS: Location[] = [
     name: 'Oslo',
     country: 'Norway',
     coords: [10.7522, 59.9139],
-    period: '2018 – 2019',
+    period: '2016 – 2019',
     era: 'The Scandinavian Chapter',
-    year: 2018,
+    year: 2019,
     experiences: [
       {
         id: 'storebrand',
@@ -559,7 +559,7 @@ export const LOCATIONS: Location[] = [
         title: 'Onsite Coordinator & Team Lead',
         subtitle: 'Cognizant at Storebrand, Norway',
         desc: 'Led knowledge transition for React apps. Full ownership of TrackMyCase — Express.js, MQTT, CouchDB.',
-        date: '2018 – 2019',
+        date: '2016 – 2019',
         featured: true,
         content: {
           intro: 'Norway changed everything — technically and personally.',
@@ -662,7 +662,7 @@ export const LOCATIONS: Location[] = [
     name: 'Kolkata',
     country: 'India',
     coords: [88.3639, 22.5726],
-    period: '2015 – 2018',
+    period: '2015 – 2016',
     era: 'Building Momentum',
     year: 2015,
     experiences: [
@@ -673,7 +673,7 @@ export const LOCATIONS: Location[] = [
         title: 'Full Stack JavaScript Developer',
         subtitle: 'Cognizant - Norway Insurance',
         desc: 'Worked on Storebrand (Norway Insurance) from Kolkata. React and Node.js full stack development before transitioning to onsite in Oslo.',
-        date: '2016 – 2018',
+        date: '2016',
         content: {
           intro: 'The bridge to Scandinavia — building for Norway from Kolkata.',
           body: '<p>Joined the Norway Insurance (Storebrand) account from Kolkata, working on React and Node.js applications.</p>',

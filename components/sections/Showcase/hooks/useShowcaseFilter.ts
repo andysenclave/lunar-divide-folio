@@ -10,6 +10,7 @@ export interface ShowcaseFilterState {
   showCertifications: boolean;
   showGitHub: boolean;
   showDesigns: boolean;
+  showBlogs: boolean;
 }
 
 export function useShowcaseFilter(
@@ -28,6 +29,7 @@ export function useShowcaseFilter(
         activeFilter === 'all' || activeFilter === 'certifications',
       showGitHub: activeFilter === 'all' || activeFilter === 'github',
       showDesigns: activeFilter === 'all' || activeFilter === 'designs',
+      showBlogs: activeFilter === 'all' || activeFilter === 'blogs',
     }),
     [activeFilter],
   );
