@@ -1,6 +1,6 @@
 {
   "name": "lunar-divide-folio",
-  "version": "0.2.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -12,6 +12,7 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@next/third-parties": "^16.1.6",
     "@vercel/analytics": "^1.6.1",
     "@vercel/blob": "^2.2.0",
     "@vercel/speed-insights": "^1.3.1",
