@@ -22,6 +22,7 @@ const ModalHero = ({ exp }: ModalHeroProps) => {
   const isCarousel = images.length > 1;
 
   return (
+    <>
     <MotionDiv
       className="w-full rounded-2xl mb-8 relative overflow-hidden"
       style={{
@@ -35,16 +36,24 @@ const ModalHero = ({ exp }: ModalHeroProps) => {
     >
       {/* Image carousel, single image, or fallback gradient */}
       {isCarousel ? (
-        <ImageCarousel images={images} alt={exp.title} />
+        <ImageCarousel images={images} alt={exp.title} videoLinks={exp.videoLinks} />
       ) : hasImages ? (
-        <Image
-          src={cdn.journey(images[0])}
-          alt={exp.title}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 800px"
-          priority
-        />
+        (() => {
+          const isExternal = images[0].startsWith('http');
+          const imgSrc = isExternal ? images[0] : cdn.journey(images[0]);
+          const videoLink = exp.videoLinks?.[0];
+          const imageEl = isExternal ? (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img src={imgSrc} alt={exp.title} className="absolute inset-0 w-full h-full object-cover" />
+          ) : (
+            <Image src={imgSrc} alt={exp.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 800px" priority />
+          );
+          return videoLink ? (
+            <a href={videoLink} target="_blank" rel="noopener noreferrer" className="absolute inset-0" onClick={(e) => e.stopPropagation()}>
+              {imageEl}
+            </a>
+          ) : imageEl;
+        })()
       ) : (
         <div
           className="absolute inset-0"
@@ -124,8 +133,56 @@ const ModalHero = ({ exp }: ModalHeroProps) => {
             </span>
           )}
 
+          {/* YouTube badge */}
+          {exp.videoLinks && exp.videoLinks.length > 0 && (
+            <div
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full"
+              style={{
+                background: 'rgba(255, 0, 0, 0.12)',
+                border: '1px solid rgba(255, 0, 0, 0.2)',
+                backdropFilter: 'blur(8px)',
+              }}
+            >
+              <svg
+                width="16"
+                height="12"
+                viewBox="0 0 24 17"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M23.5 2.5C23.2 1.1 22.1 0 20.7 0 17.5-.2 14.2-.2 11-.2c-3.2 0-6.5 0-9.7.2C-.1 0-1.2 1.1-1.5 2.5c-.3 2-.3 4.1-.3 6.1s0 4.1.3 6.1c.3 1.4 1.4 2.5 2.8 2.5 3.2.2 6.5.2 9.7.2s6.5 0 9.7-.2c1.4 0 2.5-1.1 2.8-2.5.3-2 .3-4.1.3-6.1s0-4.1-.3-6.1z"
+                  fill="#FF0000"
+                  opacity="0.8"
+                  transform="translate(1, 0)"
+                />
+                <polygon points="10,4 16,8.5 10,13" fill="white" />
+              </svg>
+              <span
+                style={{
+                  fontSize: '11px',
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  fontWeight: 600,
+                  letterSpacing: '0.04em',
+                }}
+              >
+                YouTube
+              </span>
+              {exp.videoLinks.length > 1 && (
+                <span
+                  style={{
+                    fontSize: '10px',
+                    color: 'rgba(255, 255, 255, 0.5)',
+                  }}
+                >
+                  · {exp.videoLinks.length} episodes
+                </span>
+              )}
+            </div>
+          )}
+
           {/* Media indicator */}
-          {hasMedia && (
+          {hasMedia && !(exp.videoLinks && exp.videoLinks.length > 0) && (
             <div
               className="flex items-center gap-2 px-3 py-1.5 rounded-full"
               style={{
@@ -210,6 +267,21 @@ const ModalHero = ({ exp }: ModalHeroProps) => {
         </MotionDiv>
       )}
     </MotionDiv>
+
+    {/* YouTube caption */}
+    {hasImages && exp.videoLinks && exp.videoLinks.length > 0 && (
+      <p
+        className="text-center mb-6 -mt-4"
+        style={{
+          fontSize: '12px',
+          color: colors.textMuted,
+          fontFamily: 'var(--font-mono)',
+        }}
+      >
+        (Click on the image to watch the video on YouTube)
+      </p>
+    )}
+    </>
   );
 };
 
