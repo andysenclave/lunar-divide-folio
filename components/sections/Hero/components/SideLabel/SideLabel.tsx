@@ -47,16 +47,24 @@ const SideLabel = ({ side, opacity, activeSide, mouseX }: SideLabelProps) => {
 
   const combinedOpacity = useTransform([labelOpacity, opacity], (latest) => {
     const [l, o] = latest as [number, number];
-    const mobileScale = isMobile ? 0.7 : 1;
-    return l * o * mobileScale;
+    return l * o * (isMobile ? 0.7 : 1);
   });
+
+  // Desktop: staging gradient directions. Mobile: rotated for vertical layout.
+  const gradientDir = isEngineering
+    ? (isMobile ? '180deg' : '90deg')
+    : (isMobile ? '0deg' : '270deg');
 
   return (
     <MotionSection
       className="absolute top-1/2 -translate-y-1/2 flex items-center gap-3 z-45 pointer-events-none"
       style={{
-        left: isEngineering ? 'clamp(4px, 3%, 50px)' : 'auto',
-        right: isEngineering ? 'auto' : 'clamp(4px, 3%, 50px)',
+        left: isEngineering
+          ? (isMobile ? 'clamp(4px, 3%, 50px)' : 'clamp(10px, 5%, 50px)')
+          : 'auto',
+        right: isEngineering
+          ? 'auto'
+          : (isMobile ? 'clamp(4px, 3%, 50px)' : 'clamp(10px, 5%, 50px)'),
         flexDirection: isEngineering ? 'row' : 'row-reverse',
         opacity: combinedOpacity,
         ...(isMobile
@@ -71,7 +79,7 @@ const SideLabel = ({ side, opacity, activeSide, mouseX }: SideLabelProps) => {
         className="font-semibold tracking-[0.2em]"
         style={{
           color,
-          fontSize: isMobile ? 'clamp(9px, 2.5vw, 11px)' : 'clamp(11px, 1.4vw, 13px)',
+          fontSize: isMobile ? 'clamp(9px, 2.5vw, 11px)' : 'clamp(9px, 1.2vw, 11px)',
         }}
       >
         {side.toUpperCase()}
@@ -81,14 +89,14 @@ const SideLabel = ({ side, opacity, activeSide, mouseX }: SideLabelProps) => {
         style={{
           ...(isMobile
             ? { height: 'clamp(24px, 4vw, 36px)' }
-            : { width: 'clamp(24px, 4vw, 36px)' }),
-          background: `linear-gradient(${isEngineering ? (isMobile ? '180deg' : '90deg') : isMobile ? '0deg' : '270deg'}, ${color}40 0%, ${color}10 100%)`,
+            : { width: 'clamp(20px, 3vw, 30px)' }),
+          background: `linear-gradient(${gradientDir}, ${color}40 0%, ${color}10 100%)`,
         }}
         animate={{
           background:
             activeSide === side
-              ? `linear-gradient(${isEngineering ? (isMobile ? '180deg' : '90deg') : isMobile ? '0deg' : '270deg'}, ${color} 0%, ${color}40 100%)`
-              : `linear-gradient(${isEngineering ? (isMobile ? '180deg' : '90deg') : isMobile ? '0deg' : '270deg'}, ${color}40 0%, ${color}10 100%)`,
+              ? `linear-gradient(${gradientDir}, ${color} 0%, ${color}40 100%)`
+              : `linear-gradient(${gradientDir}, ${color}40 0%, ${color}10 100%)`,
         }}
       />
     </MotionSection>

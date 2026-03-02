@@ -40,7 +40,7 @@ export const SOCIAL_LINKS = [
 ] as const;
 
 export const CTA_CONFIG = {
-  email: 'hello@anindya.dev',
+  email: 'andysenclave@gmail.com',
   emailSubject: "Let's Connect",
   resumePath: '/api/resume',
 } as const;
