@@ -112,12 +112,15 @@ const HeroSection = () => {
         onTouchEnd={handleTouchEnd}
         className="w-full max-w-350 min-h-screen relative flex flex-col items-center justify-center py-20 px-6 pt-30 mx-auto cursor-crosshair"
       >
+        {/* Title — desktop: staging original (top + z-60), mobile: bottom-anchored behind moon */}
         <MotionSection
-          className="absolute left-1/2 text-center z-40 w-full px-6"
+          className={`absolute left-1/2 text-center w-full px-6 ${isMobile ? 'z-40' : 'z-60'}`}
           style={{
             opacity: heroContentOpacity,
             x: '-50%',
-            bottom: 'calc(50% + clamp(100px, 15vw, 150px) + 5px)',
+            ...(isMobile
+              ? { bottom: 'calc(50% + clamp(120px, 32.5vw, 150px) + 5px)' }
+              : { top: 'max(15vh, 120px)' }),
           }}
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -126,22 +129,45 @@ const HeroSection = () => {
           <Title />
         </MotionSection>
 
-        {/* Side labels positioned relative to the full hero viewport */}
-        <SideLabel
-          side="engineering"
-          activeSide={activeSide}
-          opacity={heroContentOpacity}
-          mouseX={smoothMouseX}
-        />
-        <SideLabel
-          side="adventure"
-          activeSide={activeSide}
-          opacity={heroContentOpacity}
-          mouseX={smoothMouseX}
-        />
+        {/* Mobile: side labels in hero wrapper for full-viewport positioning */}
+        {isMobile && (
+          <>
+            <SideLabel
+              side="engineering"
+              activeSide={activeSide}
+              opacity={heroContentOpacity}
+              mouseX={smoothMouseX}
+            />
+            <SideLabel
+              side="adventure"
+              activeSide={activeSide}
+              opacity={heroContentOpacity}
+              mouseX={smoothMouseX}
+            />
+          </>
+        )}
 
         <div className="relative w-full max-w-225 h-100 flex items-center justify-center">
           <OrbitalRings opacity={heroContentOpacity} />
+
+          {/* Desktop: side labels inside container — exact staging position */}
+          {!isMobile && (
+            <>
+              <SideLabel
+                side="engineering"
+                activeSide={activeSide}
+                opacity={heroContentOpacity}
+                mouseX={smoothMouseX}
+              />
+              <SideLabel
+                side="adventure"
+                activeSide={activeSide}
+                opacity={heroContentOpacity}
+                mouseX={smoothMouseX}
+              />
+            </>
+          )}
+
           <PortraitOverlays />
         </div>
 
