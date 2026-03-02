@@ -35,8 +35,8 @@ const CardColumn = ({ side }: CardColumnProps) => {
 
   return (
     <div
-      className={`flex flex-col gap-5 justify-center overflow-y-auto py-6 pointer-events-auto ${
-        isEngineering ? 'pl-6 pr-8 items-start' : 'pr-6 pl-8 items-end'
+      className={`flex flex-col gap-5 justify-center overflow-y-auto py-6 pointer-events-auto px-4 items-center ${
+        isEngineering ? 'md:pl-6 md:pr-8 md:items-start' : 'md:pr-6 md:pl-8 md:items-end'
       }`}
     >
       {visibleSideCards.map(({ exp }, idx) => (

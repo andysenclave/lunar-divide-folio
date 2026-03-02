@@ -7,6 +7,7 @@ import { useAnimation } from '@/context';
 import { useTheme } from '@/theme/ThemeProvider';
 import { useTransform } from 'framer-motion';
 import Image from 'next/image';
+import MobileNav from './MobileNav';
 
 export default function Header() {
   const { colors, mode, toggle } = useTheme();
@@ -14,7 +15,9 @@ export default function Header() {
   const navOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
 
   return (
+    <>
     <MotionHeader
+      className="hidden md:flex"
       style={{
         opacity: navOpacity,
         position: 'fixed',
@@ -22,7 +25,6 @@ export default function Header() {
         left: 0,
         right: 0,
         padding: '24px clamp(24px, 5vw, 48px)',
-        display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         zIndex: 100,
@@ -91,7 +93,7 @@ export default function Header() {
         ))}
       </nav>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+      <div className="hide-mobile" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
         {/* Theme Toggle */}
         <MotionButton
           onClick={toggle}
@@ -136,5 +138,8 @@ export default function Header() {
         </MotionLink>
       </div>
     </MotionHeader>
+
+    <MobileNav />
+  </>
   );
 }

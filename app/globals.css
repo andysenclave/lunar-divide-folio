@@ -29,6 +29,13 @@
     @apply outline-none ring-2 ring-cyan ring-offset-2 ring-offset-bg;
   }
 
+  /* Hide on mobile (< 768px) */
+  .hide-mobile {
+    @media (max-width: 767px) {
+      display: none !important;
+    }
+  }
+
   /* Screen reader only */
   .sr-only {
     position: absolute;
