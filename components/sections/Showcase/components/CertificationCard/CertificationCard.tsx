@@ -46,8 +46,8 @@ const CertificationCard = ({ cert }: CertificationCardProps) => {
 
       {/* Main Content */}
       <div
-        className="flex flex-wrap"
-        style={{ gap: 'clamp(24px, 4vw, 48px)', alignItems: 'flex-start' }}
+        className="flex flex-col items-center md:flex-row md:items-start"
+        style={{ gap: 'clamp(20px, 3vw, 48px)' }}
       >
         {/* Left: Badge Visual */}
         <div

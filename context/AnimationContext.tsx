@@ -21,11 +21,14 @@ export type ActiveSide = 'engineering' | 'adventure' | 'neutral';
 interface AnimationContextValue {
   // Scroll tracking
   scrollYProgress: MotionValue<number>;
-  // Mouse tracking
+  // Mouse/touch tracking
+  mouseX: MotionValue<number>;
   smoothMouseX: MotionValue<number>;
   // Active side state
   activeSide: ActiveSide;
   lastActiveSide: ActiveSide;
+  setActiveSide: (side: ActiveSide) => void;
+  setLastActiveSide: (side: ActiveSide) => void;
   // Refs for scroll/mouse tracking
   heroRef: React.RefObject<HTMLElement | null>;
   heroContentRef: React.RefObject<HTMLDivElement | null>;
@@ -102,9 +105,12 @@ export function AnimationProvider({ children }: { children: React.ReactNode }) {
   const value = useMemo(
     () => ({
       scrollYProgress,
+      mouseX,
       smoothMouseX,
       activeSide,
       lastActiveSide,
+      setActiveSide,
+      setLastActiveSide,
       heroRef,
       heroContentRef,
       handleMouseMove,
@@ -116,6 +122,7 @@ export function AnimationProvider({ children }: { children: React.ReactNode }) {
       lastActiveSide,
       prefersReducedMotion,
       scrollYProgress,
+      mouseX,
       smoothMouseX,
       handleMouseMove,
       handleMouseLeave,
