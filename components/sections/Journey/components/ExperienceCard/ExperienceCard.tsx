@@ -26,7 +26,7 @@ const ExperienceCard = ({
     <MotionDiv
       className="rounded-2xl overflow-hidden cursor-pointer shrink-0"
       style={{
-        width: 300,
+        width: 'min(300px, calc(100vw - 48px))',
         margin: '0 8px',
         background: `${colors.bgSecondary}f2`, // 95% opacity
         border: `1px solid ${exp.featured ? colors.gold : colors.border}`,
