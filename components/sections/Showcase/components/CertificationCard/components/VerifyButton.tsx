@@ -14,8 +14,7 @@ const VerifyButton = ({ verifyUrl, validUntil }: VerifyButtonProps) => {
 
   return (
     <div
-      className="flex flex-wrap items-center"
-      style={{ gap: '20px' }}
+      className="flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5"
     >
       <MotionLink
         href={verifyUrl}

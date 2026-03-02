@@ -40,7 +40,8 @@ export function useGlobe(): UseGlobeReturn {
 
     const width = window.innerWidth;
     const height = window.innerHeight;
-    const baseScale = Math.min(width, height) / 2.4;
+    const isMobile = width < 768;
+    const baseScale = Math.min(width, height) / (isMobile ? 3.6 : 2.4);
     baseScaleRef.current = baseScale;
 
     const svg = d3
@@ -197,7 +198,7 @@ export function useGlobe(): UseGlobeReturn {
     const handleResize = () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
-      baseScaleRef.current = Math.min(w, h) / 2.4;
+      baseScaleRef.current = Math.min(w, h) / (w < 768 ? 3.6 : 2.4);
       svg.attr('width', w).attr('height', h);
       if (projectionRef.current) {
         projectionRef.current.translate([w / 2, h / 2]);

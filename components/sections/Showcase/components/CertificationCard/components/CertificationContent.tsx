@@ -14,7 +14,7 @@ const CertificationContent = ({ cert }: CertificationContentProps) => {
   const { colors } = useTheme();
 
   return (
-    <div className="flex-1" style={{ minWidth: '280px' }}>
+    <div className="flex-1 w-full md:w-auto" style={{ minWidth: 0 }}>
       {/* Category & Date */}
       <div
         className="flex flex-wrap items-center"
